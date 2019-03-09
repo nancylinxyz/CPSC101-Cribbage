@@ -7,7 +7,7 @@ package cribproject;
 
 /**
  *
- * @author mac
+ * @author Son
  */
 import java.util.Scanner;
 

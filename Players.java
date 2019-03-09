@@ -1,52 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Each players have 4 behavoirs:
+ * 1. setHand(Card): add 1 card to the player's hand
+ * 2. playHand(Card): remove 1 card from the player's hand and add it to the player's PlayedHand & onto the Board
+ * 3. discardToCrib(Card): moves 1 card from the player's hand to crib
+ * 4. return Card decidedCard(); returns a card
+ * 
+ * @co-authors: Shen & Nancy Lin
  */
 package cribproject;
 
-/**
- *
- * @author mac
- */
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Players {
-	private static boolean isDealer;
-	private ArrayList<Cards> hand;
+abstract class Player {
 	
-	private ArrayList<Cards> crib;
+	public Player(){
+		CardCollection hand = new CardCollection();
+		CardCollection playedHand = new CardCollection();
+		CardCollection crib = new CardCollection();
+	}
 	
-	private ArrayList<Cards> playedHand;
-	
-	public void setHand(){
-		ArrayList<Cards> hand = new ArrayList<Cards>();
-		hand.add(Cards);		//To add the cards to hand arraylist
+	public void setHand(Card c){
+		hand.add(c);		//To add the cards to hand arraylist
 	}
 
-	public void playHand(){
-		ArrayList<Cards> playedHand = new ArrayList<Cards>();
-		Random i = new Random();
-		int n = 1 + i.nextInt(5);
-		String Card = playedHand.get(i);		// To get an element
+	public void playHand(Card c){
+		hand.remove(c);
+		playedHand.add(c);
+		Board.playedCards.add(c);
 	}
 
-	public void discardToCrib(){
-		ArrayList<Cards> crib = new ArrayList<Cards>();
-	
+	public void discardToCrib(Card c){
+		hand.remove(c);
+		crib.add(c);
 	}
 
-	public void setDealer(){
-		 isDealer = true;
-		
-	}
-	public void emptyHand(){
-		int i = 0;
-		for (String Cards : hand){
-		}	
-			hand.set(i, 0);
-			i++;
+	abstract Card decideCard(){
+
 	}
 	
 	
