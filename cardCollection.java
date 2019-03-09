@@ -7,7 +7,8 @@ import cribproject.Cards;
  * 3 behavoirs:
  * 1. addCard(Cards)
  * 2. removeCard(Cards)
- * 3. clearCollection()
+ * 3. getCard(int): returns i-th card of the collection
+ * 4. clearCollection()
  *
  * @author Nancy Lin
  */
@@ -26,8 +27,12 @@ public class cardCollection {
         
     }
 
-    public void removeNextCard(){
-        collection.remove(0);
+    public Card getCard(int i){
+
+        if (i <= collection.size()){
+            return collection.get(i);
+        }
+        //error message
     }
     
     public void clearCollection(){

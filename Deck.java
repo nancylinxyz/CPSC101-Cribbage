@@ -17,16 +17,20 @@ public class Deck {
 
     //ArrayList<Cards> Deck = new ArrayList<Cards>();
     private int cardCounter = 51;
+    private CardCollection deck;
 
     public Deck() {
-        CardCollection deck = new CardCollection();
+        deck = new CardCollection();
         creatNewDeck();
 
     }
     
-    public Cards Deal()
+    //needs to become shuffle and take 1 card from the deck and put it into another player's card
+    public void Deal(Player p)
     {
-        Random card = new Random();
+        p.addCard(deck.get(0));
+        deck.removeCard(deck.get(0));
+        /*Random card = new Random();
         if(cardCounter >= 0)
         {
             int nextCard = card.nextInt(cardCounter);
@@ -35,7 +39,7 @@ public class Deck {
             Deck.remove(nextCard);
             return newCard;
         }
-        return null;
+        return null;*/
     }
     
     public void ResetDeck()
