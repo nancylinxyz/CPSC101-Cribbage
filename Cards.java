@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package CribbageDeck;
-import java.util.Scanner;
-/**
+/* Object behavoirs:
+ * 1. getSuit()
+ * 2. getValue()
+ * 3. cardCompare(Cards)
+ * 4. valueFinder()
  *
  * @author dumonchel
  */
+package cribproject;
+import java.util.Scanner;
+
 public class Cards {
 
     enum Suit {

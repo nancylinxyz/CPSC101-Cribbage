@@ -1,36 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * Mar 9, 2019 update: change Deck into CardCollection object
+ *                     - createNewDeck() instead of using 2 for loops
+ * 
+ * @author dumonchel
  */
-package CribbageDeck;
+package cribproject;
 
 import java.util.ArrayList;
 import CribbageDeck.Cards.Suit;
 import CribbageDeck.Cards.Value;
 import java.util.Random;
 
-/**
- *
- * @author dumonchel
- */
 public class Deck {
 
-    ArrayList<Cards> Deck = new ArrayList<Cards>();
+    //ArrayList<Cards> Deck = new ArrayList<Cards>();
     private int cardCounter = 51;
 
     public Deck() {
+        CardCollection deck = new CardCollection();
+        creatNewDeck();
 
-        for (Suit s : Suit.values()) {
-            for (Value v : Value.values()) {
-                Deck.add(makeCard(s, v));
-            }
-        }
-    }
-
-    public Cards makeCard(Suit s, Value v) {
-        Cards card = new Cards(s, v);
-        return card;
     }
     
     public Cards Deal()
@@ -49,11 +38,20 @@ public class Deck {
     
     public void ResetDeck()
     {
-        Deck.clear();
+        deck.clearCollection();
+        creatNewDeck();
+    }
+
+    private void creatNewDeck(){
         for (Suit s : Suit.values()) {
             for (Value v : Value.values()) {
-                Deck.add(makeCard(s, v));
+                deck.setHand(makeCard(s, v));
             }
         }
+    }
+
+    private Cards makeCard(Suit s, Value v) {
+        Cards card = new Cards(s, v);
+        return card;
     }
 }

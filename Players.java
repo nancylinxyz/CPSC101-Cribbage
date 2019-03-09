@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* Each players have 4 behavoirs:
+ * 1. setHand(Card): add 1 card to the player's hand
+ * 2. playHand(Card): remove 1 card from the player's hand and add it to the player's PlayedHand & onto the Board
+ * 3. discardToCrib(Card): moves 1 card from the player's hand to crib
+ * 4. return Card decidedCard(); returns a card
+ * 
+ * @co-authors: Shen & Nancy Lin
  */
 package cribproject;
 
-/**
- *
- * @author mac
- */
 import java.util.ArrayList;
 import java.util.Random;
 

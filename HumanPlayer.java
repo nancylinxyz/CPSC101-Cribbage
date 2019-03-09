@@ -1,10 +1,12 @@
+package cribproject;
+
 public class HumanPlayer extends Player{
     private String Suite;
     private String Value;
     //constructor
     public HumanPlayer(){
         super.Player();
-        
+
     }
 
 

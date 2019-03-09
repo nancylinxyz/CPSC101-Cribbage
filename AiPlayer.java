@@ -1,3 +1,4 @@
+package cribproject;
 public class AiPlayer extends Player{
     //constructor
     public AiPlayer(){
