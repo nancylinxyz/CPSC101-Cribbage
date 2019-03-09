@@ -1,4 +1,6 @@
-/* 
+/* Deck Class Behavoirs:
+ * 
+ * 
  * Mar 9, 2019 update: change Deck into CardCollection object
  *                     - createNewDeck() instead of using 2 for loops
  * 

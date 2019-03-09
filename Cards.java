@@ -2,7 +2,8 @@
  * 1. getSuit()
  * 2. getValue()
  * 3. cardCompare(Cards)
- * 4. valueFinder()
+ * 4. valueFinder() for drawing returns 1 to 13
+ * 5. cardValue() Jack, Queen & King are all 10, returns 1 to 10
  *
  * @author dumonchel
  */
@@ -33,7 +34,9 @@ public class Cards {
     public Value getValue() {
         return value;
     }
-    
+    //returns 1 if the first card is greater than the second card, 
+    //returns 2 if the first card is less than the second card
+    // returns 3 if they're equal
     public int cardCompare(Cards compCard)
     {
         if(this.valueFinder() < compCard.valueFinder())
@@ -47,12 +50,12 @@ public class Cards {
     {
         if(value == Value.Ace)
         {
-            Scanner aceFinder = new Scanner(System.in);
+            /*Scanner aceFinder = new Scanner(System.in);
             System.out.println("Will this equal 1 or 11?");
             int aceValue = aceFinder.nextInt();
             if(aceValue == 11)
-                aceValue = 14;
-            return aceValue;
+                aceValue = 14;*/
+            return 1;
         }
         else if(value == Value.Two)
             return 2;
