@@ -1,6 +1,12 @@
 public class HumanPlayer extends Player{
     private String Suite;
     private String Value;
+    //constructor
+    public HumanPlayer(){
+        super.Player();
+        
+    }
+
 
     //to-do: be able to enter a Go decision
     @Override

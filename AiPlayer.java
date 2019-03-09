@@ -1,5 +1,8 @@
 public class AiPlayer extends Player{
-
+    //constructor
+    public AiPlayer(){
+        super.Player();
+    }
 
     @Override
     public Card decideCard(){
