@@ -12,11 +12,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 abstract class Player {
-	
+	private CardCollection hand;
+	private CardCollection playedHand;
+	private CardCollection crib;
+
 	public Player(){
-		CardCollection hand = new CardCollection();
-		CardCollection playedHand = new CardCollection();
-		CardCollection crib = new CardCollection();
+		hand = new CardCollection();
+		playedHand = new CardCollection();
+		crib = new CardCollection();
 	}
 	
 	public void setHand(Card c){
