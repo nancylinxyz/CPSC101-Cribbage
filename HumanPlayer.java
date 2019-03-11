@@ -1,4 +1,3 @@
-package cribproject;
 
 public class HumanPlayer extends Player{
     private String Suite;

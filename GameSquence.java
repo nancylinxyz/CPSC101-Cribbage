@@ -1,4 +1,3 @@
-package cribproject;
 
 public class GameSquence{
     

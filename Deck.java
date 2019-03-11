@@ -6,7 +6,6 @@
  * 
  * @author dumonchel
  */
-package cribproject;
 
 import java.util.ArrayList;
 import CribbageDeck.Cards.Suit;

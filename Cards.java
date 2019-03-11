@@ -7,7 +7,6 @@
  *
  * @author dumonchel
  */
-package cribproject;
 import java.util.Scanner;
 
 public class Cards {
