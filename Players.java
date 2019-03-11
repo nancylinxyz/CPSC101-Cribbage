@@ -51,18 +51,20 @@ abstract class Players {
 	
 	public void setScore(int i){
 		myscore.addScore(i);
+		//TO-DO: check winner
 	}
 
 	public int getScore(){
 		return myscore.getScore();
 	}
 
+	//use in GameSquence.drawing()
 	public void emptyHand(){
 		hand.clearCollection();
 	}
 
 	public int getCardNumber(){
-		hand.
+		return hand.collectionSize();
 	}
 	
 }

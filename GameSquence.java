@@ -8,6 +8,7 @@ public class GameSquence{
     private ArrayList<Players> playerList = new ArrayList<>();
     private Deck deck;
     private Board board;
+    private boolean isDealer0;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2){
@@ -53,9 +54,11 @@ public class GameSquence{
         if (Scorer.score(playerList.get(0).playHand(0)) < Scorer.score(playerList.get(1).playHand(0))){
             dealer = playerList.get(0);
             prone = playerList.get(1);
+            isDealer0 = true;
         } else {
             dealer = playerList.get(1);
             prone = playerList.get(0);
+            isDealer0 = false;
         }
     }
 
@@ -68,7 +71,7 @@ public class GameSquence{
     }
 
     //allow each player to discard 2 cards to crib
-    private static void toCrib(){
+    private void toCrib(){
         for (int i = 0; i < 2; i++){
             prone.discardToCrib(prone.decideCard(), board);
             dealer.discardToCrib(dealer.decideCard(), board);
@@ -76,47 +79,52 @@ public class GameSquence{
     }
 
     //draw and set Cut Card
-    private static void drawCutCard(){
+    private void drawCutCard(){
         Deck.deal(board);
         //TO-DO: add cutCardScorer
+        dealer.setScore(/*score*/);
     }
     
 
-    private static void pegging(){
+    private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             prone.playHand(prone.decideCard());
             //TO-Do: pegging score
+            //TO-DO: Go
+            prone.setScore(/*score*/);
+
             dealer.playHand(dealer.decideCard());
             //TO-Do: pegging score
+            //TO-DO: Go
+            dealer.setScore(/*score*/);
         }
 
     }
 
-    private static void countHand(){
-
+    private void countHand(){
+        //count hand for prone.hand, dealer.hand (need a return CardCollection)
+        
+        prone.setScore(/*score*/);
+        dealer.setScore(/*score*/);
+        //count crib
+       
+        dealer.setScore(/*score*/);
     }
 
 
 
 
     //changeDealer only works for 2 players
-    private static void changeDealer(){
-        for (Player aPlayer : playerList/*this is an arrayList of Players*/){
-            if (aPlayer.isDealer()){
-                aPlayer.setDealer(false);
-            } else aPlayer.setDealer(true);
+    private void changeDealer(){
+        if (isDealer0){
+            dealer = playerList.get(1);
+            prone = playerList.get(0);
+            isDealer0 = false;
+        } else {
+            dealer = playerList.get(0);
+            prone = playerList.get(1);
+            isDealer0 = true;
         }
     }
-
-    //takes the dealed card and give to the player
-    private void dealToPlayer(){
-        Card tempCard = Deck.deal();
-        Player.addHand(tempCard);
-    }
-
-
-
-
-
 
 }
