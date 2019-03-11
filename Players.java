@@ -6,7 +6,6 @@
  * 
  * @co-authors: Shen & Nancy Lin
  */
-package cribproject;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,7 +37,6 @@ abstract class Player {
 	}
 
 	abstract Card decideCard(){
-
 	}
 	
 	

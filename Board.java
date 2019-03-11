@@ -2,10 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
-package cribproject;
 
-/**
  *
  * @author mac
  */
@@ -16,6 +13,7 @@ public class Board {
     
     private final int totalPegs= 121;
     private int score;
+    //need player1 score, player2 score, CardCollecion for currentcards
     private static ArrayList<Card>currentCards;//need a Card class
     
     private static Card cutCard;// need a card class

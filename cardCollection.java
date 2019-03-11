@@ -1,7 +1,4 @@
-package cribproject;
-
 import java.util.ArrayList;
-import cribproject.Cards;
 
 /* All of the list of cards are CardCollection objects.
  * 3 behavoirs:
