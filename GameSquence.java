@@ -1,12 +1,23 @@
+import java.util.ArrayList;
 
 public class GameSquence{
     
     //change pointer assignment when order changes
-    private Player dealer;
-    private Player prone;
+    private Players dealer;
+    private Players prone;
+    private ArrayList<Players> playerList = new ArrayList<>();
+    private Deck deck;
+
+    //constructor with 2 players as input
+    public GameSquence(Players player1, Players player2){
+        playerList.add(player1);
+        playerList.add(player2);
+        deck = new Deck();
+    }
 
     public void round(){
         drawing();
+        
         while (Board.getScore1() < 121 && Board.getScore2() <121){
             dealHands();
             toCrib();
@@ -18,13 +29,17 @@ public class GameSquence{
 
     //each player draw 1 card each, compare and set dealer
     private static void drawing(){
+        //creat deck
+
         eachDraw();
         while (Scroer(player1Card) == Scroer(player2Card)){
-            Deck.reset();
+            
+            playerList.get(0).emptyHand();
+            playerList.get(1).emptyHand();
             eachDraw();
         }
 
-        Deck.reset();
+        deck.resetDeck();
     }
 
     private static void pegging(){
@@ -38,13 +53,15 @@ public class GameSquence{
 
     //goes through 1 round of drawing and comparison
     private static void eachDraw(){
-        player1Card = player1.setHand(); //!!need to update with proper pointer from Referee
-        player2Card = player2.setHand();
+        Deck.deal(playerList.get(0)); 
+        Deck.deal(playerList.get(1));
 
-        if (Scorer.score(player1Card) < Scorer.score(player2Card)){
-            setDealer(HumanPlayer);
+        if (Scorer.score(playerList.get(0).playHand(0)) < Scorer.score(playerList.get(1).playHand(0))){
+            dealer = playerList.get(0);
+            prone = playerList.get(1);
         } else {
-            setDealer(AiPlayer);
+            dealer = playerList.get(1);
+            prone = playerList.get(0);
         }
     }
 

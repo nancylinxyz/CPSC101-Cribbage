@@ -6,13 +6,14 @@ import java.util.ArrayList;
  * 2. removeCard(Cards)
  * 3. getCard(int): returns i-th card of the collection
  * 4. clearCollection()
+ * 5. shuffleCards();
  *
  * @author Nancy Lin
  */
-public class cardCollection {
+public class CardCollection {
     private ArrayList<Cards> collection;
         
-    public cardCollection(){    
+    public CardCollection(){    
     }
     
     public void addCard(Cards c){
@@ -24,7 +25,7 @@ public class cardCollection {
         
     }
 
-    public Card getCard(int i){
+    public Cards getCard(int i){
 
         if (i <= collection.size()){
             return collection.get(i);
@@ -37,5 +38,9 @@ public class cardCollection {
         for(Cards card : collection){
         collection.remove(card);
         }
+
+    public void shuffleCards(){
+        Collections.shuffle(collection);
+    }
 }
 }

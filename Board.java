@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-
+/* Behaviors:
+ * 
+ * 
  *
- * @author mac
+ * @author 
  */
 import java.util.ArrayList;
 public class Board {
@@ -12,33 +10,41 @@ public class Board {
     //remember that when play the card down, we need to add to currentCard!!!!
     
     private final int totalPegs= 121;
-    private int score;
-    //need player1 score, player2 score, CardCollecion for currentcards
-    private static ArrayList<Card>currentCards;//need a Card class
+    private int player1Score;
+    private int player2Score;
+    private int curretPeggingScore;
+
+    private CardCollection cutCard;
+    private CardCollection currentCards;
     
-    private static Card cutCard;// need a card class
     
-    //what is this method for>??
-    public Card getCut(){
+    public Cards getCut(){
+        return cutCard.getCard(0);
     }
     
    
      public Board(){
-         score=0;
-         currentCards= new ArrayList<Card>();
+        player1Score = 0;
+        player2Score = 0;
+        currentPeggingScore = 0;
+
+        cutCard = new CardCollection;
+        currentCards = new CardCollection;
      }
      
-     public int getScore(){
+     //set score to display only
+     public int getP1Score(){
          return score;
      }
      
+    
      public void setScore(int s){
          score = s+ score;
      }
      
      public void setCutCard(Card a){
-         cutCard= a;
-         currentCards.add(a);
+   
+         currentCards.addCard(a);
          
      }
      // remove all the cards from currentCard??

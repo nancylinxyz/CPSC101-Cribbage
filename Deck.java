@@ -1,5 +1,7 @@
 /* Deck Class Behavoirs:
- * 
+ * 1.1 deal(Players): move 1 card from deck to to player's hand
+ * 1.2 deal(Board): move 1 card from deck to the Board
+ * 2. resetDeck(): 
  * 
  * Mar 9, 2019 update: change Deck into CardCollection object
  *                     - createNewDeck() instead of using 2 for loops
@@ -25,9 +27,9 @@ public class Deck {
     }
     
     //needs to become shuffle and take 1 card from the deck and put it into another player's card
-    public void Deal(Player p)
+    public void deal(Players p)
     {
-        p.addCard(deck.get(0));
+        p.setHand(deck.get(0));
         deck.removeCard(deck.get(0));
         /*Random card = new Random();
         if(cardCounter >= 0)
@@ -40,6 +42,10 @@ public class Deck {
         }
         return null;*/
     }
+
+    public void deal(Board b){
+        p.
+    }
     
     public void ResetDeck()
     {
@@ -47,16 +53,20 @@ public class Deck {
         creatNewDeck();
     }
 
+    
     private void creatNewDeck(){
         for (Suit s : Suit.values()) {
             for (Value v : Value.values()) {
-                deck.setHand(makeCard(s, v));
+                deck.addCard(makeCard(s, v));
             }
         }
+        CardCollection.shuffleCards();
     }
 
     private Cards makeCard(Suit s, Value v) {
         Cards card = new Cards(s, v);
         return card;
     }
+
+
 }
