@@ -17,8 +17,8 @@ public class GameSquence{
 
     public void round(){
         drawing();
-        
-        while (Board.getScore1() < 121 && Board.getScore2() <121){
+
+        while (.getScore1() < 121 && Board.getScore2() <121){
             dealHands();
             toCrib();
             drawCutCard();

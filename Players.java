@@ -17,12 +17,13 @@ abstract class Players {
 	private CardCollection hand;
 	private CardCollection playedHand;
 	private CardCollection crib;
-	private int score;
+	private Score myScore;
 
 	public Players(){
 		hand = new CardCollection();
 		playedHand = new CardCollection();
 		crib = new CardCollection();
+		myScore = new Score();
 	}
 	
 	public void setHand(Card c){
@@ -48,11 +49,11 @@ abstract class Players {
 	}
 	
 	public void setScore(int i){
-		score = i;
+		myscore.addScore(i);
 	}
 
 	public int getScore(){
-		return score;
+		return myscore.getScore();
 	}
 
 	public void emptyHand(){

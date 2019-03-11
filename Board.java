@@ -10,13 +10,11 @@ public class Board {
     //remember that when play the card down, we need to add to currentCard!!!!
     
     private final int totalPegs= 121;
-    private int player1Score;
-    private int player2Score;
-    private int curretPeggingScore;
+    private Score curretPeggingScore;
 
     private CardCollection cutCard;
     private CardCollection currentCards;
-    
+     
     
     public Cards getCut(){
         return cutCard.getCard(0);
@@ -24,8 +22,6 @@ public class Board {
     
    
      public Board(){
-        player1Score = 0;
-        player2Score = 0;
         currentPeggingScore = 0;
 
         cutCard = new CardCollection;
