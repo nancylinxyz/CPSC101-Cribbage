@@ -7,6 +7,7 @@
  * 5. setScore(int)
  * 6. getScore(int)
  * 7. emptyHand(): clear player hand => for drawing
+ * 8. getCardNumber(): get the number of cards left in a player's hand
  * 
  * @co-authors: Shen & Nancy Lin
  */
