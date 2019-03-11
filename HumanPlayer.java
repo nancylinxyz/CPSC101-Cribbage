@@ -1,11 +1,10 @@
 
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Players{
     private String Suite;
     private String Value;
     //constructor
     public HumanPlayer(){
         super.Player();
-
     }
 
 

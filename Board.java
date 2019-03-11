@@ -24,8 +24,8 @@ public class Board {
      public Board(){
         currentPeggingScore = 0;
 
-        cutCard = new CardCollection;
-        currentCards = new CardCollection;
+        cutCard = new CardCollection();
+        currentCards = new CardCollection();
      }
      
      //set score to display only
@@ -39,9 +39,12 @@ public class Board {
      }
      
      public void setCutCard(Card a){
-   
-         currentCards.addCard(a);
+         cutCard.addCard(a);
          
+     }
+
+     public void setCurrentCards(Card c){
+         currentCards.addCard(c);
      }
      // remove all the cards from currentCard??
          public void resetCurrentCards(){

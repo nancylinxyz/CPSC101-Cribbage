@@ -43,8 +43,9 @@ public class Deck {
         return null;*/
     }
 
+    //more a card from deck to the Board
     public void deal(Board b){
-        p.
+        b.setCutCard(deck.get(0));
     }
     
     public void ResetDeck()

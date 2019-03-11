@@ -42,5 +42,8 @@ public class CardCollection {
     public void shuffleCards(){
         Collections.shuffle(collection);
     }
-}
+
+    public int collectionSize(){
+        return collection.size();
+    }
 }

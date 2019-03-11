@@ -2,7 +2,7 @@
  * 1. setHand(Card): add 1 card to the player's hand
  * 2.1 playHand(Card): remove 1 card from the player's hand and add it to the player's PlayedHand & onto the Board
  * 2.2 Cards playHand(int): return the value of the card for drawing
- * 3. discardToCrib(Card): moves 1 card from the player's hand to crib
+ * 3. discardToCrib(Card, Board): moves 1 card from the player's hand to crib, add to board also
  * 4. return Card decidedCard(); returns a card
  * 5. setScore(int)
  * 6. getScore(int)
@@ -36,13 +36,14 @@ abstract class Players {
 		Board.playedCards.add(c);
 	}
 
-	public Cards playHand(int i){
+	/*public Cards playHand(int i){
 		return hand.getCard(i);
-	}
+	}*/
 
-	public void discardToCrib(Card c){
-		hand.remove(c);
+	public void discardToCrib(Card c, Board b){
 		crib.add(c);
+		b.setCurrentCards(c);
+		hand.remove(c);
 	}
 
 	abstract Card decideCard(){
@@ -58,6 +59,10 @@ abstract class Players {
 
 	public void emptyHand(){
 		hand.clearCollection();
+	}
+
+	public int getCardNumber(){
+		hand.
 	}
 	
 }
