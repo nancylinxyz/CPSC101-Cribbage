@@ -9,6 +9,7 @@ public class GameSquence{
     private Deck deck;
     private Board board;
     private boolean isDealer0;
+    private Referee ref;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2){
@@ -18,7 +19,8 @@ public class GameSquence{
         board = new Board();
     }
 
-    public void round(){
+    public void round(Referee r){
+        ref = r;
         drawing();
 
         while (dealer.getScore() < 121 && prone.getScore() <121){
@@ -80,19 +82,27 @@ public class GameSquence{
 
     //draw and set Cut Card
     private void drawCutCard(){
-        Deck.deal(board);
+        deck.deal(board);
         //TO-DO: add cutCardScorer
         prone.setScore(/*score*/);
+
     }
     
 
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
-            prone.playHand(prone.decideCard(), board);
+            Cards tempCard1 = prone.decideCard();
+            if (ref.canPlay(tempCard1, board)) {
+                prone.playHand(tempCard1, board);
+            }
             //TO-Do: pegging score - pass card per card
             //TO-DO: Go
             prone.setScore(/*score*/);
 
+            Cards tempCard2 = dealer.decideCard();
+            if (ref.canPlay(tempCard2, board)){
+
+            }
             dealer.playHand(dealer.decideCard(), board);
             //TO-Do: pegging score
             //TO-DO: Go

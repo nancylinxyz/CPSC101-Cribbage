@@ -1,31 +1,41 @@
-/**
+/*
  *
  * @author Son
  */
 
 
-import java.util.Scanner;
 
 public class Referee {
-    
-    public static void main(String[] agrs){
-    Player player1 = new AiPlayer();
-    Player player2 = new HumanPlayer();
+    Players playerHuman;
+    Players playerAi;
+    GameSquence game;
 
-    GameSquenece game = new GameSquenece(player1, player2);
-    game.round();
-    
-    System.out.println("Types play to start the game!!! ");
-    Scanner input1 = new Scanner(System.in);
-    
-   String start= input1.next();
-   
-   if(start.equals("play")){
-       
-   }
-    
-    
+
+    public Referee(){
+        playerHuman = new HumanPlayer();
+        playerAi = new  AiPlayer();
+        game = new GameSquence(playerHuman, playerAi);
     }
+
+    public void start(){
+        game.round();
+    }
+
+
+    //pegging can they play?
+    public boolean canPlay(Cards a, Board b){
+        if ((a.valueFinder() + b.getScore()) <= 31) {
+            return true;
+        } else return false;
+    }
+
+    public boolean isWinner(Score s){
+        //TO-DO: whether game ended or not
+        return true;
+    }
+    
+    
+
    
     
 }

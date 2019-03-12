@@ -1,3 +1,7 @@
+/* need fixes: canPlay(), onePlayableCard()
+ *
+ */
+
 public class AiPlayer extends Players{
     //constructor
     public AiPlayer(){
@@ -9,7 +13,7 @@ public class AiPlayer extends Players{
         if (canPlay()){
             return onePlayableCard();
         } else{
-            //say Go
+            //say Go (method)
             return null;
         }
     }
@@ -20,7 +24,7 @@ public class AiPlayer extends Players{
         for (Cards i: hand){
             if (Board.peggingScore()+ Cards.valueFinder(i) <= 31){
                 return true;
-            } 
+            }
         }
         return false;
     }
@@ -30,7 +34,7 @@ public class AiPlayer extends Players{
         for (Cards i: hand){
             if (Board.peggingScore()+ Cards.valueFinder(i) <= 31){
                 return i;
-            } 
+            }
         }
     }
 

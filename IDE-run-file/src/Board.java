@@ -43,6 +43,10 @@ public class Board {
         currentPeggingScore.addScore(s);
      }
 
+     public int getScore(){
+        return currentPeggingScore.getScore();
+     }
+
      public void resetScore(){
         currentPeggingScore.resetScore();
      }
