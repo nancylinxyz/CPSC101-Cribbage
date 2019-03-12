@@ -7,7 +7,6 @@
  *
  * @author dumonchel
  */
-import java.util.Scanner;
 
 public class Cards {
 

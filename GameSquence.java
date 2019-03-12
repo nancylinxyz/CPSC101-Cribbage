@@ -82,14 +82,14 @@ public class GameSquence{
     private void drawCutCard(){
         Deck.deal(board);
         //TO-DO: add cutCardScorer
-        dealer.setScore(/*score*/);
+        prone.setScore(/*score*/);
     }
     
 
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             prone.playHand(prone.decideCard());
-            //TO-Do: pegging score
+            //TO-Do: pegging score - pass card per card
             //TO-DO: Go
             prone.setScore(/*score*/);
 

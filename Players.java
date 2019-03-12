@@ -50,6 +50,7 @@ abstract class Players {
 	abstract Card decideCard(){
 	}
 	
+	//add ontop of old score
 	public void setScore(int i){
 		myscore.addScore(i);
 		//TO-DO: check winner

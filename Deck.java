@@ -10,8 +10,8 @@
  */
 
 import java.util.ArrayList;
-import CribbageDeck.Cards.Suit;
-import CribbageDeck.Cards.Value;
+import Cards.Suit;
+import Cards.Value;
 import java.util.Random;
 
 public class Deck {
@@ -29,8 +29,8 @@ public class Deck {
     //needs to become shuffle and take 1 card from the deck and put it into another player's card
     public void deal(Players p)
     {
-        p.setHand(deck.get(0));
-        deck.removeCard(deck.get(0));
+        p.setHand(deck.getCard(0));
+        deck.removeCard(deck.getCard(0));
         /*Random card = new Random();
         if(cardCounter >= 0)
         {
@@ -45,7 +45,7 @@ public class Deck {
 
     //more a card from deck to the Board
     public void deal(Board b){
-        b.setCutCard(deck.get(0));
+        b.setCutCard(deck.getCard(0));
     }
     
     public void ResetDeck()
