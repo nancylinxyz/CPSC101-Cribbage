@@ -8,6 +8,7 @@ import java.util.Collections;
  * 3. getCard(int): returns i-th card of the collection
  * 4. clearCollection()
  * 5. shuffleCards();
+ * 6. int collectionSize(): return the size of the ArrayList
  *
  * @author Nancy Lin
  */

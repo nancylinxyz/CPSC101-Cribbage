@@ -1,6 +1,8 @@
 /* Behaviors:
- * 
- * 
+ * 1. getCut(): returns cut Card
+ * 2. removeCut(): clear cutCard
+ * 3. setScore(): add to currentPeggingScore
+ * 4. resetScore(): 0 
  *
  * @author 
  */
@@ -9,8 +11,8 @@ public class Board {
 
     //remember that when play the card down, we need to add to currentCard!!!!
     
-    private final int totalPegs= 121;
-    private Score curretPeggingScore;
+    private final int TOTAL_PEGS= 123;
+    private Score currentPeggingScore;
 
     private CardCollection cutCard;
     private CardCollection currentCards;
@@ -19,23 +21,29 @@ public class Board {
     public Cards getCut(){
         return cutCard.getCard(0);
     }
+
+    public void removeCut(){
+        cutCard.clearCollection();
+    }
     
    
      public Board(){
-        currentPeggingScore = 0;
+        currentPeggingScore = new Score();
+        currentPeggingScore.addScore(0);
 
         cutCard = new CardCollection();
         currentCards = new CardCollection();
      }
-     
-     //set score to display only
-     public int getP1Score(){
-         return score;
-     }
+
      
     
      public void setScore(int s){
-         score = s+ score;
+
+        currentPeggingScore.addScore(s);
+     }
+
+     public void resetScore(){
+        currentPeggingScore.resetScore();
      }
      
      public void setCutCard(Cards a){
@@ -46,12 +54,13 @@ public class Board {
      public void setCurrentCards(Cards c){
          currentCards.addCard(c);
      }
+
      // remove all the cards from currentCard??
-         public void resetCurrentCards(){
-         for(Cards card: currentCards)
-         currentCards.remove(card);
+     public void resetCurrentCards(){
+
+         currentCards.clearCollection();
          
-         }   
+      }
     
 }
  

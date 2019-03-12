@@ -33,7 +33,7 @@ public class GameSquence{
 
     //each player draw 1 card each, compare and set dealer
     private void drawing(){
-        //creat deck
+
 
         eachDraw();
         while (Scroer(player1Card) == Scroer(player2Card)){

@@ -31,19 +31,19 @@ abstract class Players {
 		hand.addCard(c);	
 	}
 
-	public void playHand(Cards c){
+	public void playHand(Cards c, Board b){
 		hand.removeCard(c);
 		playedHand.addCard(c);
-		Board.setCurrentCards.addCard(c);
+		b.setCurrentCards(c);
 	}
 
 	/*public Cards playHand(int i){
 		return hand.getCard(i);
 	}*/
 
-	public void discardToCrib(Cards c, Board b){
+	public void discardToCrib(Cards c){
 		crib.addCard(c);
-		b.setCurrentCards(c);
+		//b.setCurrentCards(c);
 		hand.removeCard(c);
 	}
 
