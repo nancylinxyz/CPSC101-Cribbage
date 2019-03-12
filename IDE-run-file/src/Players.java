@@ -1,8 +1,8 @@
 /* Each players have 4 behavoirs:
  * 1. setHand(Card): add 1 card to the player's hand
- * 2.1 playHand(Card): remove 1 card from the player's hand and add it to the player's PlayedHand & onto the Board
+ * 2.1 playHand(Card, Board): remove 1 card from the player's hand and add it to the player's PlayedHand & onto the Board
  * 2.2 Cards playHand(int): return the value of the card for drawing
- * 3. discardToCrib(Card, Board): moves 1 card from the player's hand to crib, add to board also
+ * 3. discardToCrib(Card): moves 1 card from the player's hand to crib, add to board also
  * 4. return Card decidedCard(); returns a card
  * 5. setScore(int)
  * 6. getScore(int)

@@ -9,20 +9,17 @@
  * @author dumonchel
  */
 
-import java.util.ArrayList;
-import Cards.Suit;
-import Cards.Value;
-import java.util.Random;
+
 
 public class Deck {
 
     //ArrayList<Cards> Deck = new ArrayList<Cards>();
-    private int cardCounter = 51;
+    //private int cardCounter = 51;
     private CardCollection deck;
 
     public Deck() {
         deck = new CardCollection();
-        creatNewDeck();
+        createNewDeck();
 
     }
     
@@ -48,25 +45,22 @@ public class Deck {
         b.setCutCard(deck.getCard(0));
     }
     
-    public void ResetDeck()
+    public void resetDeck()
     {
         deck.clearCollection();
-        creatNewDeck();
+        createNewDeck();
     }
 
     
-    private void creatNewDeck(){
+    private void createNewDeck(){
         for (Suit s : Suit.values()) {
             for (Value v : Value.values()) {
-                deck.addCard(makeCard(s, v));
+                Cards tempCard = new Cards(s, v);//why??
+                deck.addCard(tempCard);
             }
-        }
-        CardCollection.shuffleCards();
-    }
 
-    private Cards makeCard(Suit s, Value v) {
-        Cards card = new Cards(s, v);
-        return card;
+        }
+        deck.shuffleCards();
     }
 
 

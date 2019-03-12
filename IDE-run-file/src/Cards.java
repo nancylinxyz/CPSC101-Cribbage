@@ -10,9 +10,9 @@
 
 public class Cards {
 
-    enum Suit {
-        Spades, Hearts, Diamonds, Clubs
-    }
+//    enum Suit {
+//        Spades, Hearts, Diamonds, Clubs
+//    }
 
     enum Value {
         Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King

@@ -48,8 +48,8 @@ public class GameSquence{
 
     //goes through 1 round of drawing and comparison
     private void eachDraw(){
-        Deck.deal(playerList.get(0)); 
-        Deck.deal(playerList.get(1));
+        deck.deal(playerList.get(0));
+        deck.deal(playerList.get(1));
     
         if (Scorer.score(playerList.get(0).playHand(0)) < Scorer.score(playerList.get(1).playHand(0))){
             dealer = playerList.get(0);
@@ -65,16 +65,16 @@ public class GameSquence{
     //deal 6 cards to each players
     private void dealHands() {
         for (int i = 0; i < 6; i++) {
-            Deck.deal(prone);
-            Deck.deal(dealer);
+            deck.deal(prone);
+            deck.deal(dealer);
         }
     }
 
     //allow each player to discard 2 cards to crib
     private void toCrib(){
         for (int i = 0; i < 2; i++){
-            prone.discardToCrib(prone.decideCard(), board);
-            dealer.discardToCrib(dealer.decideCard(), board);
+            prone.discardToCrib(prone.decideCard());
+            dealer.discardToCrib(dealer.decideCard());
         }
     }
 
@@ -88,12 +88,12 @@ public class GameSquence{
 
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
-            prone.playHand(prone.decideCard());
+            prone.playHand(prone.decideCard(), board);
             //TO-Do: pegging score - pass card per card
             //TO-DO: Go
             prone.setScore(/*score*/);
 
-            dealer.playHand(dealer.decideCard());
+            dealer.playHand(dealer.decideCard(), board);
             //TO-Do: pegging score
             //TO-DO: Go
             dealer.setScore(/*score*/);

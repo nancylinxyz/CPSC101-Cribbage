@@ -1,41 +1,42 @@
 /* Behaviors:
  * 1. getCut(): returns cut Card
- * 2. removeCut(): clear cutCard
- * 3. setScore(): add to currentPeggingScore
- * 4. resetScore(): 0 
+ * 2. setCutCard(Card): add to CutCard
+ * 3. removeCard(): clear all cards
+ * 4. setScore(): add to currentPeggingScore
+ * 5. resetScore(): 0 to the peggingScore
+ * 6. setCurrentCards(Card): add a Card to
  *
- * @author 
  */
-import java.util.ArrayList;
-public class Board {
 
-    //remember that when play the card down, we need to add to currentCard!!!!
+public class Board {
     
     private final int TOTAL_PEGS= 123;
     private Score currentPeggingScore;
 
     private CardCollection cutCard;
     private CardCollection currentCards;
-     
-    
-    public Cards getCut(){
-        return cutCard.getCard(0);
-    }
 
-    public void removeCut(){
-        cutCard.clearCollection();
-    }
-    
-   
-     public Board(){
+    public Board(){
         currentPeggingScore = new Score();
         currentPeggingScore.addScore(0);
 
         cutCard = new CardCollection();
         currentCards = new CardCollection();
-     }
+    }
+    
+    public Cards getCut(){
+        return cutCard.getCard(0);
+    }
 
-     
+    public void setCutCard(Cards a) {
+        cutCard.addCard(a);
+
+    }
+
+    public void removeCards(){
+        cutCard.clearCollection();
+    }
+
     
      public void setScore(int s){
 
@@ -46,21 +47,11 @@ public class Board {
         currentPeggingScore.resetScore();
      }
      
-     public void setCutCard(Cards a){
-         cutCard.addCard(a);
-         
-     }
+
 
      public void setCurrentCards(Cards c){
          currentCards.addCard(c);
      }
-
-     // remove all the cards from currentCard??
-     public void resetCurrentCards(){
-
-         currentCards.clearCollection();
-         
-      }
     
 }
  
