@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 /* All of the list of cards are CardCollection objects.
  * 3 behavoirs:
@@ -13,8 +14,10 @@ import java.util.ArrayList;
 public class CardCollection {
     private ArrayList<Cards> collection;
         
-    public CardCollection(){    
+    public CardCollection(){
+        collection = new ArrayList<>();
     }
+
     
     public void addCard(Cards c){
         collection.add(c);
@@ -31,19 +34,22 @@ public class CardCollection {
             return collection.get(i);
         }
         //error message
+        return null;
     }
     
-    public void clearCollection(){
-        
-        for(Cards card : collection){
-        collection.remove(card);
+    public void clearCollection() {
+
+        for (Cards card : collection) {
+            collection.remove(card);
         }
+    }
 
     public void shuffleCards(){
         Collections.shuffle(collection);
     }
 
     public int collectionSize(){
+
         return collection.size();
     }
 }

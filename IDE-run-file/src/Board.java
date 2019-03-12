@@ -38,17 +38,17 @@ public class Board {
          score = s+ score;
      }
      
-     public void setCutCard(Card a){
+     public void setCutCard(Cards a){
          cutCard.addCard(a);
          
      }
 
-     public void setCurrentCards(Card c){
+     public void setCurrentCards(Cards c){
          currentCards.addCard(c);
      }
      // remove all the cards from currentCard??
          public void resetCurrentCards(){
-         for(Card card: currentCards)
+         for(Cards card: currentCards)
          currentCards.remove(card);
          
          }   

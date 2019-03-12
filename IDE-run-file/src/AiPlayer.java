@@ -1,14 +1,13 @@
-package cribproject;
-public class AiPlayer extends Player{
+public class AiPlayer extends Players{
     //constructor
     public AiPlayer(){
-        super.Player();
+        super();
     }
 
     @Override
-    public Card decideCard(){
+    public Cards decideCard(){
         if (canPlay()){
-            return onePlayedCard();
+            return onePlayableCard();
         } else{
             //say Go
             return null;
@@ -26,7 +25,7 @@ public class AiPlayer extends Player{
         return false;
     }
 
-    private Card onePlayableCard(){
+    private Cards onePlayableCard(){
         //compare against all of the cards in hand and pick 1 that is playable
         for (Cards i: hand){
             if (Board.peggingScore()+ Cards.valueFinder(i) <= 31){

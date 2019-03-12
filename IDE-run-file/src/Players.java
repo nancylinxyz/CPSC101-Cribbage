@@ -27,37 +27,36 @@ abstract class Players {
 		myScore = new Score();
 	}
 	
-	public void setHand(Card c){
+	public void setHand(Cards c){
 		hand.addCard(c);	
 	}
 
-	public void playHand(Card c){
-		hand.remove(c);
-		playedHand.add(c);
-		Board.playedCards.add(c);
+	public void playHand(Cards c){
+		hand.removeCard(c);
+		playedHand.addCard(c);
+		Board.setCurrentCards.addCard(c);
 	}
 
 	/*public Cards playHand(int i){
 		return hand.getCard(i);
 	}*/
 
-	public void discardToCrib(Card c, Board b){
-		crib.add(c);
+	public void discardToCrib(Cards c, Board b){
+		crib.addCard(c);
 		b.setCurrentCards(c);
-		hand.remove(c);
+		hand.removeCard(c);
 	}
 
-	abstract Card decideCard(){
-	}
+	abstract Cards decideCard();
 	
 	//add ontop of old score
 	public void setScore(int i){
-		myscore.addScore(i);
+		myScore.addScore(i);
 		//TO-DO: check winner
 	}
 
 	public int getScore(){
-		return myscore.getScore();
+		return myScore.getScore();
 	}
 
 	//use in GameSquence.drawing()
