@@ -3,7 +3,7 @@ import java.util.Scanner;
 class Main{
     public static void main(String[] agrs){
         Referee ref = new Referee();
-        ref.start(ref);
+        ref.start();
 
 
         System.out.println("Types play to start the game!!! ");

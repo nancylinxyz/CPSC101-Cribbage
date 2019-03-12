@@ -1,5 +1,5 @@
-/*
- *
+/* TO-DO: Declare winner in isWinner()
+ * TO-DO: display GO in canPeg()
  * @author Son
  */
 
@@ -18,20 +18,30 @@ public class Referee {
     }
 
     public void start(){
+        game.setRef(this);
         game.round();
     }
 
 
     //pegging can they play?
-    public boolean canPlay(Cards a, Board b){
+    public boolean canPeg(Cards a, Board b){
         if ((a.valueFinder() + b.getScore()) <= 31) {
             return true;
-        } else return false;
+        } else{
+            //display Go
+            return false;
+        }
     }
 
-    public boolean isWinner(Score s){
-        //TO-DO: whether game ended or not
-        return true;
+    public boolean isWinner(Players p){
+
+        if (p.getScore()<121){
+            return false;
+        } else{
+            //display winner
+            return true;
+        }
+
     }
     
     

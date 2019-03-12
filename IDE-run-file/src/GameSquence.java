@@ -19,8 +19,7 @@ public class GameSquence{
         board = new Board();
     }
 
-    public void round(Referee r){
-        ref = r;
+    public void round(){
         drawing();
 
         while (dealer.getScore() < 121 && prone.getScore() <121){
@@ -31,6 +30,10 @@ public class GameSquence{
             countHand();
             changeDealer();
         }
+    }
+
+    public void setRef(Referee r){
+        ref = r;
     }
 
     //each player draw 1 card each, compare and set dealer
@@ -85,6 +88,7 @@ public class GameSquence{
         deck.deal(board);
         //TO-DO: add cutCardScorer
         prone.setScore(/*score*/);
+        ref.isWinner(prone);
 
     }
     
@@ -92,21 +96,25 @@ public class GameSquence{
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             Cards tempCard1 = prone.decideCard();
-            if (ref.canPlay(tempCard1, board)) {
+            if (ref.canPeg(tempCard1, board)) {
                 prone.playHand(tempCard1, board);
+                //TO-Do: pegging score - pass card per card
+                //TO-DO: Go
+                prone.setScore(/*score*/);
+                ref.isWinner(prone);
             }
-            //TO-Do: pegging score - pass card per card
-            //TO-DO: Go
-            prone.setScore(/*score*/);
+
 
             Cards tempCard2 = dealer.decideCard();
-            if (ref.canPlay(tempCard2, board)){
+            if (ref.canPeg(tempCard2, board)){
+                dealer.playHand(tempCard2, board);
 
+                //TO-Do: pegging score
+                //TO-DO: Go
+                dealer.setScore(/*score*/);
+                ref.isWinner(dealer);
             }
-            dealer.playHand(dealer.decideCard(), board);
-            //TO-Do: pegging score
-            //TO-DO: Go
-            dealer.setScore(/*score*/);
+
         }
 
     }
@@ -115,10 +123,13 @@ public class GameSquence{
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
         
         prone.setScore(/*score*/);
+        ref.isWinner(prone);
         dealer.setScore(/*score*/);
+        ref.isWinner(dealer);
         //count crib
        
         dealer.setScore(/*score*/);
+        ref.isWinner(dealer);
     }
 
 
