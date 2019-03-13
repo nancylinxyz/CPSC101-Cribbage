@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f9dbb1a-a599-427d-b1c7-a45bd34aa5d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/untitled/src/TrackComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled/src/TrackElements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/AiPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/AiPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/CardCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Cards.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Cards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/DeckTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/GameSquence.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/GameSquence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Players.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Referee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Scorer.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Scorer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Suit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IDE-run-file/src/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/TrackComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/TrackComponent.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/untitled/src/TrackComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="27" selection-start-column="27" selection-end-column="27" />
+            <state relative-caret-position="75">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -162,10 +141,11 @@
         <option value="$PROJECT_DIR$/untitled/src/HumanPlayer.java" />
         <option value="$PROJECT_DIR$/untitled/src/TrackElements.java" />
         <option value="$PROJECT_DIR$/untitled/src/Players.java" />
+        <option value="$PROJECT_DIR$/untitled/src/TrackComponent.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="222" />
     <option name="y" value="23" />
     <option name="width" value="1309" />
@@ -208,7 +188,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552504614147" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552505243435" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -261,7 +241,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="222" y="23" width="1309" height="877" extended-state="0" />
+    <frame x="222" y="23" width="1309" height="877" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25335437" />
@@ -446,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/untitled/src/TrackComponent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
