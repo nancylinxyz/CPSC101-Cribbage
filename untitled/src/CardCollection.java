@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 /* All of the list of cards are CardCollection objects.
@@ -49,8 +50,9 @@ public class CardCollection {
         Collections.shuffle(collection);
     }
 
-    public int collectionSize(){
+    public int size(){
 
         return collection.size();
     }
+
 }

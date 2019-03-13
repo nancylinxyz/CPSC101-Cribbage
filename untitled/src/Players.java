@@ -19,12 +19,15 @@ abstract class Players {
 	private CardCollection playedHand;
 	private CardCollection crib;
 	private Score myScore;
+	private Board board;
+	private int[] yPosition = new int[2];
 
-	public Players(){
+	public Players(Board board){
 		hand = new CardCollection();
 		playedHand = new CardCollection();
 		crib = new CardCollection();
 		myScore = new Score();
+		this.board = board;
 	}
 	
 	public void setHand(Cards c){
@@ -52,7 +55,11 @@ abstract class Players {
 	//add ontop of old score
 	public void setScore(int i){
 		myScore.addScore(i);
-		//TO-DO: check winner
+
+		yPosition[0] = yPosition[1];
+		yPosition[1]= myScore.getScore() + 1; //only add 1 instead of 2 b/c index start with 0
+
+
 	}
 
 	public int getScore(){
@@ -65,7 +72,27 @@ abstract class Players {
 	}
 
 	public int getCardNumber(){
-		return hand.collectionSize();
+		return hand.size();
 	}
-	
+
+	public CardCollection getHand(){
+		return hand;
+	}
+
+	public CardCollection getPlayedHand(){
+		return playedHand;
+	}
+
+	public CardCollection getCrib(){
+		return crib;
+	}
+
+	public Board getBoard(){
+		return board;
+	}
+
+	//for graphics
+	public int getPosition(int i){
+		return yPosition[i];
+	}
 }

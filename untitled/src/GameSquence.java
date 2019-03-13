@@ -12,7 +12,7 @@ public class GameSquence{
     private Referee ref;
 
     //constructor with 2 players as input
-    public GameSquence(Players player1, Players player2){
+    public GameSquence(Players player1, Players player2, Board board){
         playerList.add(player1);
         playerList.add(player2);
         deck = new Deck();
@@ -95,24 +95,29 @@ public class GameSquence{
 
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
-            Cards tempCard1 = prone.decideCard();
-            if (ref.canPeg(tempCard1, board)) {
-                prone.playHand(tempCard1, board);
-                //TO-Do: pegging score - pass card per card
-                //TO-DO: Go
-                prone.setScore(/*score*/);
-                ref.isWinner(prone);
+            //whether prone can play
+            if (ref.canPeg(prone)) {
+                Cards tempCard1 = prone.decideCard();
+                if (ref.canPlayCard(tempCard1)) {
+                    prone.playHand(tempCard1, board);
+                    //TO-Do: pegging score - pass card per card
+                    //TO-DO: Go
+                    prone.setScore(/*score*/);
+                    ref.isWinner(prone);
+                }
             }
 
+            //whether dealer can play
+            if (ref.canPeg(dealer)) {
+                Cards tempCard2 = dealer.decideCard();
+                if (ref.canPlayCard(tempCard2)) {
+                    dealer.playHand(tempCard2, board);
 
-            Cards tempCard2 = dealer.decideCard();
-            if (ref.canPeg(tempCard2, board)){
-                dealer.playHand(tempCard2, board);
-
-                //TO-Do: pegging score
-                //TO-DO: Go
-                dealer.setScore(/*score*/);
-                ref.isWinner(dealer);
+                    //TO-Do: pegging score
+                    //TO-DO: Go
+                    dealer.setScore(/*score*/);
+                    ref.isWinner(dealer);
+                }
             }
 
         }

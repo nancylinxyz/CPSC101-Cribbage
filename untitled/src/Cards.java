@@ -14,9 +14,9 @@ public class Cards {
 //        Spades, Hearts, Diamonds, Clubs
 //    }
 
-    enum Value {
-        Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
-    }
+//    enum Value {
+//        Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
+//    }
     private Suit suit;
     private Value value;
 
