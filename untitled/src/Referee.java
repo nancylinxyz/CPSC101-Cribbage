@@ -44,6 +44,7 @@ public class Referee {
             }
         }
        return false;
+        //TO-DO: skip turn, need to check, should just work. Maybe print out Go?
     }
 
     public boolean isWinner(Players p){

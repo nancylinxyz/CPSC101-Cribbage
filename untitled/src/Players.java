@@ -27,6 +27,7 @@ abstract class Players {
 		playedHand = new CardCollection();
 		crib = new CardCollection();
 		myScore = new Score();
+		myScore.resetScore();
 		this.board = board;
 	}
 	

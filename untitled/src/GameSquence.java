@@ -1,3 +1,7 @@
+/* TO-DO: need to add player.resetScore() when reset game. or just create new game when hit reset.
+ *
+ */
+
 import java.util.ArrayList;
 
 public class GameSquence{
@@ -10,6 +14,7 @@ public class GameSquence{
     private Board board;
     private boolean isDealer0;
     private Referee ref;
+    private Scorer scorer;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
@@ -17,6 +22,8 @@ public class GameSquence{
         playerList.add(player2);
         deck = new Deck();
         board = new Board();
+        this.board = board;
+        scorer = new Scorer();
     }
 
     public void round(){
@@ -41,7 +48,7 @@ public class GameSquence{
 
 
         eachDraw();
-        while (Scroer(player1Card) == Scroer(player2Card)){
+        while (playerList.get(0).getHand().getCard(0).valueFinder() == playerList.get(1).getHand().getCard(0).valueFinder()){
             
             playerList.get(0).emptyHand();
             playerList.get(1).emptyHand();
@@ -56,9 +63,10 @@ public class GameSquence{
         deck.deal(playerList.get(0));
         deck.deal(playerList.get(1));
     
-        if (Scorer.score(playerList.get(0).playHand(0)) < Scorer.score(playerList.get(1).playHand(0))){
+        if (playerList.get(0).getHand().getCard(0).valueFinder() < playerList.get(1).getHand().getCard(0).valueFinder()){
             dealer = playerList.get(0);
             prone = playerList.get(1);
+            //pass on player status
             isDealer0 = true;
         } else {
             dealer = playerList.get(1);
@@ -86,9 +94,10 @@ public class GameSquence{
     //draw and set Cut Card
     private void drawCutCard(){
         deck.deal(board);
-        //TO-DO: add cutCardScorer
-        prone.setScore(/*score*/);
-        ref.isWinner(prone);
+        if (board.getCut().valueFinder() == 11){
+            prone.setScore(2); //????? 2 points for getting jack?
+            ref.isWinner(prone);
+        }
 
     }
     
@@ -100,9 +109,9 @@ public class GameSquence{
                 Cards tempCard1 = prone.decideCard();
                 if (ref.canPlayCard(tempCard1)) {
                     prone.playHand(tempCard1, board);
-                    //TO-Do: pegging score - pass card per card
-                    //TO-DO: Go
-                    prone.setScore(/*score*/);
+
+                    //pegging score
+                    prone.setScore(scorer.peggingScore(tempCard1));
                     ref.isWinner(prone);
                 }
             }
@@ -114,26 +123,28 @@ public class GameSquence{
                     dealer.playHand(tempCard2, board);
 
                     //TO-Do: pegging score
-                    //TO-DO: Go
-                    dealer.setScore(/*score*/);
+                    prone.setScore(scorer.peggingScore(tempCard2));
                     ref.isWinner(dealer);
                 }
             }
 
         }
+        board.resetScore();
+        board.removeCards();
+        scorer.resetPeggingScore();
 
     }
 
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
         
-        prone.setScore(/*score*/);
+        prone.setScore(scorer.countHand(prone.getHand(), board.getCut()));
         ref.isWinner(prone);
-        dealer.setScore(/*score*/);
+        dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut()));
         ref.isWinner(dealer);
+
         //count crib
-       
-        dealer.setScore(/*score*/);
+        dealer.setScore(scorer.countCrib(dealer.getHand(), board.getCut()));
         ref.isWinner(dealer);
     }
 

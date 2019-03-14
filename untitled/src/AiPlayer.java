@@ -12,12 +12,8 @@ public class AiPlayer extends Players{
 
     @Override
     public Cards decideCard(){
-        if (canPlay()){
-            return onePlayableCard();
-        } else{
-            //say Go (method)
-            return null;
-        }
+
+        return onePlayableCard();
     }
 
     private boolean canPlay(){
