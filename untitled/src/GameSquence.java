@@ -12,7 +12,7 @@ public class GameSquence{
     private ArrayList<Players> playerList = new ArrayList<>();
     private Deck deck;
     private Board board;
-    private boolean isDealer0;
+    private boolean isDealer0; //isHamanPlayer dealer?
     private Referee ref;
     private Scorer scorer;
 
@@ -105,46 +105,49 @@ public class GameSquence{
     private void pegging(){
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             //whether prone can play
-            if (ref.canPeg(prone)) {
-                Cards tempCard1 = prone.decideCard();
-                if (ref.canPlayCard(tempCard1)) {
-                    prone.playHand(tempCard1, board);
 
-                    //pegging score
-                    prone.setScore(scorer.peggingScore(tempCard1));
-                    ref.isWinner(prone);
+            while (board.getScore()<31) {
+                if (ref.canPeg(prone)) {
+                    Cards tempCard1 = prone.decideCard();
+                    if (ref.canPlayCard(tempCard1)) {
+                        prone.playHand(tempCard1, board);
+
+                        //pegging score
+                        prone.setScore(scorer.peggingScore());
+                        ref.isWinner(prone);
+                    }
+                }
+
+                //whether dealer can play
+                if (ref.canPeg(dealer)) {
+                    Cards tempCard2 = dealer.decideCard();
+                    if (ref.canPlayCard(tempCard2)) {
+                        dealer.playHand(tempCard2, board);
+
+                        //TO-Do: pegging score
+                        prone.setScore(scorer.peggingScore());
+                        ref.isWinner(dealer);
+                    }
                 }
             }
-
-            //whether dealer can play
-            if (ref.canPeg(dealer)) {
-                Cards tempCard2 = dealer.decideCard();
-                if (ref.canPlayCard(tempCard2)) {
-                    dealer.playHand(tempCard2, board);
-
-                    //TO-Do: pegging score
-                    prone.setScore(scorer.peggingScore(tempCard2));
-                    ref.isWinner(dealer);
-                }
-            }
-
+            scorer.resetPeggingScore();
+            board.resetScore();
+            board.removeCards();
         }
-        board.resetScore();
-        board.removeCards();
-        scorer.resetPeggingScore();
 
     }
 
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
         
-        prone.setScore(scorer.countHand(prone.getHand(), board.getCut()));
+        prone.setScore(scorer.countHand(prone.getHand(), board.getCut(), false));
         ref.isWinner(prone);
-        dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut()));
+        dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut(), false));
         ref.isWinner(dealer);
 
         //count crib
-        dealer.setScore(scorer.countCrib(dealer.getCrib(), prone.getCrib(),board.getCut()));
+        dealer.getCrib().mergeCollection(prone.getCrib());
+        dealer.setScore(scorer.countHand(dealer.getCrib(),board.getCut(), true));
         ref.isWinner(dealer);
     }
 

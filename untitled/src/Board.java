@@ -56,6 +56,15 @@ public class Board {
      public void setCurrentCards(Cards c){
          currentCards.addCard(c);
      }
+
+     public CardCollection getCutCard(){
+        return cutCard;
+     }
+
+     public CardCollection getCardPlayed(){
+        return currentCards;
+     }
+
     
 }
  

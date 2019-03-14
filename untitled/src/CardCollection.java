@@ -55,4 +55,11 @@ public class CardCollection {
         return collection.size();
     }
 
+    public void mergeCollection(CardCollection a){
+
+        collection.add(a.getCard(0));
+        collection.add(a.getCard(1));
+
+    }
+
 }
