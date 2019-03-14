@@ -144,7 +144,7 @@ public class GameSquence{
         ref.isWinner(dealer);
 
         //count crib
-        dealer.setScore(scorer.countCrib(dealer.getHand(), board.getCut()));
+        dealer.setScore(scorer.countCrib(dealer.getCrib(), prone.getCrib(),board.getCut()));
         ref.isWinner(dealer);
     }
 
