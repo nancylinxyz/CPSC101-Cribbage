@@ -26,24 +26,24 @@ public class Scorer
         pegCardNum++;
         if(currentPeggingScore == 15)
         {
-            return score = score + 2;
+            return 2;
         }
         if (currentPeggingScore == 31)
         {
-            return score = score + 2;
+            return 2;
             currentPeggingScore = 0;
             //end subround
         }
         if(pegCardNum > 1){
             if(isPair(peggingArray[pegCardNum] , peggingArray[pegCardNum - 1]))
             {
-               return score = score + 2;
+               return 2;
             }
         }
         if(pegCardNum > 4){
-            if(peggingArray[pegCardNum].s == peggingArray[pegCardNum - 1].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 2].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 3].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 4].s)
+            if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 3].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 4].s)
             {
-                return score = score + 5;
+                return 5;
             }
         }
         if(pegCardNum > 2)
