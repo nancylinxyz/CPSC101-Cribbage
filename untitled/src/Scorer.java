@@ -41,7 +41,7 @@ public class Scorer
             }
         }
         if(pegCardNum > 4){
-            if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 3].s && peggingArray[pegCardNum].s == peggingArray[pegCardNum - 4].s)
+            if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 3].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 4].getSuit())
             {
                 return 5;
             }
@@ -57,8 +57,9 @@ public class Scorer
         currentPeggingScore = 0;
     }
 
-    public int is15(Cards[] playedHand, Cards cutCard)//could take all in at once, could have 4 methods for pair, triple etc.
+    private int is15(Cards[] playedHand, Cards cutCard)//could take all in at once, could have 4 methods for pair, triple etc.
     {
+
         int num15 = 0;//number of instances of 15's
         /** card[] cardArray = new card[]{card1, card2, card3, card4, cutCard}; old code, might revert back to if issues
          cardArray[0] = card1;
@@ -84,7 +85,7 @@ public class Scorer
             {
                 for(i=0;(i+j+k)<6;i++)
                 {
-                    totalVal= playedHand[k].v + playedHand[k+j].v + playedHand[k + j + i].v;
+                    totalVal= playedHand[k].cardValue() + playedHand[k+j].cardValue() + playedHand[k + j + i].cardValue();
                     if (totalVal == 15)
                     {
                         num15++;
@@ -93,7 +94,7 @@ public class Scorer
                 }
             }
         }
-        for(l=0;l<3;l++)
+        for(int l=0;l<3;l++)
         {
             for(k=0;k<4;k++)
             {
@@ -101,7 +102,7 @@ public class Scorer
                 {
                     for(i=0;(i+j+k)<6;i++)
                     {
-                        totalVal= playedHand[l].v + playedHand[l+k].v + playedHand[l + k + j].v + playedHand[l+k+j+i].v;
+                        totalVal= playedHand[l].cardValue() + playedHand[l+k].cardValue() + playedHand[l + k + j].cardValue() + playedHand[l+k+j+i].cardValue();
                         if (totalVal == 15)
                         {
                             num15++;
@@ -110,40 +111,40 @@ public class Scorer
                 }
             }
         }
-        totalVal= playedHand[0].v + playedHand[1].v + playedHand[2].v + playedHand[3].v + playedHand[4].v;
+        totalVal= playedHand[0].cardValue() + playedHand[1].cardValue() + playedHand[2].cardValue() + playedHand[3].cardValue() + playedHand[4].cardValue();
         if (totalVal == 15)
         {
             num15++;
         }
         return num15;
     }
-    public boolean isPair(Cards card1, Cards card2)
+    private boolean isPair(Cards card1, Cards card2)
     {
-        if (card1.v == card2.v)
+        if (card1.valueFinder() == card2.valueFinder())
         {
             return true;
         }
         else return false;
     }
-    public boolean isThreeKind(Cards card1, Cards card2, Cards card3)
+    private boolean isThreeKind(Cards card1, Cards card2, Cards card3)
     {
-        if (card1.v == card2.v && card1.v == card3.v)
+        if (card1.valueFinder() == card2.valueFinder() && card1.valueFinder() == card3.valueFinder())
         {
             return true;
         }
         else return false;
     }
-    public boolean isFourkind(Cards card1,Cards card2,Cards card3,Cards card4)//can get rid of
+    private boolean isFourkind(Cards card1,Cards card2,Cards card3,Cards card4)//can get rid of
     {
-        if (card1.v == card2.v && card1.v == card3.v && card1.v == card4.v)
+        if (card1.valueFinder() == card2.valueFinder() && card1.valueFinder() == card3.valueFinder() && card1.valueFinder() == card4.valueFinder())
         {
             return true;
         }
         else return false;
     }
-    public boolean cribIsFlush(Cards[] playedHand, Cards cutCard)// change cards 1-4 into Hand arraylist
+    public boolean isFourKind(Cards[] playedHand, Cards cutCard)// change cards 1-4 into Hand arraylist
     {
-        if(playedHand[0].s == playedHand[1].s && playedHand[0].s == playedHand[2].s && playedHand[0].s == playedHand[3].s && playedHand[0].s == cutCard.s)
+        if(playedHand[0].getSuit() == playedHand[1].getSuit() && playedHand[0].getSuit() == playedHand[2].getSuit() && playedHand[0].getSuit() == playedHand[3].getSuit() && playedHand[0].getSuit() == cutCard.getSuit())
         {
             return true;
         }
@@ -151,78 +152,78 @@ public class Scorer
     }
     public boolean isFlush(Cards[] playedHand)// change cards 1-4 into Hand arraylist
     {
-        if(card1.s == card2.s && card1.s == card3.s && card1.s == card4.s )
+        if(playedHand[0].getSuit() == playedHand[1].getSuit() && playedHand[2].getSuit() == playedHand[3].getSuit() && card1.s == card4.s )
         {
             return true;
         }
         else return false;
     }
-    public int countHand(Cards[] playedHand, Cards cutCard)//reverse order, countCrib is exact same method but different card 1-4
+    public int countHand(Cards[] playedHand, Cards cutCard, boolean isCrib)//reverse order, countCrib is exact same method but different card 1-4
     {
         int handScore = 0;
         //is15
         //isrun
-        if(isFourKind(playedHand[0], playedHand[1], playedHand[2], playedHand[3])){handScore = handScore + 16;}
+        if(isFourKind(playedHand[0], playedHand[1], playedHand[2], playedHand[3])){return 16;}
         else{
-            if(isFourKind(playedHand[0], playedHand[1], playedHand[2], cutCard)){handScore = handScore + 16;}
+            if(isFourKind(playedHand[0], playedHand[1], playedHand[2], cutCard)){return 16;}
             else{
-                if(isFourKind(playedHand[0], playedHand[1], playedHand[3], cutCard)){handScore = handScore + 16;}
+                if(isFourKind(playedHand[0], playedHand[1], playedHand[3], cutCard)){return 16;}
                 else{
-                    if(isFourKind(playedHand[0], playedHand[2], playedHand[3], cutCard)){handScore = handScore + 16;}
+                    if(isFourKind(playedHand[0], playedHand[2], playedHand[3], cutCard)){return 16;}
                     else{
-                        if(isFourKind(playedHand[1], playedHand[2], playedHand[3], cutCard)){handScore = handScore + 16;}
+                        if(isFourKind(playedHand[1], playedHand[2], playedHand[3], cutCard)){return 16;}
                         else{
 
-                            if(isThreeKind(playedHand[0], playedHand[1], playedHand[2])){handScore = handScore + 6;}
+                            if(isThreeKind(playedHand[0], playedHand[1], playedHand[2])){return 6;}
                             else{
-                                if(isThreeKind(playedHand[0], playedHand[1], playedHand[3])){handScore = handScore + 6;}
+                                if(isThreeKind(playedHand[0], playedHand[1], playedHand[3])){return 6;}
                                 else{
-                                    if(isThreeKind(playedHand[0], playedHand[1], cutCard)){handScore = handScore + 6;}
+                                    if(isThreeKind(playedHand[0], playedHand[1], cutCard)){return 6;}
                                     else{
-                                        if(isThreeKind(playedHand[0], playedHand[2], playedHand[3])){handScore = handScore + 6;}
+                                        if(isThreeKind(playedHand[0], playedHand[2], playedHand[3])){return 6;}
                                         else{
-                                            if(isThreeKind(playedHand[0], playedHand[2], cutCard)){handScore = handScore + 6;}
+                                            if(isThreeKind(playedHand[0], playedHand[2], cutCard)){return 6;}
                                             else{
-                                                if(isThreeKind(playedHand[0], playedHand[3], cutCard)){handScore = handScore + 6;}
+                                                if(isThreeKind(playedHand[0], playedHand[3], cutCard)){return 6;}
                                                 else{
-                                                    if(isThreeKind(playedHand[1], playedHand[2], playedHand[3])){handScore = handScore + 6;}
+                                                    if(isThreeKind(playedHand[1], playedHand[2], playedHand[3])){return 6;}
                                                     else{
-                                                        if(isThreeKind(playedHand[1], playedHand[2], cutCard)){handScore = handScore + 6;}
+                                                        if(isThreeKind(playedHand[1], playedHand[2], cutCard)){return 6;}
                                                         else{
-                                                            if(isThreeKind(playedHand[1], playedHand[3], cutCard)){handScore = handScore + 6;}
+                                                            if(isThreeKind(playedHand[1], playedHand[3], cutCard)){return 6;}
                                                             else{
-                                                                if(isThreeKind(playedHand[2], playedHand[3], cutCard)){handScore = handScore + 6;}
+                                                                if(isThreeKind(playedHand[2], playedHand[3], cutCard)){return 6;}
                                                                 else{
 
-                                                                    if(isPair(playedHand[0], playedHand[1])){handScore = handScore + 2;}
+                                                                    if(isPair(playedHand[0], playedHand[1])){return 2;}
                                                                     else{
-                                                                        if(isPair(playedHand[0], playedHand[2])){handScore = handScore + 2;}
+                                                                        if(isPair(playedHand[0], playedHand[2])){return 2;}
                                                                         else{
-                                                                            if(isPair(playedHand[0], playedHand[3])){handScore = handScore + 2;}
+                                                                            if(isPair(playedHand[0], playedHand[3])){return 2;}
                                                                             else{
-                                                                                if(isPair(playedHand[0], cutCard)){handScore = handScore + 2;}
+                                                                                if(isPair(playedHand[0], cutCard)){return 2;}
                                                                                 else{
-                                                                                    if(isPair(playedHand[1], playedHand[2])){handScore = handScore + 2;}
+                                                                                    if(isPair(playedHand[1], playedHand[2])){return 2;}
                                                                                     else{
-                                                                                        if(isPair(playedHand[1], playedHand[3])){handScore = handScore + 2;}
+                                                                                        if(isPair(playedHand[1], playedHand[3])){return 2;}
                                                                                         else{
-                                                                                            if(isPair(playedHand[1], cutCard)){handScore = handScore + 2;}
+                                                                                            if(isPair(playedHand[1], cutCard)){return 2;}
                                                                                             else{
-                                                                                                if(isPair(playedHand[2], playedHand[3])){handScore = handScore + 2;}
+                                                                                                if(isPair(playedHand[2], playedHand[3])){return 2;}
                                                                                                 else{
-                                                                                                    if(isPair(playedHand[2], cutCard)){handScore = handScore + 2;}
+                                                                                                    if(isPair(playedHand[2], cutCard)){return 2;}
                                                                                                     else{
-                                                                                                        if(isPair(playedHand[3], cutCard)){handScore = handScore + 2;}
+                                                                                                        if(isPair(playedHand[3], cutCard)){return 2;}
 
                                                                                                     }}}}}}}}}}}}}}}}}}}}}}}}
 
         if(isCrib)
         {
-            if(isCribFlush(playedHand[], cutCard)){handScore = handScore + 5;}
+            if(isCribFlush(playedHand[], cutCard)){return 5;}
         }
         else
         {
-            if(isFlush(playedHand[], cutCard)){handScore = handScore + 4;}
+            if(isFlush(playedHand[], cutCard)){return  4;}
         }
 
         is15(playedHand[], cutCard);
@@ -230,81 +231,80 @@ public class Scorer
 
     public int cutCardScore(Cards cutCard, Cards[] cardArray)//Checks for nibs, jack points
     {
-        if (cutCard.v == Jack)
+        if (cutCard.valueFinder() == 11)
         {
             return 2;
         }
 
-        for(i = 0; i < 4; i++)
+        for(int i = 0; i < 4; i++)
         {
-            if (cardArray[i].v == Jack && cardArray[i].s == cutCard.s)
+            if (cardArray[i].valueFinder() == 11 && cardArray[i].getSuit() == cutCard.getSuit())
             {
                 return 1;
             }
         }
     }
 
-    public int isRunPeg(Cards[] a)
+
+    private int isRunPeg(Cards[] runArray)
     {
-        public int isRunPeg(Cards[] runArray)
+        runCount = runArray.length;
+        Cards[]sortedRunArray = new Cards[runArray.length];
+
+        if(runCount > 2)
         {
-
-
-            runCount = runArray.length;
-            Card[]sortedRunArray = new Card[runArray.length];
-            if(runCount > 2)
+            for(int i=0;i<runCount;i++)
             {
-                for(i=0;i<runCount;i++)
-                {
-                    sortedRunArray[i] = runArray[runCount - i];//sorts right to left to the needed length
-                }
+                sortedRunArray[i] = runArray[runCount - i];//sorts right to left to the needed length
+            }
 
-                sortedRunArray = sortArray(sortedRunArray);
-                if(runCount > 6)
+            sortedRunArray = sortArray(sortedRunArray);
+            if(runCount > 6)
+            {
+                if(runArray[runCount].valueFinder() == 7 && runArray[runCount - 1].valueFinder() == 6 && runArray[runCount - 2].valueFinder() == 5 && runArray[runCount - 3].valueFinder() == 4 & runArray[runCount - 4].valueFinder() == 3 && runArray[runCount - 5].valueFinder() == 2 && runArray[runCount - 6].valueFinder() == 1)
                 {
-                    if(runArray[runCount].v == 7 && runArray[runCount - 1].v == 6 && runArray[runCount - 2].v == 5 && runArray[runCount - 3].v == 4 & runArray[runCount - 4].v == 3 && runArray[runCount - 5].v == 2 && runArray[runCount - 6].v == 1))
-                    {
-                        return 7;
-                    }
-                }
-
-                if(runCount > 5){
-                    if((runArray[runCount].v - runArray[runCount - 3].v)== (runArray[runCount - 1].v - runArray[runCount - 4].v) && (runArray[runCount].v - runArray[runCount - 3].v) == (runArray[runCount - 2].v - runArray[runCount - 5].v))
-                    {
-                        return 6;
-                    }}
-
-                if(runCount > 4){
-                    if((runArray[4].v - runArray[3].v)== 1 && (runArray[3].v - runArray[2].v)== 1 && (runArray[2].v - runArray[1].v)== 1 && (runArray[1].v - runArray[0].v)== 1)
-                    {
-                        return 5;
-                    }}
-                if(runCount > 3){
-                    if((runArray[runCount].v - runArray[runCount - 2].v)== (runArray[runCount - 1].v - runArray[runCount - 3].v))
-                    {
-                        return 4;
-                    }}
-                if((runArray[runCount].v - runArray[runCount-1].v)== 1 && (runArray[runCount-1].v - runArray[runCount-2].v)== 1)
-                {
-                    return 3;
+                    return 7;
                 }
             }
 
-        }
+            if(runCount > 5){
+                if((runArray[runCount].valueFinder() - runArray[runCount - 3].valueFinder())== (runArray[runCount - 1].valueFinder() - runArray[runCount - 4].valueFinder()) && (runArray[runCount].valueFinder() - runArray[runCount - 3].valueFinder()) == (runArray[runCount - 2].valueFinder() - runArray[runCount - 5].valueFinder()))
+                {
+                    return 6;
+                }}
 
+            if(runCount > 4){
+                if((runArray[4].valueFinder() - runArray[3].valueFinder())== 1 && (runArray[3].valueFinder() - runArray[2].valueFinder())== 1 && (runArray[2].valueFinder() - runArray[1].valueFinder())== 1 && (runArray[1].valueFinder() - runArray[0].valueFinder())== 1)
+                {
+                    return 5;
+                }}
+            if(runCount > 3){
+                if((runArray[runCount].valueFinder() - runArray[runCount - 2].valueFinder())== (runArray[runCount - 1].valueFinder() - runArray[runCount - 3].valueFinder()))
+                {
+                    return 4;
+                }}
+            if((runArray[runCount].valueFinder() - runArray[runCount-1].valueFinder())== 1 && (runArray[runCount-1].valueFinder() - runArray[runCount-2].valueFinder())== 1)
+            {
+                return 3;
+            }
+        }
+        return 0;
     }
-    public int isRun(Cards[] a)//ONLY WORKS FOR RUNS OF 5 AND 4 SO FAR
+
+
+    //ONLY WORKS FOR RUNS OF 5 AND 4 SO FAR
+    public int isRun(Cards[] a)
     {
 
         int i, j, k, runScore = 0;
-        Cards[][] runArray = new int[13][2];
+        int[][] runArray = new int[13][2];
 
-        for(i=0;i<13,i++)
+        for(i=0;i<13;i++)
         {
-            runArray [i][0] = i;
-            for(j=0;j<4;j++;)
+            runArray[i][0] = i;
+            for(j=0;j<4;j++)
             {
-                if(playedHand[j].v == (i+1))
+                if(playedHand[j].value == (i+1))
                 {
                     runArray[i][1]++;
                     k++;
@@ -335,14 +335,15 @@ public class Scorer
         }
         return runScore;
     }
-    public array sortArray(Cards[] a)
-    {
+
+
+    private Cards[] sortArray(Cards[] a) {
         int i, j;
-        for (int i = 1; i < array.length; i++)
+        for ( i = 0; i < a.length; i++)
         {
-            for (int j = i; j > 0; j--)
+            for (j = i; j > 0; j--)
             {
-                if (a[j.v] < a[(j - 1).v])
+                if (a[j].valueFinder() < a[(j - 1)].valueFinder())
                 {
                     tempCard = a[j];
                     a[j] = a[j - 1];
