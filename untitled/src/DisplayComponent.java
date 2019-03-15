@@ -45,6 +45,7 @@ public class DisplayComponent extends JComponent {
 
     public void updateCardDisplay(int i, String input){
         buttonsList.get(i).setText(input);
+        repaint();
     }
 
 }

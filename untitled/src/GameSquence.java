@@ -15,15 +15,16 @@ public class GameSquence{
     private boolean isDealer0; //isHamanPlayer dealer?
     private Referee ref;
     private Scorer scorer;
+    private TrackComponent track;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
         playerList.add(player1);
         playerList.add(player2);
         deck = new Deck();
-        board = new Board();
         this.board = board;
         scorer = new Scorer();
+        this.track = ref.getTrack();
     }
 
     public void round(){
@@ -95,7 +96,7 @@ public class GameSquence{
     private void drawCutCard(){
         deck.deal(board);
         if (board.getCut().valueFinder() == 11){
-            prone.setScore(2); //????? 2 points for getting jack?
+            prone.setScore(2);
             ref.isWinner(prone);
         }
 
