@@ -18,12 +18,14 @@ public class Scorer
     private Cards tempCard = null, tempCard2 = null;
     private CardCollection peggingArray = new CardCollection();
     private CardCollection runArray = new CardCollection();
+    private CardCollection playedHand;
     private Board board;
 
     public Scorer(Board board){
         this.board = board;
     }
 
+    //should isRuPeg be added in here?
     public int peggingScore(Cards c)//all possible combos for score (runs, pairs, 15), run each turn
     {
         //peggingArray[pegCardNum] = c;//adding c to pegCardNum-index
@@ -76,17 +78,21 @@ public class Scorer
         {
 
         }
+
+        isRunPeg(peggingArray);
         return 0;
     }
 
     public void resetPeggingScore()
     {
         currentPeggingScore = 0;
+        pegCardNum = 0;
+        peggingArray.clearCollection();
     }
 
     private int is15(CardCollection playedHand, Cards cutCard)//could take all in at once, could have 4 methods for pair, triple etc.
     {
-
+        this.playedHand = playedHand;
         int num15 = 0;//number of instances of 15's
         /** card[] cardArray = new card[]{card1, card2, card3, card4, cutCard}; old code, might revert back to if issues
          cardArray[0] = card1;
@@ -191,6 +197,7 @@ public class Scorer
     }
     public int countHand(CardCollection playedHand, Cards cutCard, boolean isCrib)//reverse order, countCrib is exact same method but different card 1-4
     {
+        this.playedHand = playedHand;
         int handScore = 0;
         //is15
         //isrun
@@ -247,16 +254,13 @@ public class Scorer
 
 
 
-        if(isCrib)
-        {
-            if(isCribFlush(playedHand, cutCard)){return 5;}
-        }
-        else
-        {
-            if(isFlush(playedHand)){return  4;}
+        if(isCribFlush(playedHand, cutCard)){return 5;}
+
+        if(isCrib != false){    if(isFlush(playedHand)){return  4;}//this for non-crib
         }
 
         is15(playedHand, cutCard);
+        isRun(playedHand, cutCard);
     }
 
     public int cutCardScore(Cards cutCard, CardCollection cardArray)//Checks for nibs, jack points
@@ -283,35 +287,39 @@ public class Scorer
         //CardCollection sortedRunArray = new Cards[runArray.length];
         CardCollection sortedRunArray = new CardCollection();
 
+
         if(runCount > 2)
         {
             for(int i=0;i<runCount;i++)
             {
-                sortedRunArray[i] = runArray[runCount - i];//sorts right to left to the needed length
+                //copy sortRunArray from runArray
+                sortedRunArray.addCard(runArray.getCard(i));
+                //sortedRunArray[i] = runArray[runCount - i];//sorts right to left to the needed length
             }
 
-            sortedRunArray = sortArray(sortedRunArray);
+            sortedRunArray.sortArray();
             if(runCount > 6)
             {
-                if(runArray[runCount].valueFinder() == 7 && runArray[runCount - 1].valueFinder() == 6 && runArray[runCount - 2].valueFinder() == 5 && runArray[runCount - 3].valueFinder() == 4 & runArray[runCount - 4].valueFinder() == 3 && runArray[runCount - 5].valueFinder() == 2 && runArray[runCount - 6].valueFinder() == 1)
+                //only instance of run of 7 that has a pegging score of under 31 is 1, 2, 3, 4, 5, 6, 7
+                if(sortedRunArray.getCard(runCount).valueFinder() == 7 && sortedRunArray.getCard(runCount-1 ).valueFinder() == 6 && sortedRunArray.getCard(runCount -2).valueFinder() == 5 && sortedRunArray.getCard(runCount -3).valueFinder() == 4 & sortedRunArray.getCard(runCount -4).valueFinder() == 3 && sortedRunArray.getCard(runCount-5).valueFinder() == 2 && sortedRunArray.getCard(runCount-6).valueFinder() == 1)
                 {
                     return 7;
                 }
             }
 
             if(runCount > 5){
-                if((runArray[runCount].valueFinder() - runArray[runCount - 3].valueFinder())== (runArray[runCount - 1].valueFinder() - runArray[runCount - 4].valueFinder()) && (runArray[runCount].valueFinder() - runArray[runCount - 3].valueFinder()) == (runArray[runCount - 2].valueFinder() - runArray[runCount - 5].valueFinder()))
+                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder())== (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()) && (sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()) == (sortedRunArray.getCard(runCount-2 ).valueFinder() - sortedRunArray.getCard(runCount-5).valueFinder()))
                 {
                     return 6;
                 }}
 
             if(runCount > 4){
-                if((runArray[4].valueFinder() - runArray[3].valueFinder())== 1 && (runArray[3].valueFinder() - runArray[2].valueFinder())== 1 && (runArray[2].valueFinder() - runArray[1].valueFinder())== 1 && (runArray[1].valueFinder() - runArray[0].valueFinder())== 1)
+                if((sortedRunArray.getCard(4).valueFinder() - sortedRunArray.getCard(3).valueFinder()== 1 && (sortedRunArray.getCard(3).valueFinder() - sortedRunArray.getCard(2).valueFinder())== 1 && (sortedRunArray.getCard(2).valueFinder() - sortedRunArray.getCard(1).valueFinder())== 1 && (sortedRunArray.getCard(1).valueFinder() - sortedRunArray.getCard(0).valueFinder())== 1))
                 {
                     return 5;
                 }}
             if(runCount > 3){
-                if((runArray[runCount].valueFinder() - runArray[runCount - 2].valueFinder())== (runArray[runCount - 1].valueFinder() - runArray[runCount - 3].valueFinder()))
+                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount -2 ).valueFinder())== (sortedRunArray.getCard(runCount- 1).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()))
                 {
                     return 4;
                 }}
@@ -325,10 +333,12 @@ public class Scorer
 
 
     //ONLY WORKS FOR RUNS OF 5 AND 4 SO FAR
-    public int isRun(Cards[] a)
+    //why do you need CardCollection or array a? it's not used
+    private int isRun()
     {
 
-        int i, j, k, runScore = 0;
+        int i, j;
+        int k, runScore = 0;
         int[][] runArray = new int[13][2];
 
         for(i=0;i<13;i++)
@@ -336,7 +346,7 @@ public class Scorer
             runArray[i][0] = i;
             for(j=0;j<4;j++)
             {
-                if(playedHand[j].value == (i+1))
+                if(playedHand.getCard(j).valueFinder() == (i+1))
                 {
                     runArray[i][1]++;
                     k++;
@@ -369,22 +379,22 @@ public class Scorer
     }
 
 
-    private Cards[] sortArray(Cards[] a) {
-        int i, j;
-        for ( i = 0; i < a.length; i++)
-        {
-            for (j = i; j > 0; j--)
-            {
-                if (a[j].valueFinder() < a[(j - 1)].valueFinder())
-                {
-                    tempCard = a[j];
-                    a[j] = a[j - 1];
-                    a[j - 1] = tempCard;
-                }
-            }
-        }
-        tempCard = null;
-        return a;
-
-    }
+//    private Cards[] sortArray(Cards[] a) {
+//        int i, j;
+//        for ( i = 0; i < a.length; i++)
+//        {
+//            for (j = i; j > 0; j--)
+//            {
+//                if (a[j].valueFinder() < a[(j - 1)].valueFinder())
+//                {
+//                    tempCard = a[j];
+//                    a[j] = a[j - 1];
+//                    a[j - 1] = tempCard;
+//                }
+//            }
+//        }
+//        tempCard = null;
+//        return a;
+//
+//    }
 }

@@ -40,9 +40,9 @@ public class GameSquence{
         }
     }
 
-    public void setRef(Referee r){
-        ref = r;
-    }
+//    public void setRef(Referee r){
+//        ref = r;
+//    }
 
     //each player draw 1 card each, compare and set dealer
     private void drawing(){

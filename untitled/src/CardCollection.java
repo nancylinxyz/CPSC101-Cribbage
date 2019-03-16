@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 
 /* All of the list of cards are CardCollection objects.
  * 3 behavoirs:
@@ -61,5 +61,32 @@ public class CardCollection {
         collection.add(a.getCard(1));
 
     }
+//
+//    public void sortCollection(){
+//        Collections.sort(collection, new Comparator<Cards>(){
+//            public int compare(Cards c1, Cards c2){
+//                return c1.valueFinder().compareTo(c2.valueFinder());
+//            }
+//
+//        });
+//    }
 
+    public void sortArray() {
+        int i, j;
+        Cards tempCard;
+        for ( i = 0; i < collection.size(); i++)
+        {
+            for (j = i; j > 0; j--)
+            {
+                if (collection.get(j).valueFinder() < collection.get(j -1).valueFinder())
+                {
+                    tempCard = collection.get(j);
+
+                    collection.set(j, this.getCard(j-1));
+                    collection.set(j-1,tempCard);
+                }
+            }
+        }
+
+    }
 }
