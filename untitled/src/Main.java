@@ -4,7 +4,7 @@ class Main{
     public static void main(String[] agrs){
         TrackComponent tracks = new TrackComponent();
 
-        Referee ref = new Referee();
+        Referee ref = new Referee(tracks);
         ref.start();
 
 

@@ -23,7 +23,7 @@ public class GameSquence{
         playerList.add(player2);
         deck = new Deck();
         this.board = board;
-        scorer = new Scorer();
+        scorer = new Scorer(board);
         this.track = ref.getTrack();
     }
 
