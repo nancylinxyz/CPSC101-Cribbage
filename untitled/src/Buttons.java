@@ -9,9 +9,7 @@
  * @author mac
  */
 import javax.swing.JFrame;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -143,7 +141,8 @@ public class Buttons extends JFrame {
         panelCenter.setPreferredSize(new Dimension(700,500));
         panelCenter.setLocation(200,100);
         panelCenter.setBorder(BorderFactory.createTitledBorder("the board"));
-        
+        TrackComponent tracks = new TrackComponent();
+        panelCenter.add(tracks);
     }
     
     class Click implements ActionListener {
@@ -162,7 +161,8 @@ public class Buttons extends JFrame {
     
     private void createButtons()
     {
-        button1 = new JButton("Card1");
+        button1 = new JButton( "🂲");
+        button1.setFont(new Font("Arial", Font.PLAIN, 60));
         button2 = new JButton("Card2");
         button3 = new JButton("Card3");
         button4 = new JButton("Card4");

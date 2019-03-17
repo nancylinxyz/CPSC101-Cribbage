@@ -7,10 +7,12 @@ public class TrackElements {
     private int yTrack1 = 10;
     private int yTrack2 = 40;
 
-    private int xTrack[];
+    private int xTrack[] = new int[123];
     private int xPoint1;
-    private ArrayList<Ellipse2D> track1, track2;
-    private ArrayList<Color> colors1, colors2;
+    private ArrayList<Ellipse2D.Double> track1 = new ArrayList<>();
+    private ArrayList<Ellipse2D.Double> track2 = new ArrayList<>();
+    private ArrayList<Color> colors1 = new ArrayList<>();
+    private ArrayList<Color> colors2 = new ArrayList<>();
 
 
 
@@ -25,15 +27,26 @@ public class TrackElements {
     }
 
     private void createTracks(){
-        for (int i = 0; i <123; i++){
+        //first 2 pegs are red and rest are black
+        for (int i = 0; i < 2; i++){
+            Ellipse2D.Double tempPeg = new Ellipse2D.Double(xTrack[i], yTrack1, 5, 5);
+            track1.add(tempPeg);
+            colors1.add(Color.RED);
+
+            Ellipse2D.Double tempPeg2 = new Ellipse2D.Double(xTrack[i], yTrack2, 5, 5);
+            track2.add(tempPeg2);
+            colors2.add(Color.RED);
+
+        }
+
+        for (int i = 2; i <123; i++){
             Ellipse2D.Double tempPeg = new Ellipse2D.Double(xTrack[i], yTrack1, 5, 5);
             track1.add(tempPeg);
             colors1.add(Color.BLACK);
 
-        }
-        for (int i = 0; i <123; i++){
-            Ellipse2D.Double tempPeg = new Ellipse2D.Double(xTrack[i], yTrack2, 5, 5);
-            track2.add(tempPeg);
+            Ellipse2D.Double tempPeg2 = new Ellipse2D.Double(xTrack[i], yTrack2, 5, 5);
+            track2.add(tempPeg2);
+            colors2.add(Color.BLACK);
         }
 
     }
@@ -41,12 +54,7 @@ public class TrackElements {
     public TrackElements(){
         addXPoints();
         createTracks();
-        //set peg 1 & 2 red
 
-        for (int i = 0; i<2; i++){
-            colors1.set(i, Color.RED);
-            colors2.set(i, Color.RED);
-        }
     }
 
 
