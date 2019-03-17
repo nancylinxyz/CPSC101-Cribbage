@@ -115,7 +115,7 @@ public class Buttons extends JFrame {
         panelEast.setLocation(900,100);
 
         panelEast.setLayout(new GridLayout(2,1,5,5));
-        panelEast.setBorder(BorderFactory.createTitledBorder("Player 1 info____"));
+        panelEast.setBorder(BorderFactory.createTitledBorder("Your Dashboard"));
         
         panelEast.add(player1Score);
         panelEast.add(status1);
@@ -140,7 +140,7 @@ public class Buttons extends JFrame {
         panelCenter = new JPanel();
         panelCenter.setPreferredSize(new Dimension(700,500));
         panelCenter.setLocation(200,100);
-        panelCenter.setBorder(BorderFactory.createTitledBorder("the board"));
+        panelCenter.setBorder(BorderFactory.createTitledBorder("Pegging Track"));
         TrackComponent tracks = new TrackComponent();
         panelCenter.add(tracks);
     }
@@ -203,7 +203,7 @@ public class Buttons extends JFrame {
         frame.setSize(1100,700);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("the board game");
+        frame.setTitle("Cribbage");
         
         
     }
