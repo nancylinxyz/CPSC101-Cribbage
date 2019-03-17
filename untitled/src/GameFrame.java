@@ -26,14 +26,14 @@ public class GameFrame extends JFrame {
 
     private static int logLength = 1;
 
-    private String[] cardsDimond= {"🃁","🃂","🃃","🃄","🃅","🃆","🃇","🃈","🃉","🃊","🃋","🃍","🃎"};//cards of dimand
-    private String[] cardsSpade ={"🂡","🂢","🂣","🂤","🂥","🂦","🂧","🂨","🂩","🂪","🂫","🂭","🂮"};//cards of spade
-    private String[] cardsClub ={"🃑","🃒","🃓","🃔","🃕","🃖","🃗","🃘","🃙","🃚","🃛","🃝","🃞"};// cards of club
-    private String[] cardsHeart ={"🂱","🂲","🂳","🂴","🂵","🂶","🂷","🂸","🂹","🂺","🂻","🂽", "🂾"};// cards of heart
-    private String backCard = "🂠";
+    private static String[] cardsDimond= {"🃁","🃂","🃃","🃄","🃅","🃆","🃇","🃈","🃉","🃊","🃋","🃍","🃎"};//cards of dimand
+    private static String[] cardsSpade ={"🂡","🂢","🂣","🂤","🂥","🂦","🂧","🂨","🂩","🂪","🂫","🂭","🂮"};//cards of spade
+    private static String[] cardsClub ={"🃑","🃒","🃓","🃔","🃕","🃖","🃗","🃘","🃙","🃚","🃛","🃝","🃞"};// cards of club
+    private static String[] cardsHeart ={"🂱","🂲","🂳","🂴","🂵","🂶","🂷","🂸","🂹","🂺","🂻","🂽", "🂾"};// cards of heart
+    private static String backCard = "🂠";
 
-    private ArrayList<String> player1Hand = new ArrayList<String>();
-    private ArrayList<String> player2Hand = new ArrayList<String>();
+    private static ArrayList<String> player1Hand = new ArrayList<String>();
+    private static ArrayList<String> player2Hand = new ArrayList<String>();
 
 
     public GameFrame(/*passing an arraylist cardsCollection from hand*/){
@@ -175,7 +175,7 @@ public class GameFrame extends JFrame {
     {
         for(int i=0; i< player1Hand.size(); i++)//need to change this one to the actually arrayList
             //use arraylist instead of array
-            buttonsList.add(new JButton(player1[i]));
+            buttonsList.add(new JButton(player1Hand.get(i)));
         for(int j=0; j<buttonsList.size(); j++)
             buttonsList.get(j).setFont(new Font("Arial", Font.PLAIN, 60));
 
@@ -227,7 +227,34 @@ public class GameFrame extends JFrame {
 
         //output log or scroll pane
     }
-    
+
+    public static String handToCardDisplay(Cards card){
+        if (card.getSuit() == Suit.Diamonds){
+            return cardsDimond[card.valueFinder()-1];
+        }
+        if (card.getSuit() == Suit.Clubs){
+            return cardsClub[card.valueFinder()-1];
+        }
+        if (card.getSuit() == Suit.Hearts){
+            return cardsHeart[card.valueFinder()-1];
+        }
+        return cardsSpade[card.valueFinder()-1];
+    }
+
+    public static void setPlayer1Hand(CardCollection cards){
+        for (int i =0; i < cards.size(); i++){
+            player1Hand.add(handToCardDisplay(cards.getCard(i)));
+            System.out.println(player1Hand.get(i));
+        }
+
+    }
+    public static void setPlayer1Hand(CardCollection cards){
+        for (int i =0; i < cards.size(); i++){
+            player1Hand.add(handToCardDisplay(cards.getCard(i)));
+        }
+
+    }
+
 //     public static void main(String[] args){
 //
 //

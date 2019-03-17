@@ -90,6 +90,8 @@ public class GameSquence{
             GameFrame.outPutToGameLog("Deal a card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
         }
+        GameFrame.setPlayer1Hand(playerList.get(0).getHand());
+        GameFrame.setPlayer2Hand(playerList.get(1).getHand());
     }
 
     //allow each player to discard 2 cards to crib
