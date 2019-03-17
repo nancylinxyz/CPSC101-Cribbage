@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Buttons extends JFrame {
+public class GameFrame extends JFrame {
     
     private JButton button1, button2, button3, button4, button5, button6/*this one for the cut card*/, quit, OK, Reset;//I'm not sure that we want to keep separately the buttons or not 
     private JPanel panelNorth, panelEast, panelWest, panelSouth, mainPanel, panelCenter;
@@ -24,7 +24,7 @@ public class Buttons extends JFrame {
     private static String player1isDealer, player2IsDealer;
     
     
-    public Buttons(/*passing an arraylist cardsCollection from hand*/){
+    public GameFrame(/*passing an arraylist cardsCollection from hand*/){
 
         
         //player2 is the Aiplayer
@@ -218,7 +218,7 @@ public class Buttons extends JFrame {
 //
 //
 //
-//        JFrame frame = new Buttons();
+//        JFrame frame = new GameFrame();
 //
 //        frame.setSize(1100,700);
 //        frame.setVisible(true);

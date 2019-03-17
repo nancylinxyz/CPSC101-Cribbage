@@ -1,11 +1,10 @@
 import javax.swing.*;
-import java.util.Scanner;
 
 class Main{
     public static void main(String[] agrs){
 
 
-        JFrame frame = new Buttons();
+        JFrame frame = new GameFrame();
 
         frame.setSize(1100,700);
         frame.setVisible(true);

@@ -178,11 +178,11 @@ public class GameSquence{
 
     //update the display
     private void updateAllTextDisplay(){
-        Buttons.setPlayer1isDealer(isDealer0);
-        Buttons.setPlayer2isDealer(isDealer0);
-        Buttons.setPlayer1ScoreDisplay(playerList.get(0).getScore());
-        Buttons.setPlayer2ScoreDisplay(playerList.get(1).getScore());
-        Buttons.setPlayer2HandSize(playerList.get(1).getHand().size());
+        GameFrame.setPlayer1isDealer(isDealer0);
+        GameFrame.setPlayer2isDealer(isDealer0);
+        GameFrame.setPlayer1ScoreDisplay(playerList.get(0).getScore());
+        GameFrame.setPlayer2ScoreDisplay(playerList.get(1).getScore());
+        GameFrame.setPlayer2HandSize(playerList.get(1).getHand().size());
     }
 
 }
