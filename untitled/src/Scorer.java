@@ -10,14 +10,12 @@ public class Scorer
 //    }
 //
     private int currentPeggingScore = 0;
-    private int cardNum = 0;
-    private int minVal = 14;
-    private int maxVal = 0;
+//    private int cardNum = 0;
+//    private int minVal = 14;
+//    private int maxVal = 0;
     private int runCount = 0;
     private int pegCardNum = 0;
-    private Cards tempCard = null, tempCard2 = null;
     private CardCollection peggingArray = new CardCollection();
-    private CardCollection runArray = new CardCollection();
     private CardCollection playedHand;
     private Board board;
 
@@ -32,20 +30,21 @@ public class Scorer
         peggingArray.addCard(c);
         currentPeggingScore += c.valueFinder();
         pegCardNum++;
+        int handScore = 0;
         if(currentPeggingScore == 15)
         {
-            return 2;
+            handScore += 2;
         }
         if (currentPeggingScore == 31)
         {
             currentPeggingScore = 0;
-            return 2;
+            handScore +=  2;
             //end subround
         }
         if(pegCardNum > 1){
             if(isPair(peggingArray.getCard(pegCardNum), peggingArray.getCard(pegCardNum-1)))
             {
-               return 2;
+                handScore +=  2;
             }
         }
         //checking for flush
@@ -53,34 +52,34 @@ public class Scorer
             if (peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -1).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum-2).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum - 3).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
             //if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 3].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 4].getSuit())
             {
-                return 5;
+                handScore +=  5;
             }
         }
 
         //checking for 4 of a kind
         if(isFourKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2), peggingArray.getCard(pegCardNum-3)))
         {
-            return 16;
+            handScore +=  12;
         }
 
         //checking for 3 of a kind
         if (isThreeKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
         {
-            return 6;
+            handScore +=  6;
         }
 
         if(isPair(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1)))
         {
-            return 2;
+            handScore += 2;
         }
 
-        if(pegCardNum > 2)
-        {
+//        if(pegCardNum > 2)
+//        {
+//
+//        }
 
-        }
-
-        isRunPeg(peggingArray);
-        return 0;
+        handScore += isRunPeg(peggingArray);
+        return handScore;
     }
 
     public void resetPeggingScore()
@@ -201,66 +200,68 @@ public class Scorer
         int handScore = 0;
         //is15
         //isrun
-        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){return 16;}
-
-        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), cutCard)){return 16;}
-
-        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3), cutCard)){return 16;}
-
-        if(isFourKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3), cutCard)){return 16;}
-
-        if(isFourKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3), cutCard)){return 16;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2))){return 6;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3))){return 6;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), cutCard)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), cutCard)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(3), cutCard)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){return 6;}
-
-        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), cutCard)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(3), cutCard)){return 6;}
-
-        if(isThreeKind(playedHand.getCard(2),playedHand.getCard(3), cutCard)){return 6;}
-
-
-        if(isPair(playedHand.getCard(0), playedHand.getCard(1))){return 2;}
-
-        if(isPair(playedHand.getCard(0), playedHand.getCard(2))){return 2;}
-
-        if(isPair(playedHand.getCard(0), playedHand.getCard(3))){return 2;}
-
-        if(isPair(playedHand.getCard(0), cutCard)){return 2;}
-
-        if(isPair(playedHand.getCard(1), playedHand.getCard(2))){return 2;}
-
-        if(isPair(playedHand.getCard(1), playedHand.getCard(3))){return 2;}
-
-        if(isPair(playedHand.getCard(1), cutCard)){return 2;}
-
-        if(isPair(playedHand.getCard(2), playedHand.getCard(3))){return 2;}
-
-        if(isPair(playedHand.getCard(2), cutCard)){return 2;}
-
-        if(isPair(playedHand.getCard(3), cutCard)){return 2;}
+//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 16;}
+//
+//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore += 12;}
+//
+//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 12;}
+//
+//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
+//
+//        if(isFourKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2))){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3))){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), cutCard)){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), cutCard)){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(3), cutCard)){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore +=6;}
+//
+//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 6;}
+//
+//        if(isThreeKind(playedHand.getCard(2),playedHand.getCard(3), cutCard)){handScore += 6;}
 
 
+        if(isPair(playedHand.getCard(0), playedHand.getCard(1))){handScore += 2;}
 
-        if(isCribFlush(playedHand, cutCard)){return 5;}
+        if(isPair(playedHand.getCard(0), playedHand.getCard(2))){handScore += 2;}
 
-        if(isCrib != false){    if(isFlush(playedHand)){return  4;}//this for non-crib
+        if(isPair(playedHand.getCard(0), playedHand.getCard(3))){handScore += 2;}
+
+        if(isPair(playedHand.getCard(0), cutCard)){handScore += 2;}
+
+        if(isPair(playedHand.getCard(1), playedHand.getCard(2))){handScore += 2;}
+
+        if(isPair(playedHand.getCard(1), playedHand.getCard(3))){handScore += 2;}
+
+        if(isPair(playedHand.getCard(1), cutCard)){handScore += 2;}
+
+        if(isPair(playedHand.getCard(2), playedHand.getCard(3))){handScore += 2;}
+
+        if(isPair(playedHand.getCard(2), cutCard)){handScore += 2;}
+
+        if(isPair(playedHand.getCard(3), cutCard)){handScore += 2;}
+
+
+
+        if(isCribFlush(playedHand, cutCard)){handScore += 5;}
+
+        if(isCrib != false){    if(isFlush(playedHand)){handScore +=  4;}//this for non-crib
         }
 
-        is15(playedHand, cutCard);
-        isRun(playedHand, cutCard);
+        handScore += is15(playedHand, cutCard);
+        handScore += isRun();
+
+        return handScore;
     }
 
     public int cutCardScore(Cards cutCard, CardCollection cardArray)//Checks for nibs, jack points
@@ -323,7 +324,7 @@ public class Scorer
                 {
                     return 4;
                 }}
-            if((runArray[runCount].valueFinder() - runArray[runCount-1].valueFinder())== 1 && (runArray[runCount-1].valueFinder() - runArray[runCount-2].valueFinder())== 1)
+            if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-1).valueFinder()== 1 && (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-2).valueFinder())== 1))
             {
                 return 3;
             }
@@ -338,14 +339,17 @@ public class Scorer
     {
 
         int i, j;
-        int k, runScore = 0;
+        int k =0 ;
+        int runScore = 0;
         int[][] runArray = new int[13][2];
 
         for(i=0;i<13;i++)
         {
             runArray[i][0] = i;
+
             for(j=0;j<4;j++)
             {
+
                 if(playedHand.getCard(j).valueFinder() == (i+1))
                 {
                     runArray[i][1]++;

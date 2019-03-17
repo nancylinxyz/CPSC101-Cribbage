@@ -114,7 +114,7 @@ public class GameSquence{
                         prone.playHand(tempCard1, board);
 
                         //pegging score
-                        prone.setScore(scorer.peggingScore());
+                        prone.setScore(scorer.peggingScore(tempCard1));
                         ref.isWinner(prone);
                     }
                 }
@@ -126,7 +126,7 @@ public class GameSquence{
                         dealer.playHand(tempCard2, board);
 
                         //TO-Do: pegging score
-                        prone.setScore(scorer.peggingScore());
+                        prone.setScore(scorer.peggingScore(tempCard2));
                         ref.isWinner(dealer);
                     }
                 }
