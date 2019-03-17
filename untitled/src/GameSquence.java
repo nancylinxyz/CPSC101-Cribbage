@@ -85,16 +85,23 @@ public class GameSquence{
     //deal 6 cards to each players
     private void dealHands() {
         for (int i = 0; i < 6; i++) {
+            GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Prone" );
             deck.deal(prone);
+            GameFrame.outPutToGameLog("Deal a card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
         }
     }
 
     //allow each player to discard 2 cards to crib
     private void toCrib(){
+        GameFrame.outPutToGameLog("Each player discard 2 cards to Crib." );
         for (int i = 0; i < 2; i++){
+            GameFrame.outPutToGameLog("Prone's turn to discard 1 card to Crib." );
             prone.discardToCrib(prone.decideCard());
+            GameFrame.outPutToGameLog("Prone's has discard 1 card to Crib." );
+            GameFrame.outPutToGameLog("Dealer's turn to discard 1 card to Crib." );
             dealer.discardToCrib(dealer.decideCard());
+            GameFrame.outPutToGameLog("Dealer's has discard 1 card to Crib." );
             updateAllTextDisplay();
         }
     }
@@ -188,7 +195,7 @@ public class GameSquence{
         GameFrame.setPlayer2isDealer(isDealer0);
         GameFrame.setPlayer1ScoreDisplay(playerList.get(0).getScore());
         GameFrame.setPlayer2ScoreDisplay(playerList.get(1).getScore());
-        GameFrame.setPlayer2HandSize(playerList.get(1).getHand().size());
+        GameFrame.setPlayer2HandSize(playerList.get(1).getCardNumber());
     }
 
 }

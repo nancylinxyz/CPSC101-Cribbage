@@ -23,14 +23,25 @@ public class GameFrame extends JFrame {
     private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
-    
-    
+
+    private static int logLength = 1;
+
+    private String[] cardsDimond= {"🃁","🃂","🃃","🃄","🃅","🃆","🃇","🃈","🃉","🃊","🃋","🃍","🃎"};//cards of dimand
+    private String[] cardsSpade ={"🂡","🂢","🂣","🂤","🂥","🂦","🂧","🂨","🂩","🂪","🂫","🂭","🂮"};//cards of spade
+    private String[] cardsClub ={"🃑","🃒","🃓","🃔","🃕","🃖","🃗","🃘","🃙","🃚","🃛","🃝","🃞"};// cards of club
+    private String[] cardsHeart ={"🂱","🂲","🂳","🂴","🂵","🂶","🂷","🂸","🂹","🂺","🂻","🂽", "🂾"};// cards of heart
+    private String backCard = "🂠";
+
+    private ArrayList<String> player1Hand = new ArrayList<String>();
+    private ArrayList<String> player2Hand = new ArrayList<String>();
+
+
     public GameFrame(/*passing an arraylist cardsCollection from hand*/){
 
         
         //player2 is the Aiplayer
-        status1 = new JLabel("status: " + player1isDealer);//give a status
-        status2 = new JLabel("status: " + player2IsDealer);
+        status1 = new JLabel("status: undecided");//give a status
+        status2 = new JLabel("status: undecided");
         
         player1Score= new JLabel("Your Score: " + player1ScoreDisplay);//add a score
         player2Score = new JLabel("Player 2 Score: " + player2ScoreDisplay);
@@ -138,10 +149,11 @@ public class GameFrame extends JFrame {
         panelCenter.setPreferredSize(new Dimension(700,500));
         panelCenter.setLocation(200,100);
         panelCenter.setBorder(BorderFactory.createTitledBorder("Board"));
-        panelCenter.setLayout(new GridLayout(2, 1, 5,5));
-        gameLog = new JTextArea(10,1);
+        panelCenter.setLayout(new GridLayout(3, 1, 5,5));
+        gameLog = new JTextArea(logLength,1);
         gameLog.setEditable(false);
-        panelCenter.add(gameLog);
+        JScrollPane scrollPane = new JScrollPane(gameLog);
+        panelCenter.add(scrollPane);
 
     }
     
@@ -161,32 +173,23 @@ public class GameFrame extends JFrame {
     
     private void createButtons()
     {
-        button1 = new JButton( "🂲");
-        button1.setFont(new Font("Arial", Font.PLAIN, 60));
-        button2 = new JButton("Card2");
-        button3 = new JButton("Card3");
-        button4 = new JButton("Card4");
-        button5 = new JButton("Card5");
-        button6 = new JButton("Card6");
-        
+        for(int i=0; i< player1Hand.size(); i++)//need to change this one to the actually arrayList
+            //use arraylist instead of array
+            buttonsList.add(new JButton(player1[i]));
+        for(int j=0; j<buttonsList.size(); j++)
+            buttonsList.get(j).setFont(new Font("Arial", Font.PLAIN, 60));
+
         quit = new JButton("Quit");
         Reset = new JButton("Reset");
-        //OK = new JButton("OK");
-        
-        //in ArrayList now
-        buttonsList.add(button1);
-        buttonsList.add(button2);
-        buttonsList.add(button3);
-        buttonsList.add(button4);
-        buttonsList.add(button5);
-        buttonsList.add(button6);
-        
+        OK = new JButton("OK");
+
         ActionListener listener = new Click();
-        
+
+
         for(int i=0; i<buttonsList.size(); i++){
             buttonsList.get(i).addActionListener(listener);
         }
-        
+
         quit.addActionListener(listener);
         Reset.addActionListener(listener);
         //OK.addActionListener(listener);
@@ -195,15 +198,15 @@ public class GameFrame extends JFrame {
 
     //setting display variables
     public static void setPlayer1ScoreDisplay(int i){
-        player1ScoreDisplay = i;
+        player1Score.setText("Your Score: " + i);
     }
 
     public static void setPlayer2ScoreDisplay(int i){
-        player2ScoreDisplay = i;
+        player2Score.setText("Player 2 Score: " + i);
     }
 
     public static void setPlayer2HandSize(int i){
-        player2HandSize = i;
+        player2NumCards.setText("Player 2 Has " + i +" Cards Left");
     }
 
     public static void setPlayer1isDealer(boolean t){
@@ -214,12 +217,15 @@ public class GameFrame extends JFrame {
 
     public static void setPlayer2isDealer(boolean t){
         if (t){
-            player2IsDealer = "Prone";
-        } else player2IsDealer = "Dealer";
+            status2.setText("Status: Prone");
+        } else status2.setText("Status: Dealer");
     }
 
     public static void outPutToGameLog(String input){
+        logLength++;
         gameLog.append(input +"\n");
+
+        //output log or scroll pane
     }
     
 //     public static void main(String[] args){
