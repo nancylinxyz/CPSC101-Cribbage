@@ -8,14 +8,10 @@
  *
  * @author mac
  */
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import java.util.ArrayList;
 
 public class Buttons extends JFrame {
@@ -70,10 +66,13 @@ public class Buttons extends JFrame {
     public void createNorthPanel(){
     
         panelNorth = new JPanel();
-       // panelNorth.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
+        //panelNorth.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         panelNorth.setPreferredSize(new Dimension(1100,100));
         panelNorth.setLocation(0,0);
-        panelNorth.setLayout(new GridLayout(0,20,3,3));
+        panelNorth.setLayout(new GridLayout(1,1,3,3));
+        panelNorth.setBorder(BorderFactory.createTitledBorder("Pegging Track"));
+        TrackComponent tracks = new TrackComponent();
+        panelNorth.add(tracks);
         
     }
     //this panel contains player2 information: cards and button to action
@@ -137,9 +136,8 @@ public class Buttons extends JFrame {
         panelCenter = new JPanel();
         panelCenter.setPreferredSize(new Dimension(700,500));
         panelCenter.setLocation(200,100);
-        panelCenter.setBorder(BorderFactory.createTitledBorder("Pegging Track"));
-        TrackComponent tracks = new TrackComponent();
-        panelCenter.add(tracks);
+        panelCenter.setBorder(BorderFactory.createTitledBorder("Board"));
+
     }
     
     class Click implements ActionListener {
@@ -216,17 +214,17 @@ public class Buttons extends JFrame {
     }
     
     
-     public static void main(String[] args){
-        
-        
-        
-        JFrame frame = new Buttons();
-        
-        frame.setSize(1100,700);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Cribbage");
-        
-        
-    }
+//     public static void main(String[] args){
+//
+//
+//
+//        JFrame frame = new Buttons();
+//
+//        frame.setSize(1100,700);
+//        frame.setVisible(true);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setTitle("Cribbage");
+//
+//
+//    }
 }

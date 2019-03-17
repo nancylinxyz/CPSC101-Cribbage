@@ -10,15 +10,15 @@ public class Referee {
     Players playerAi;
     GameSquence game;
     Board board;
-    TrackComponent track;
+    //TrackComponent track;
 
 
-    public Referee(TrackComponent track){
+    public Referee(){
         board = new Board();
         playerHuman = new HumanPlayer(board);
         playerAi = new  AiPlayer(board);
 
-        this.track = track;
+        //this.track = track;
 
         game = new GameSquence(playerHuman, playerAi, board);
     }
@@ -60,11 +60,6 @@ public class Referee {
         }
 
     }
-
-    public TrackComponent getTrack(){
-        return track;
-    }
-    
 
    
     

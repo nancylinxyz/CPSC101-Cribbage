@@ -24,7 +24,7 @@ public class GameSquence{
         deck = new Deck();
         this.board = board;
         scorer = new Scorer(board);
-        this.track = ref.getTrack();
+        //this.track = ref.getTrack();
     }
 
     public void round(){

@@ -11,8 +11,11 @@ public class TrackComponent extends JComponent {
 
     public static void addXPoints(){
         xPoint1 = 10;
-        for (int i = 0; i < 123; i++){
-            xTrack[i] = xPoint1 + 6*i + 5*(i/20);
+        for (int i = 0; i< 2; i++){
+            xTrack[i] = xPoint1 + 6*i + 5*(i/20)+120;
+        }
+        for (int i = 2; i < 123; i++){
+            xTrack[i] = xPoint1 + 6*i + 5*(i/20) +125;
             //System.out.println(xTrack[i]);
         }
 
@@ -22,21 +25,21 @@ public class TrackComponent extends JComponent {
         addXPoints();
         //first 2 pegs are red and rest are black
         for (int i = 0; i < 2; i++){
-            TrackElements tempPeg = new TrackElements(xTrack[i], 310);
+            TrackElements tempPeg = new TrackElements(xTrack[i], 20);
             tempPeg.updateColor(Color.RED);
             trackList1.add(tempPeg);
 
-            TrackElements tempPeg2 = new TrackElements(xTrack[i], 440);
+            TrackElements tempPeg2 = new TrackElements(xTrack[i], 45);
             tempPeg2.updateColor(Color.RED);
             trackList2.add(tempPeg2);
         }
 
         for (int i = 2; i < 123; i++){
-            TrackElements tempPeg = new TrackElements(xTrack[i], 310);
+            TrackElements tempPeg = new TrackElements(xTrack[i], 20);
             tempPeg.updateColor(Color.BLACK);
             trackList1.add(tempPeg);
 
-            TrackElements tempPeg2 = new TrackElements(xTrack[i], 440);
+            TrackElements tempPeg2 = new TrackElements(xTrack[i], 45);
             tempPeg.updateColor(Color.BLACK);
             trackList2.add(tempPeg2);
         }

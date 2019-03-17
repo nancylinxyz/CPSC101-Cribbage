@@ -41,8 +41,8 @@ public class CardCollection {
     
     public void clearCollection() {
 
-        for (Cards card : collection) {
-            collection.remove(card);
+        for (int i = 0; i < collection.size(); i++) {
+            collection.remove(i);
         }
     }
 
