@@ -25,6 +25,7 @@ public class GameSquence{
         this.board = board;
         scorer = new Scorer(board);
         //this.track = ref.getTrack();
+        GameFrame.outPutToGameLog("Welcome to a new game!");
     }
 
     public void round(){
@@ -47,32 +48,37 @@ public class GameSquence{
     //each player draw 1 card each, compare and set dealer
     private void drawing(){
 
-
+        GameFrame.outPutToGameLog("We will draw to determine who will be the dealer first.");
         eachDraw();
         while (playerList.get(0).getHand().getCard(0).valueFinder() == playerList.get(1).getHand().getCard(0).valueFinder()){
-            
+            GameFrame.outPutToGameLog("There is a tie, we will draw again.");
             playerList.get(0).emptyHand();
             playerList.get(1).emptyHand();
             eachDraw();
         }
 
         deck.resetDeck();
+        updateAllTextDisplay();
     }
 
     //goes through 1 round of drawing and comparison
     private void eachDraw(){
         deck.deal(playerList.get(0));
+        GameFrame.outPutToGameLog("You drew: " + playerList.get(0).getHand().getCard(0).getValue() + " of " +playerList.get(0).getHand().getCard(0).getSuit() );
         deck.deal(playerList.get(1));
+        GameFrame.outPutToGameLog("Player 2 drew: " + playerList.get(1).getHand().getCard(0).getValue() + " of " +playerList.get(0).getHand().getCard(0).getSuit() );
     
         if (playerList.get(0).getHand().getCard(0).valueFinder() < playerList.get(1).getHand().getCard(0).valueFinder()){
             dealer = playerList.get(0);
             prone = playerList.get(1);
             //pass on player status
             isDealer0 = true;
+            GameFrame.outPutToGameLog("You are the dealer" );
         } else {
             dealer = playerList.get(1);
             prone = playerList.get(0);
             isDealer0 = false;
+            GameFrame.outPutToGameLog("Player 2 is the dealer" );
         }
     }
 

@@ -217,7 +217,10 @@ public class GameFrame extends JFrame {
             player2IsDealer = "Prone";
         } else player2IsDealer = "Dealer";
     }
-    
+
+    public static void outPutToGameLog(String input){
+        gameLog.append(input +"\n");
+    }
     
 //     public static void main(String[] args){
 //
