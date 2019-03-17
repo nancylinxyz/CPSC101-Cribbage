@@ -17,6 +17,7 @@ class Main{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Cribbage");
         Referee ref = new Referee();
+
         ref.start();
 
 

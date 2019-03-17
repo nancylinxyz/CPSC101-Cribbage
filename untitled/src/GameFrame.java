@@ -18,7 +18,7 @@ public class GameFrame extends JFrame {
     
     private JButton button1, button2, button3, button4, button5, button6/*this one for the cut card*/, quit, OK, Reset;//I'm not sure that we want to keep separately the buttons or not 
     private JPanel panelNorth, panelEast, panelWest, panelSouth, mainPanel, panelCenter;
-    private JLabel status1, status2,player1Score, player2Score, player2NumCards;
+    private static JLabel status1, status2,player1Score, player2Score, player2NumCards;
     private ArrayList<JButton> buttonsList = new ArrayList<JButton>();
     private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
     private static String player1isDealer, player2IsDealer;
@@ -208,8 +208,8 @@ public class GameFrame extends JFrame {
 
     public static void setPlayer1isDealer(boolean t){
         if (t){
-            player1isDealer = "Dealer";
-        } else player1isDealer = "Prone";
+            status1.setText("Status: Dealer");
+        } else status1.setText("Status: Prone");
     }
 
     public static void setPlayer2isDealer(boolean t){
