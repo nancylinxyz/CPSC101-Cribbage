@@ -22,6 +22,7 @@ public class GameFrame extends JFrame {
     private ArrayList<JButton> buttonsList = new ArrayList<JButton>();
     private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
     private static String player1isDealer, player2IsDealer;
+    private static JTextArea gameLog;
     
     
     public GameFrame(/*passing an arraylist cardsCollection from hand*/){
@@ -137,6 +138,10 @@ public class GameFrame extends JFrame {
         panelCenter.setPreferredSize(new Dimension(700,500));
         panelCenter.setLocation(200,100);
         panelCenter.setBorder(BorderFactory.createTitledBorder("Board"));
+        panelCenter.setLayout(new GridLayout(2, 1, 5,5));
+        gameLog = new JTextArea(10,1);
+        gameLog.setEditable(false);
+        panelCenter.add(gameLog);
 
     }
     
