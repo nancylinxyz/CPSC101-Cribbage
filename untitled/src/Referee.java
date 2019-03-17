@@ -17,6 +17,7 @@ public class Referee {
         board = new Board();
         playerHuman = new HumanPlayer(board);
         playerAi = new  AiPlayer(board);
+
         this.track = track;
 
         game = new GameSquence(playerHuman, playerAi, board);

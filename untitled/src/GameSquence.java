@@ -89,6 +89,7 @@ public class GameSquence{
         for (int i = 0; i < 2; i++){
             prone.discardToCrib(prone.decideCard());
             dealer.discardToCrib(dealer.decideCard());
+            updateAllTextDisplay();
         }
     }
 
@@ -97,6 +98,7 @@ public class GameSquence{
         deck.deal(board);
         if (board.getCut().valueFinder() == 11){
             prone.setScore(2);
+            updateAllTextDisplay();
             ref.isWinner(prone);
         }
 
@@ -115,6 +117,7 @@ public class GameSquence{
 
                         //pegging score
                         prone.setScore(scorer.peggingScore(tempCard1));
+                        updateAllTextDisplay();
                         ref.isWinner(prone);
                     }
                 }
@@ -127,6 +130,7 @@ public class GameSquence{
 
                         //TO-Do: pegging score
                         prone.setScore(scorer.peggingScore(tempCard2));
+                        updateAllTextDisplay();
                         ref.isWinner(dealer);
                     }
                 }
@@ -142,13 +146,16 @@ public class GameSquence{
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
         
         prone.setScore(scorer.countHand(prone.getHand(), board.getCut(), false));
+        updateAllTextDisplay();
         ref.isWinner(prone);
         dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut(), false));
+        updateAllTextDisplay();
         ref.isWinner(dealer);
 
         //count crib
         dealer.getCrib().mergeCollection(prone.getCrib());
         dealer.setScore(scorer.countHand(dealer.getCrib(),board.getCut(), true));
+        updateAllTextDisplay();
         ref.isWinner(dealer);
     }
 
@@ -166,6 +173,16 @@ public class GameSquence{
             prone = playerList.get(1);
             isDealer0 = true;
         }
+        updateAllTextDisplay();
+    }
+
+    //update the display
+    private void updateAllTextDisplay(){
+        Buttons.setPlayer1isDealer(isDealer0);
+        Buttons.setPlayer2isDealer(isDealer0);
+        Buttons.setPlayer1ScoreDisplay(playerList.get(0).getScore());
+        Buttons.setPlayer2ScoreDisplay(playerList.get(1).getScore());
+        Buttons.setPlayer2HandSize(playerList.get(1).getHand().size());
     }
 
 }

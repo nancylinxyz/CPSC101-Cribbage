@@ -24,23 +24,21 @@ public class Buttons extends JFrame {
     private JPanel panelNorth, panelEast, panelWest, panelSouth, mainPanel, panelCenter;
     private JLabel status1, status2,player1Score, player2Score, player2NumCards;
     private ArrayList<JButton> buttonsList = new ArrayList<JButton>();
+    private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
+    private static String player1isDealer, player2IsDealer;
     
     
     public Buttons(/*passing an arraylist cardsCollection from hand*/){
-        
-        
-        
-        
-        
+
         
         //player2 is the Aiplayer
-        status1 = new JLabel("status: //it is perone or dealer " + "prone");//give a status
-        status2 = new JLabel("status: //it is prone or deaaler "+ "dealer");
+        status1 = new JLabel("status: " + player1isDealer);//give a status
+        status2 = new JLabel("status: " + player2IsDealer);
         
-        player1Score= new JLabel("your score is: //need to passinf some socre"+ 30);//add a score
-        player2Score = new JLabel("your score is: //nees score" +10);
+        player1Score= new JLabel("Your Score: " + player1ScoreDisplay);//add a score
+        player2Score = new JLabel("Player 2 Score: " + player2ScoreDisplay);
         
-        player2NumCards = new JLabel("cards left: "+ 2);
+        player2NumCards = new JLabel("Cards left: "+ player2HandSize);
         
         createButtons();
         createNorthPanel();
@@ -49,8 +47,7 @@ public class Buttons extends JFrame {
         createWest();
         createCenter();
         createMainPanel();
-        
-        
+
       }
     
     public void createMainPanel(){
@@ -127,7 +124,7 @@ public class Buttons extends JFrame {
         panelWest.setPreferredSize(new Dimension(200,500));
         panelWest.setLocation(0,100);
         panelWest.setLayout(new GridLayout(3,1,5,5));
-        panelWest.setBorder(BorderFactory.createTitledBorder("Player 2 info____"));
+        panelWest.setBorder(BorderFactory.createTitledBorder("Player 2 Dashboard"));
         
         panelWest.add(player2Score);
         panelWest.add(status2);
@@ -191,6 +188,31 @@ public class Buttons extends JFrame {
         Reset.addActionListener(listener);
         //OK.addActionListener(listener);
     
+    }
+
+    //setting display variables
+    public static void setPlayer1ScoreDisplay(int i){
+        player1ScoreDisplay = i;
+    }
+
+    public static void setPlayer2ScoreDisplay(int i){
+        player2ScoreDisplay = i;
+    }
+
+    public static void setPlayer2HandSize(int i){
+        player2HandSize = i;
+    }
+
+    public static void setPlayer1isDealer(boolean t){
+        if (t){
+            player1isDealer = "Dealer";
+        } else player1isDealer = "Prone";
+    }
+
+    public static void setPlayer2isDealer(boolean t){
+        if (t){
+            player2IsDealer = "Prone";
+        } else player2IsDealer = "Dealer";
     }
     
     
