@@ -110,7 +110,9 @@ public class GameSquence{
 
     //draw and set Cut Card
     private void drawCutCard(){
+        GameFrame.outPutToGameLog("Draw the Cut Card." );
         deck.deal(board);
+        GameFrame.outPutToGameLog("Cut Card is: " + board.getCut());
         if (board.getCut().valueFinder() == 11){
             prone.setScore(2);
             updateAllTextDisplay();

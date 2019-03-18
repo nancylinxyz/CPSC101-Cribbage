@@ -15,13 +15,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
-    private JButton quit, Reset;
+    private JButton Reset;
     private JPanel panelNorth, panelEast, panelWest, panelSouth, mainPanel, panelCenter;
-    private static JLabel status1, status2, player1Score, player2Score, player2NumCards;
-    private static ArrayList<JButton> buttonsList = new ArrayList<>();
+    private static JLabel status1, status2, player1Score, player2Score;
+    static JLabel PlayedCards, player2NumCards;
+    static ArrayList<JButton> buttonsList = new ArrayList<>();
     private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
+    static JButton quit;
 
     private static int logLength = 1;
 
@@ -31,8 +33,9 @@ public class GameFrame extends JFrame {
     private static String[] cardsHeart = {"🂱", "🂲", "🂳", "🂴", "🂵", "🂶", "🂷", "🂸", "🂹", "🂺", "🂻", "🂽", "🂾"};// cards of heart
     private static String backCard = "🂠";
 
-    private static ArrayList<String> player1Hand = new ArrayList<>();
-    private static ArrayList<String> player2Hand = new ArrayList<>();
+    static ArrayList<String> player1Hand = new ArrayList<>();
+    static ArrayList<String> player2Hand = new ArrayList<>();
+    static int index;
 
 
     public GameFrame(/*passing an arraylist cardsCollection from hand*/) {
@@ -46,6 +49,7 @@ public class GameFrame extends JFrame {
         player2Score = new JLabel("Player 2 Score: " + player2ScoreDisplay);
 
         player2NumCards = new JLabel("Cards left: " + player2HandSize);
+        PlayedCards = new JLabel("");
 
        // createButtons();
         createNorthPanel();
@@ -155,27 +159,46 @@ public class GameFrame extends JFrame {
         gameLog.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(gameLog);
         panelCenter.add(scrollPane);
+        panelCenter.add(PlayedCards);
 
     }
 
-    class Click implements ActionListener {
-
-        public void actionPerformed(ActionEvent event) {
-
-            for (int i = 0; i < buttonsList.size(); i++) {
-                if (event.getSource() == buttonsList.get(i))// in this if we check the event of the card first and then OK button
-                {
-                    buttonsList.get(i).setVisible(false);
-                }
-                //panelSouth.remove(buttonsList.get(i));
-            }
-        }
-    }
+//    class Click implements ActionListener {
+//
+//        public void actionPerformed(ActionEvent event) {
+//
+//
+//            for (int i = 0; i < buttonsList.size(); i++) {
+//                if (event.getSource() == buttonsList.get(i))// in this if we check the event of the card first and then OK button
+//                {
+//                    index = player1Hand.indexOf(buttonsList.get(i).getText());
+//                    buttonsList.get(i).setVisible(false);
+//                    // String tempCard ="" + buttonsList.get(i).getText();/// check this for the string of cards
+//                    PlayedCards.setText(PlayedCards.getText() + buttonsList.get(i).getText());
+//                    PlayedCards.setText(PlayedCards.getText() + player2Hand.get(i));//this one just check
+//                    player2Hand.remove(i);
+//
+//                    player2NumCards.setText("cards left: " + (player2Hand.size()) );//checking fro the cards left
+//
+//                    PlayedCards.setFont(new Font("Arial", Font.PLAIN, 60));
+//                    PlayedCards.setLocation(300, 150);
+//                }
+//            }
+//            //panelSouth.remove(buttonsList.get(i));
+//
+//
+//            if (event.getSource() == quit) {
+//                System.exit(1);
+//            }
+//
+//        }
+//    }
 
     private void createButtons() {
         //create 6 blank buttons
         for (int i = 0; i < 6; i++) {
             player1Hand.add("🂠");
+            player2Hand.add("🂠");
             buttonsList.add(new JButton(player1Hand.get(i)));
             for (int j = 0; j < buttonsList.size(); j++) {
                 buttonsList.get(j).setFont(new Font("Arial", Font.PLAIN, 60));
@@ -257,7 +280,7 @@ public class GameFrame extends JFrame {
         //System.out.println(cards.size());
         for (int i = 0; i < cards.size(); i++) {
             player2Hand.set(i, handToCardDisplay(cards.getCard(i)));
-            System.out.println(player2Hand.get(i));
+            //System.out.println(player2Hand.get(i));
         }
     }
 
@@ -267,4 +290,6 @@ public class GameFrame extends JFrame {
             buttonsList.get(i).setText(tempText);
         }
     }
+
+
 }
