@@ -20,7 +20,7 @@ public class GameFrame extends JFrame {
 
     private static JLabel status1, status2, player1Score, player2Score, peggingScore, cutCard, crib;
 
-    static JLabel PlayedCards, player2NumCards;
+    static JLabel PlayedCards, player2NumCards, player1HandDisplay;
 
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
@@ -57,8 +57,9 @@ public class GameFrame extends JFrame {
         peggingScore = new JLabel("Pegging score: 0");
         cutCard = new JLabel("Cut Card:");
         crib = new JLabel("🂠 🂠 🂠 🂠");
+        player1HandDisplay = new JLabel("🂠 🂠 🂠 🂠 🂠 🂠");
 
-       // createButtons();
+        createButtons();
         createNorthPanel();
         createEast();
         createSouthPanel();
@@ -103,27 +104,30 @@ public class GameFrame extends JFrame {
         panelSouth = new JPanel();
         panelSouth.setPreferredSize(new Dimension(1100, 100));
         panelSouth.setLocation(0, 600);
-        createButtons();
+        //createButtons();
 
-        //panelSouth.setLayout(new GridLayout(1,9,3,3));
-        for (int i = 0; i < buttonsList.size(); i++) {
-            buttonsList.get(i).setLocation(10 * (i + 1) + 5, 605);
-            buttonsList.get(i).setPreferredSize(new Dimension(80, 90));
-            panelSouth.add(buttonsList.get(i));
+//        //panelSouth.setLayout(new GridLayout(1,9,3,3));
+//        for (int i = 0; i < buttonsList.size(); i++) {
+//            buttonsList.get(i).setLocation(10 * (i + 1) + 5, 605);
+//            buttonsList.get(i).setPreferredSize(new Dimension(80, 90));
+//            panelSouth.add(buttonsList.get(i));
+//
+//        }
+        player1HandDisplay.setFont(new Font("Arial", Font.PLAIN, 60));
+        panelSouth.add(player1HandDisplay);
 
-        }
         quit.setLocation(1030, 610);
         quit.setPreferredSize(new Dimension(50, 40));
 
         Reset.setLocation(1030, 670);
         Reset.setPreferredSize(new Dimension(50, 40));
 
-        //OK.setLocation(1030,670);
-        //OK.setPreferredSize(new Dimension(50,40));
+//        OK.setLocation(1030,670);
+//        OK.setPreferredSize(new Dimension(50,40));
 
         panelSouth.add(quit);
         panelSouth.add(Reset);
-        // panelSouth.add(OK);
+//         panelSouth.add(OK);
 
 
     }
@@ -209,10 +213,10 @@ public class GameFrame extends JFrame {
         for (int i = 0; i < 6; i++) {
             player1Hand.add("🂠");
             player2Hand.add("🂠");
-            buttonsList.add(new JButton(player1Hand.get(i)));
-            for (int j = 0; j < buttonsList.size(); j++) {
-                buttonsList.get(j).setFont(new Font("Arial", Font.PLAIN, 60));
-            }
+//            buttonsList.add(new JButton(player1Hand.get(i)));
+//            for (int j = 0; j < buttonsList.size(); j++) {
+//                buttonsList.get(j).setFont(new Font("Arial", Font.PLAIN, 60));
+//            }
 
         }
 
@@ -285,12 +289,12 @@ public class GameFrame extends JFrame {
 
     public static void setPlayer1Hand(CardCollection cards, Players player) {
         //System.out.println(cards.size());
-        player1 = player;
-        for (int i = 0; i < cards.size(); i++) {
-
-            player1Hand.set(i, handToCardDisplay(cards.getCard(i)));
-        }
-        updateCardsButtons();
+//        player1 = player;
+//        for (int i = 0; i < cards.size(); i++) {
+//
+//            player1Hand.set(i, handToCardDisplay(cards.getCard(i)));
+//        }
+//        updateCardsButtons();
     }
 
     public static void setPlayer2Hand(CardCollection cards, Players player) {
@@ -320,24 +324,28 @@ public class GameFrame extends JFrame {
     public static void updatePeggingCards(Board board){
         board.getCardPlayed();
         String tempString = "";
-        String tempString1 = "";
-        String tempString2 = "";
-        if (board.getCardPlayed().size()<5) {
-            for (int i = 0; i < board.getCardPlayed().size(); i++) {
-                tempString = tempString + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
-            }
-        } else {
-            for (int i = 0; i < 4; i++) {
-                tempString1 = tempString1 + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
-            }
-            for (int j = 4; j <board.getCardPlayed().size(); j++){
-                tempString2 = tempString2 + " " + handToCardDisplay(board.getCardPlayed().getCard(j));
-            }
-            tempString = tempString1 +"\n"+ tempString2;
+
+
+        for (int i = 0; i < board.getCardPlayed().size(); i++) {
+            tempString = tempString + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
         }
 
+
         PlayedCards.setText(tempString);
-        PlayedCards.setFont(new Font("Arial", Font.PLAIN, 60));
+        PlayedCards.setFont(new Font("Arial", Font.PLAIN, 55));
+    }
+
+    public static void updatePlayer1HandDisplay(Players player){
+        player.getHand();
+        String tempString = "";
+
+        for (int i = 0; i < player.getHand().size(); i++) {
+            tempString = tempString + " " + handToCardDisplay(player.getHand().getCard(i));
+        }
+
+
+        player1HandDisplay.setText(tempString);
+
     }
 
 }

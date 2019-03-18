@@ -265,6 +265,10 @@ public class GameSquence{
             GameFrame.updateCutDisplay(board.getCut());
         }
 
+        if (playerList.get(0).getHand().size()>0){
+            GameFrame.updatePlayer1HandDisplay(playerList.get(0));
+        }
+
         GameFrame.updatePeggingScore(board.getScore());
         if (board.getCardPlayed().size()>0){
             GameFrame.updatePeggingCards(board);
