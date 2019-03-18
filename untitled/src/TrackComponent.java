@@ -54,23 +54,24 @@ public class TrackComponent extends JComponent {
         }
     }
 
-    public void track1PegToGreen(int i){
-        trackList1.get(i).updateColor(Color.GREEN);
+    public void track1Update(int i){
+        for (int j = 2; j < 123; j++){
+            //trackList1.get(j).updateColor(Color.BLACK);
+        }
+        TrackElements tempPeg = new TrackElements(xTrack[i+2], 20);
+        tempPeg.updateColor(Color.GREEN);
+        trackList1.set(i+2,tempPeg);
+
         repaint();
     }
 
-    public void track1PegToBlack(int i){
-        trackList1.get(i).updateColor(Color.BLACK);
-        repaint();
-    }
 
-    public void track2PegToGreen(int i){
-        trackList2.get(i).updateColor(Color.GREEN);
-        repaint();
-    }
+    public void track2Update(int i){
+        for (int j = 2; j < 123; j++){
+            trackList2.get(j).updateColor(Color.BLACK);
+        }
+        trackList2.get(i+2).updateColor(Color.GREEN);
 
-    public void track2PegToBlack(int i){
-        trackList2.get(i).updateColor(Color.BLACK);
         repaint();
     }
 }
