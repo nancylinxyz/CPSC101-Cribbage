@@ -69,11 +69,15 @@ public class GameSquence{
             //pass on player status
             isDealer0 = true;
             GameFrame.outPutToGameLog("You are the dealer" );
-        } else {
+        } else if(playerList.get(0).getHand().getCard(0).valueFinder() > playerList.get(1).getHand().getCard(0).valueFinder() ) {
             dealer = playerList.get(1);
             prone = playerList.get(0);
             isDealer0 = false;
             GameFrame.outPutToGameLog("Player 2 is the dealer" );
+        } else {
+
+            GameFrame.outPutToGameLog("There is a tie, we will draw again.");
+            eachDraw();
         }
     }
 
@@ -86,7 +90,8 @@ public class GameSquence{
             deck.deal(dealer);
         }
         GameFrame.setPlayer1Hand(playerList.get(0).getHand());
-       // GameFrame.setPlayer2Hand(playerList.get(1).getHand());
+        updateAllTextDisplay();
+        GameFrame.setPlayer2Hand(playerList.get(1).getHand());
     }
 
     //allow each player to discard 2 cards to crib

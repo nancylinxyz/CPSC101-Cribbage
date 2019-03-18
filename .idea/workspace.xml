@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6f9dbb1a-a599-427d-b1c7-a45bd34aa5d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/CardCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/GameFrame$Click.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/GameFrame$Click.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/untitled/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/GameFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/untitled/GameSquence.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/GameSquence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled/src/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/CardCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled/src/GameSquence.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/GameSquence.java" afterDir="false" />
     </list>
@@ -31,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/untitled/src/GameSquence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+            <state relative-caret-position="164">
+              <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
               <folding>
                 <element signature="e#0#4134#0" expanded="true" />
                 <element signature="e#1151#1152#0" expanded="true" />
@@ -81,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/untitled/src/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="248" column="41" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
+              <caret line="258" column="68" lean-forward="true" selection-start-line="258" selection-start-column="68" selection-end-line="258" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6963#6964#0" expanded="true" />
@@ -183,9 +180,9 @@
         <option value="$PROJECT_DIR$/untitled/src/Main.java" />
         <option value="$PROJECT_DIR$/untitled/src/Board.java" />
         <option value="$PROJECT_DIR$/untitled/src/Cards.java" />
-        <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
         <option value="$PROJECT_DIR$/untitled/src/CardCollection.java" />
         <option value="$PROJECT_DIR$/untitled/src/GameSquence.java" />
+        <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
       </list>
     </option>
   </component>
@@ -232,7 +229,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552868927543" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552869400054" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -525,27 +522,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GameSquence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#4134#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/untitled/src/GameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="248" column="41" selection-start-line="248" selection-start-column="41" selection-end-line="248" selection-end-column="41" />
+          <caret line="258" column="68" lean-forward="true" selection-start-line="258" selection-start-column="68" selection-end-line="258" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6963#6964#0" expanded="true" />
             <element signature="e#7079#7080#0" expanded="true" />
             <element signature="e#7207#7208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/untitled/src/GameSquence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#4134#0" expanded="true" />
-            <element signature="e#1151#1152#0" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
           </folding>
         </state>
       </provider>

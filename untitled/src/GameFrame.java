@@ -246,14 +246,20 @@ public class GameFrame extends JFrame {
     }
 
     public static void setPlayer1Hand(CardCollection cards) {
-        System.out.println(cards.size());
+        //System.out.println(cards.size());
         for (int i = 0; i < cards.size(); i++) {
             player1Hand.set(i, handToCardDisplay(cards.getCard(i)));
-            System.out.println(player1Hand.get(i));
         }
         updateCardsButtons();
     }
 
+    public static void setPlayer2Hand(CardCollection cards) {
+        //System.out.println(cards.size());
+        for (int i = 0; i < cards.size(); i++) {
+            player2Hand.set(i, handToCardDisplay(cards.getCard(i)));
+            System.out.println(player2Hand.get(i));
+        }
+    }
 
     private static void updateCardsButtons() {
         for (int i = 0; i < player1Hand.size(); i++) {
