@@ -15,15 +15,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GameFrame extends JFrame {
-    private JButton Reset;
+    private JButton Reset, quit;
     private JPanel panelNorth, panelEast, panelWest, panelSouth, mainPanel, panelCenter;
-    private static JLabel status1, status2, player1Score, player2Score;
+
+    private static JLabel status1, status2, player1Score, player2Score, peggingScore, cutCard, crib;
+
     static JLabel PlayedCards, player2NumCards;
-    static ArrayList<JButton> buttonsList = new ArrayList<>();
-    private static int player1ScoreDisplay, player2ScoreDisplay, player2HandSize;
+
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
-    static JButton quit;
+
 
     private static int logLength = 1;
 
@@ -33,6 +34,7 @@ public class GameFrame extends JFrame {
     private static String[] cardsHeart = {"🂱", "🂲", "🂳", "🂴", "🂵", "🂶", "🂷", "🂸", "🂹", "🂺", "🂻", "🂽", "🂾"};// cards of heart
     private static String backCard = "🂠";
 
+    static ArrayList<JButton> buttonsList = new ArrayList<>();
     static ArrayList<String> player1Hand = new ArrayList<>();
     static ArrayList<String> player2Hand = new ArrayList<>();
     static int index;
@@ -47,11 +49,14 @@ public class GameFrame extends JFrame {
         status1 = new JLabel("status: undecided");//give a status
         status2 = new JLabel("status: undecided");
 
-        player1Score = new JLabel("Your Score: " + player1ScoreDisplay);//add a score
-        player2Score = new JLabel("Player 2 Score: " + player2ScoreDisplay);
+        player1Score = new JLabel("Your Score: 0" );//add a score
+        player2Score = new JLabel("Player 2 Score: 0");
 
-        player2NumCards = new JLabel("Cards left: " + player2HandSize);
-        PlayedCards = new JLabel("");
+        player2NumCards = new JLabel("No cards.");
+        PlayedCards = new JLabel("No cards has been played.");
+        peggingScore = new JLabel("Pegging score: 0");
+        cutCard = new JLabel("Cut Card:");
+        crib = new JLabel("🂠 🂠 🂠 🂠");
 
        // createButtons();
         createNorthPanel();
@@ -156,12 +161,15 @@ public class GameFrame extends JFrame {
         panelCenter.setPreferredSize(new Dimension(700, 500));
         panelCenter.setLocation(200, 100);
         panelCenter.setBorder(BorderFactory.createTitledBorder("Board"));
-        panelCenter.setLayout(new GridLayout(3, 1, 5, 5));
+        panelCenter.setLayout(new GridLayout(3, 2, 5, 5));
         gameLog = new JTextArea(logLength, 1);
         gameLog.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(gameLog);
         panelCenter.add(scrollPane);
+        panelCenter.add(cutCard);
         panelCenter.add(PlayedCards);
+        panelCenter.add(peggingScore);
+        panelCenter.add(crib);
 
     }
 
@@ -224,6 +232,7 @@ public class GameFrame extends JFrame {
 
     }
 
+   // public static void;
 
     //setting display variables
     public static void setPlayer1ScoreDisplay(int i) {
@@ -257,7 +266,7 @@ public class GameFrame extends JFrame {
         //output log or scroll pane
     }
 
-    public static String handToCardDisplay(Cards card) {
+    private static String handToCardDisplay(Cards card) {
         if (card.getSuit() == Suit.Diamonds) {
             return cardsDimond[card.valueFinder() - 1];
         }
@@ -296,5 +305,13 @@ public class GameFrame extends JFrame {
         }
     }
 
+    public static void updateCutDisplay(Cards card){
+        cutCard.setText("Cut Card: \n" + card.toString()+ handToCardDisplay(card));
+        //cutCard.setFont(new Font("Arial", Font.PLAIN, 30));
+    }
+
+    public static void updatePeggingScore(int i){
+        peggingScore.setText("Pegging Score Is: " + i);
+    }
 
 }

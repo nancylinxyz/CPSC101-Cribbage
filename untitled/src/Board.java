@@ -55,6 +55,7 @@ public class Board {
 
      public void setCurrentCards(Cards c){
          currentCards.addCard(c);
+         currentPeggingScore.addScore(c.cardValue());
      }
 
      public CardCollection getCutCard(){

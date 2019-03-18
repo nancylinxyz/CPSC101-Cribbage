@@ -77,12 +77,16 @@ public class GameSquence{
         } else {
 
             GameFrame.outPutToGameLog("There is a tie, we will draw again.");
+            playerList.get(0).getHand().clearCollection();
+            playerList.get(1).getHand().clearCollection();
+            deck.resetDeck();
             eachDraw();
         }
     }
 
     //deal 6 cards to each players
     private void dealHands() {
+        GameFrame.outPutToGameLog("Dealing" );
         for (int i = 0; i < 6; i++) {
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Prone" );
             deck.deal(prone);
@@ -92,6 +96,7 @@ public class GameSquence{
         GameFrame.setPlayer1Hand(playerList.get(0).getHand(), playerList.get(0));
         updateAllTextDisplay();
         GameFrame.setPlayer2Hand(playerList.get(1).getHand(), playerList.get(1));
+        updateAllTextDisplay();
     }
 
     //allow each player to discard 2 cards to crib
@@ -119,7 +124,7 @@ public class GameSquence{
             updateAllTextDisplay();
             ref.isWinner(prone);
         }
-
+        updateAllTextDisplay();
     }
     
 
@@ -135,16 +140,19 @@ public class GameSquence{
                     if (ref.canPlayCard(tempCard1)) {
                         prone.playHand(tempCard1, board);
                         GameFrame.outPutToGameLog("Prone has played a card." );
+                        System.out.println("stuck here 1");
+                        updateAllTextDisplay();
                         //pegging score
                         prone.setScore(scorer.peggingScore(tempCard1));
                         updateAllTextDisplay();
                         ref.isWinner(prone);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
                 } else GameFrame.outPutToGameLog("Prone has said 'Go'" );
-
+                System.out.println("stuck here 2");
                 //whether dealer can play
                 if (ref.canPeg(dealer)) {
                     GameFrame.outPutToGameLog("Dealer's turn to play 1 card." );
+                    updateAllTextDisplay();
                     Cards tempCard2 = dealer.decideCard();
                     if (ref.canPlayCard(tempCard2)) {
                         dealer.playHand(tempCard2, board);
@@ -156,6 +164,7 @@ public class GameSquence{
                     } else GameFrame.outPutToGameLog("You can't play that card." );
                 } else GameFrame.outPutToGameLog("Dealer has said 'Go'" );
             }
+            System.out.println("stuck here 2");
             scorer.resetPeggingScore();
             board.resetScore();
             board.removeCards();
@@ -209,6 +218,11 @@ public class GameSquence{
         GameFrame.setPlayer1ScoreDisplay(playerList.get(0).getScore());
         GameFrame.setPlayer2ScoreDisplay(playerList.get(1).getScore());
         GameFrame.setPlayer2HandSize(playerList.get(1).getCardNumber());
+        if (board.getCutCard().size()>0){
+            GameFrame.updateCutDisplay(board.getCut());
+        }
+
+        GameFrame.updatePeggingScore(board.getScore());
     }
 
 }

@@ -21,8 +21,8 @@ public class HumanPlayer extends Players {
     @Override
     public Cards decideCard(){
 
-        System.out.println(cardIndex);
-        return super.getHand().getCard(cardIndex);
+        //System.out.println(cardIndex);
+        return super.getHand().getCard(0);
 
         }
 //        System.out.println("Input card Card index (example: first card from left is 0):");
