@@ -15,7 +15,7 @@ public class GameSquence{
     private boolean isDealer0; //isHamanPlayer dealer?
     private Referee ref;
     private Scorer scorer;
-    private TrackComponent track;
+    //private TrackComponent track;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
@@ -50,13 +50,8 @@ public class GameSquence{
 
         GameFrame.outPutToGameLog("We will draw to determine who will be the dealer first.");
         eachDraw();
-        while (playerList.get(0).getHand().getCard(0).valueFinder() == playerList.get(1).getHand().getCard(0).valueFinder()){
-            GameFrame.outPutToGameLog("There is a tie, we will draw again.");
-            playerList.get(0).emptyHand();
-            playerList.get(1).emptyHand();
-            eachDraw();
-        }
-
+        playerList.get(0).getHand().clearCollection();
+        playerList.get(1).getHand().clearCollection();
         deck.resetDeck();
         updateAllTextDisplay();
     }
@@ -87,11 +82,11 @@ public class GameSquence{
         for (int i = 0; i < 6; i++) {
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Prone" );
             deck.deal(prone);
-            GameFrame.outPutToGameLog("Deal a card "+ (i+1) + " to Dealer" );
+            GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
         }
         GameFrame.setPlayer1Hand(playerList.get(0).getHand());
-        GameFrame.setPlayer2Hand(playerList.get(1).getHand());
+       // GameFrame.setPlayer2Hand(playerList.get(1).getHand());
     }
 
     //allow each player to discard 2 cards to crib

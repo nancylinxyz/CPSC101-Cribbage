@@ -40,10 +40,9 @@ public class CardCollection {
     }
     
     public void clearCollection() {
+            collection.clear();
 
-        for (int i = 0; i < collection.size(); i++) {
-            collection.remove(i);
-        }
+
     }
 
     public void shuffleCards(){
