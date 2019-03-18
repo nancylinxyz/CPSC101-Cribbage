@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6f9dbb1a-a599-427d-b1c7-a45bd34aa5d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/AiPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/AiPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/GameSquence.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/GameSquence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/HumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/HumanPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/untitled/Players.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/Players.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled/src/GameSquence.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/GameSquence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled/src/Players.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Players.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/untitled/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/untitled/GameFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/Scorer.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled/src/Scorer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/untitled/src/GameSquence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="185" column="26" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
+            <state relative-caret-position="-670">
+              <caret line="169" column="47" lean-forward="true" selection-start-line="169" selection-start-column="47" selection-end-line="169" selection-end-column="47" />
               <folding>
                 <element signature="e#0#4134#0" expanded="true" />
                 <element signature="e#1151#1152#0" expanded="true" />
@@ -32,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/untitled/src/Scorer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="331" column="49" selection-start-line="331" selection-start-column="49" selection-end-line="331" selection-end-column="49" />
+            <state relative-caret-position="170">
+              <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
               <folding>
                 <element signature="method#is15#0;class#Scorer#0" />
                 <element signature="method#isPair#0;class#Scorer#0" />
@@ -84,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/untitled/src/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
+            <state relative-caret-position="316">
+              <caret line="315" column="55" lean-forward="true" selection-start-line="315" selection-start-column="55" selection-end-line="315" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#8133#8134#0" expanded="true" />
@@ -197,10 +194,10 @@
         <option value="$PROJECT_DIR$/untitled/src/Referee.java" />
         <option value="$PROJECT_DIR$/untitled/src/Board.java" />
         <option value="$PROJECT_DIR$/untitled/src/HumanPlayer.java" />
-        <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
-        <option value="$PROJECT_DIR$/untitled/src/Scorer.java" />
         <option value="$PROJECT_DIR$/untitled/src/Players.java" />
         <option value="$PROJECT_DIR$/untitled/src/GameSquence.java" />
+        <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
+        <option value="$PROJECT_DIR$/untitled/src/Scorer.java" />
       </list>
     </option>
   </component>
@@ -247,7 +244,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552896548368" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552896944313" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -309,8 +306,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="261" y="176" width="1428" height="1091" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22943723" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22943723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -319,7 +317,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27327326" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27327326" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -525,36 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/untitled/src/GameFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="297" column="9" selection-start-line="297" selection-start-column="9" selection-end-line="297" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8133#8134#0" expanded="true" />
-            <element signature="e#8249#8250#0" expanded="true" />
-            <element signature="e#8377#8378#0" expanded="true" />
-            <element signature="e#10463#10464#0" expanded="true" />
-            <element signature="e#10490#10491#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/untitled/src/Scorer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="331" column="49" selection-start-line="331" selection-start-column="49" selection-end-line="331" selection-end-column="49" />
-          <folding>
-            <element signature="method#is15#0;class#Scorer#0" />
-            <element signature="method#isPair#0;class#Scorer#0" />
-            <element signature="method#isThreeKind#0;class#Scorer#0" />
-            <element signature="method#isFourKind#0;class#Scorer#0" />
-            <element signature="method#isFlush#0;class#Scorer#0" />
-            <element signature="method#cutCardScore#0;class#Scorer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/untitled/src/Players.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="649">
@@ -577,12 +545,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/untitled/src/GameSquence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="185" column="26" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
+        <state relative-caret-position="-670">
+          <caret line="169" column="47" lean-forward="true" selection-start-line="169" selection-start-column="47" selection-end-line="169" selection-end-column="47" />
           <folding>
             <element signature="e#0#4134#0" expanded="true" />
             <element signature="e#1151#1152#0" expanded="true" />
             <element signature="e#1174#1175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/GameFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="315" column="55" lean-forward="true" selection-start-line="315" selection-start-column="55" selection-end-line="315" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8133#8134#0" expanded="true" />
+            <element signature="e#8249#8250#0" expanded="true" />
+            <element signature="e#8377#8378#0" expanded="true" />
+            <element signature="e#10463#10464#0" expanded="true" />
+            <element signature="e#10490#10491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untitled/src/Scorer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
+          <folding>
+            <element signature="method#is15#0;class#Scorer#0" />
+            <element signature="method#isPair#0;class#Scorer#0" />
+            <element signature="method#isThreeKind#0;class#Scorer#0" />
+            <element signature="method#isFourKind#0;class#Scorer#0" />
+            <element signature="method#isFlush#0;class#Scorer#0" />
+            <element signature="method#cutCardScore#0;class#Scorer#0" />
           </folding>
         </state>
       </provider>

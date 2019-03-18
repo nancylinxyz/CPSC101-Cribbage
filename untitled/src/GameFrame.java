@@ -316,8 +316,20 @@ public class GameFrame extends JFrame {
     public static void updatePeggingCards(Board board){
         board.getCardPlayed();
         String tempString = "";
-        for (int i =0; i< board.getCardPlayed().size(); i++){
-            tempString = tempString +" "+ handToCardDisplay(board.getCardPlayed().getCard(i));
+        String tempString1 = "";
+        String tempString2 = "";
+        if (board.getCardPlayed().size()<5) {
+            for (int i = 0; i < board.getCardPlayed().size(); i++) {
+                tempString = tempString + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
+            }
+        } else {
+            for (int i = 0; i < 4; i++) {
+                tempString1 = tempString1 + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
+            }
+            for (int j = 4; j <board.getCardPlayed().size(); j++){
+                tempString2 = tempString2 + " " + handToCardDisplay(board.getCardPlayed().getCard(j));
+            }
+            tempString = tempString1 +"\n"+ tempString2;
         }
 
         PlayedCards.setText(tempString);

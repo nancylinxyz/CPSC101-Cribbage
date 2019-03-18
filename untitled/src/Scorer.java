@@ -41,14 +41,14 @@ public class Scorer
             handScore +=  2;
             //end subround
         }
-        System.out.println("scorer point 1");
+        //System.out.println("scorer point 1");
         if(pegCardNum > 1){
             if(isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
             {
                 handScore +=  2;
             }
         }
-        System.out.println("scorer point 2");
+       // System.out.println("scorer point 2");
         //checking for flush
         if(pegCardNum > 4){
             if (peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum -2).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum-3).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum - 4).getSuit() && peggingArray.getCard(pegCardNum-2).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
@@ -63,20 +63,20 @@ public class Scorer
             handScore +=  12;
             }
         }
-        System.out.println("scorer point 3");
+        //System.out.println("scorer point 3");
         //checking for 3 of a kind
         if (pegCardNum >3 ) {
             if (isThreeKind(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2), peggingArray.getCard(pegCardNum - 3))) {
                 handScore += 6;
             }
         }
-        System.out.println("scorer point 4");
+        //System.out.println("scorer point 4");
         if (pegCardNum > 2) {
             if (isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2))) {
                 handScore += 2;
             }
         }
-        System.out.println("scorer point 5");
+        //System.out.println("scorer point 5");
 
 //        if(pegCardNum > 2)
 //        {
