@@ -89,14 +89,14 @@ public class GameSquence{
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
         }
-        GameFrame.setPlayer1Hand(playerList.get(0).getHand());
+        GameFrame.setPlayer1Hand(playerList.get(0).getHand(), playerList.get(0));
         updateAllTextDisplay();
-        GameFrame.setPlayer2Hand(playerList.get(1).getHand());
+        GameFrame.setPlayer2Hand(playerList.get(1).getHand(), playerList.get(1));
     }
 
     //allow each player to discard 2 cards to crib
     private void toCrib(){
-        GameFrame.outPutToGameLog("Each player discard 2 cards to Crib." );
+        GameFrame.outPutToGameLog("Instruction: Each player discard 2 cards to Crib." );
         for (int i = 0; i < 2; i++){
             GameFrame.outPutToGameLog("Prone's turn to discard 1 card to Crib." );
             prone.discardToCrib(prone.decideCard());
@@ -115,6 +115,7 @@ public class GameSquence{
         GameFrame.outPutToGameLog("Cut Card is: " + board.getCut());
         if (board.getCut().valueFinder() == 11){
             prone.setScore(2);
+            GameFrame.outPutToGameLog("Prone scores 2 points." );
             updateAllTextDisplay();
             ref.isWinner(prone);
         }
@@ -123,24 +124,27 @@ public class GameSquence{
     
 
     private void pegging(){
+        GameFrame.outPutToGameLog("Start pegging: play 1 card at a time." );
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             //whether prone can play
 
             while (board.getScore()<31) {
                 if (ref.canPeg(prone)) {
+                    GameFrame.outPutToGameLog("Prone's turn to play 1 card." );
                     Cards tempCard1 = prone.decideCard();
                     if (ref.canPlayCard(tempCard1)) {
                         prone.playHand(tempCard1, board);
-
+                        GameFrame.outPutToGameLog("Prone has played a card." );
                         //pegging score
                         prone.setScore(scorer.peggingScore(tempCard1));
                         updateAllTextDisplay();
                         ref.isWinner(prone);
-                    }
-                }
+                    } else GameFrame.outPutToGameLog("You can't play that card." );
+                } else GameFrame.outPutToGameLog("Prone has said 'Go'" );
 
                 //whether dealer can play
                 if (ref.canPeg(dealer)) {
+                    GameFrame.outPutToGameLog("Dealer's turn to play 1 card." );
                     Cards tempCard2 = dealer.decideCard();
                     if (ref.canPlayCard(tempCard2)) {
                         dealer.playHand(tempCard2, board);
@@ -149,8 +153,8 @@ public class GameSquence{
                         prone.setScore(scorer.peggingScore(tempCard2));
                         updateAllTextDisplay();
                         ref.isWinner(dealer);
-                    }
-                }
+                    } else GameFrame.outPutToGameLog("You can't play that card." );
+                } else GameFrame.outPutToGameLog("Dealer has said 'Go'" );
             }
             scorer.resetPeggingScore();
             board.resetScore();
@@ -161,15 +165,17 @@ public class GameSquence{
 
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
-        
+        GameFrame.outPutToGameLog("Count Prone's hand." );
         prone.setScore(scorer.countHand(prone.getHand(), board.getCut(), false));
         updateAllTextDisplay();
         ref.isWinner(prone);
+        GameFrame.outPutToGameLog("Count Dealer's hand." );
         dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut(), false));
         updateAllTextDisplay();
         ref.isWinner(dealer);
 
         //count crib
+        GameFrame.outPutToGameLog("Count Crib." );
         dealer.getCrib().mergeCollection(prone.getCrib());
         dealer.setScore(scorer.countHand(dealer.getCrib(),board.getCut(), true));
         updateAllTextDisplay();
@@ -181,14 +187,17 @@ public class GameSquence{
 
     //changeDealer only works for 2 players
     private void changeDealer(){
+        GameFrame.outPutToGameLog("Change dealer." );
         if (isDealer0){
             dealer = playerList.get(1);
             prone = playerList.get(0);
             isDealer0 = false;
+            GameFrame.outPutToGameLog("You are now the prone." );
         } else {
             dealer = playerList.get(0);
             prone = playerList.get(1);
             isDealer0 = true;
+            GameFrame.outPutToGameLog("You are now the dealer." );
         }
         updateAllTextDisplay();
     }

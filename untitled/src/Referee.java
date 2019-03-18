@@ -55,7 +55,6 @@ public class Referee {
         if (p.getScore()<121){
             return false;
         } else{
-            //display winner
             return true;
         }
 
