@@ -131,6 +131,7 @@ public class GameSquence{
 
     private void pegging(){
         GameFrame.outPutToGameLog("Start pegging: play 1 card at a time." );
+        boolean isDealerPegScore = false;//for last card score
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
             dealer.setGo(false);
             prone.setGo(false);
@@ -153,6 +154,12 @@ public class GameSquence{
                         ref.isWinner(prone);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
                 } else {
+                    if (dealer.getGo()){
+                        isDealerPegScore = true;
+                        prone.setGo(true);
+                        GameFrame.outPutToGameLog("Prone has said 'Go'" );
+                    }
+                    isDealerPegScore = false;
                     prone.setGo(true);
                     GameFrame.outPutToGameLog("Prone has said 'Go'" );
                 }
@@ -179,15 +186,23 @@ public class GameSquence{
                 }
 
                 if (dealer.getGo() && prone.getGo()){
+                    if (isDealerPegScore){
+                        dealer.setScore(1);
+                        GameFrame.outPutToGameLog("Dealer scored last card point." );
+                    } else {
+                        prone.setScore(1);
+                        GameFrame.outPutToGameLog("Dealer scored last card point." );
+                    }
                     scorer.resetPeggingScore();
                     board.resetScore();
                     board.removeCards();
                     updateAllTextDisplay();
-                    System.out.println("stuck here 6");
+                    isDealerPegScore = false;
+                    //System.out.println("stuck here 6");
                     break;
                 }
             }
-            System.out.println("stuck here 2");
+//            System.out.println("stuck here 2");
             scorer.resetPeggingScore();
             board.resetScore();
             board.removeCards();
