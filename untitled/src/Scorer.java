@@ -82,7 +82,7 @@ public class Scorer
 //        {
 //
 //        }
-
+        //is15(peggingArray)
         handScore += isRunPeg(peggingArray);
         return handScore;
     }
@@ -94,7 +94,7 @@ public class Scorer
         peggingArray.clearCollection();
     }
 
-    private int is15(CardCollection playedHand, Cards cutCard)//could take all in at once, could have 4 methods for pair, triple etc.
+    private int is15(CardCollection playedHand/*, Cards cutCard*/)//could take all in at once, could have 4 methods for pair, triple etc.
     {
         this.playedHand = playedHand;
         int num15 = 0;//number of instances of 15's
@@ -263,7 +263,7 @@ public class Scorer
         if(isCrib != false){    if(isFlush(playedHand)){handScore +=  4;}//this for non-crib
         }
 
-        handScore += is15(playedHand, cutCard);
+        //handScore += is15(playedHand, cutCard);
         handScore += isRun();
 
         return handScore;
@@ -307,14 +307,14 @@ public class Scorer
             if(runCount > 6)
             {
                 //only instance of run of 7 that has a pegging score of under 31 is 1, 2, 3, 4, 5, 6, 7
-                if(sortedRunArray.getCard(runCount).valueFinder() == 7 && sortedRunArray.getCard(runCount-1 ).valueFinder() == 6 && sortedRunArray.getCard(runCount -2).valueFinder() == 5 && sortedRunArray.getCard(runCount -3).valueFinder() == 4 & sortedRunArray.getCard(runCount -4).valueFinder() == 3 && sortedRunArray.getCard(runCount-5).valueFinder() == 2 && sortedRunArray.getCard(runCount-6).valueFinder() == 1)
+                if(sortedRunArray.getCard(runCount-1).valueFinder() == 7 && sortedRunArray.getCard(runCount-2 ).valueFinder() == 6 && sortedRunArray.getCard(runCount -3).valueFinder() == 5 && sortedRunArray.getCard(runCount -4).valueFinder() == 4 & sortedRunArray.getCard(runCount -5).valueFinder() == 3 && sortedRunArray.getCard(runCount-6).valueFinder() == 2 && sortedRunArray.getCard(runCount-7).valueFinder() == 1)
                 {
                     return 7;
                 }
             }
 
             if(runCount > 5){
-                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder())== (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()) && (sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()) == (sortedRunArray.getCard(runCount-2 ).valueFinder() - sortedRunArray.getCard(runCount-5).valueFinder()))
+                if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder())== (sortedRunArray.getCard(runCount-2).valueFinder() - sortedRunArray.getCard(runCount-5).valueFinder()) && (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()) == (sortedRunArray.getCard(runCount-3 ).valueFinder() - sortedRunArray.getCard(runCount-6).valueFinder()))
                 {
                     return 6;
                 }}
@@ -325,11 +325,11 @@ public class Scorer
                     return 5;
                 }}
             if(runCount > 3){
-                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount -2 ).valueFinder())== (sortedRunArray.getCard(runCount- 1).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()))
+                if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount -3 ).valueFinder())== (sortedRunArray.getCard(runCount- 2).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()))
                 {
                     return 4;
                 }}
-            if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-1).valueFinder()== 1 && (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-2).valueFinder())== 1))
+            if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-2).valueFinder()== 1 && (sortedRunArray.getCard(runCount-2).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder())== 1))
             {
                 return 3;
             }

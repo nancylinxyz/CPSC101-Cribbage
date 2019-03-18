@@ -144,7 +144,9 @@ public class GameSquence{
                         //pegging score
                         System.out.println("stuck here 2");
                         prone.setScore(scorer.peggingScore(tempCard1));
-                        System.out.println("stuck here 3");
+                        if (board.getScore()== 15 || board.getScore() ==31){
+                            prone.setScore(2);
+                        }
                         updateAllTextDisplay();
                         ref.isWinner(prone);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
@@ -157,9 +159,12 @@ public class GameSquence{
                     Cards tempCard2 = dealer.decideCard();
                     if (ref.canPlayCard(tempCard2)) {
                         dealer.playHand(tempCard2, board);
-
+                        GameFrame.outPutToGameLog("Dealer has played a card." );
                         //TO-Do: pegging score
                         prone.setScore(scorer.peggingScore(tempCard2));
+                        if (board.getScore()== 15 || board.getScore() ==31){
+                            dealer.setScore(2);
+                        }
                         updateAllTextDisplay();
                         ref.isWinner(dealer);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
