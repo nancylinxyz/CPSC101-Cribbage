@@ -192,7 +192,7 @@ public class Scorer
     }
     private boolean isFlush(CardCollection playedHand)// change cards 1-4 into Hand arraylist
     {
-        if(playedHand.getCard(0).getSuit() == playedHand.getCard(1).getSuit() && playedHand.getCard(2).getSuit() == playedHand.getCard(3).getSuit() && playedHand.getCard(1).getSuit() == playedHand.getCard(4).getSuit() )
+        if(playedHand.getCard(0).getSuit() == playedHand.getCard(1).getSuit() && playedHand.getCard(1).getSuit() == playedHand.getCard(2).getSuit() && playedHand.getCard(2).getSuit() == playedHand.getCard(3).getSuit() )
         //if(playedHand[0].getSuit() == playedHand[1].getSuit() && playedHand[2].getSuit() == playedHand[3].getSuit() && card1.s == card4.s )
         {
             return true;
@@ -203,59 +203,28 @@ public class Scorer
     {
         this.playedHand = playedHand;
         int handScore = 0;
-        //is15
-        //isrun
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 16;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(3), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore +=6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(2),playedHand.getCard(3), cutCard)){handScore += 6;}
 
-        //System.out.println("point 1");
+        System.out.println("point 1");
         if(isPair(playedHand.getCard(0), playedHand.getCard(1))){handScore += 2;}
-        //System.out.println("point 2");
+        System.out.println("point 2");
         if(isPair(playedHand.getCard(0), playedHand.getCard(2))){handScore += 2;}
-        //System.out.println("point 3");
+        System.out.println("point 3");
         if(isPair(playedHand.getCard(0), playedHand.getCard(3))){handScore += 2;}
-        //System.out.println("point 4");
+        System.out.println("point 4");
         if(isPair(playedHand.getCard(0), cutCard)){handScore += 2;}
-        //System.out.println("point 5");
+        System.out.println("point 5");
         if(isPair(playedHand.getCard(1), playedHand.getCard(2))){handScore += 2;}
-        //System.out.println("point 6");
+        System.out.println("point 6");
         if(isPair(playedHand.getCard(1), playedHand.getCard(3))){handScore += 2;}
-        //System.out.println("point 7");
+        System.out.println("point 7");
         if(isPair(playedHand.getCard(1), cutCard)){handScore += 2;}
-        //System.out.println("point 8");
+        System.out.println("point 8");
         if(isPair(playedHand.getCard(2), playedHand.getCard(3))){handScore += 2;}
-        //System.out.println("point 9");
+        System.out.println("point 9");
         if(isPair(playedHand.getCard(2), cutCard)){handScore += 2;}
-        //System.out.println("point 10");
+        System.out.println("point 10");
         if(isPair(playedHand.getCard(3), cutCard)){handScore += 2;}
-        //System.out.println("point 11");
+        System.out.println("point 11");
 
 
         if(isCribFlush(playedHand, cutCard)){handScore += 5;}

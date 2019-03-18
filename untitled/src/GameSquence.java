@@ -94,7 +94,6 @@ public class GameSquence{
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
         }
-        GameFrame.setPlayer1Hand(playerList.get(0).getHand(), playerList.get(0));
         updateAllTextDisplay();
         GameFrame.setPlayer2Hand(playerList.get(1).getHand(), playerList.get(1));
         updateAllTextDisplay();
@@ -225,13 +224,17 @@ public class GameSquence{
 
         //count crib
         GameFrame.outPutToGameLog("Count Crib." );
-        System.out.println(dealer.getCrib().getCard(1));
-        dealer.getCrib().mergeCollection(prone.getCrib());
-        System.out.println(dealer.getCrib().getCard(3));
-        dealer.setScore(scorer.countHand(dealer.getCrib(),board.getCut(), true));
+        //System.out.println(dealer.getCrib().getCard(1));
+
+        playerList.get(0).getCrib().mergeCollection(playerList.get(1).getCrib());
+        dealer.setScore(scorer.countHand(playerList.get(0).getCrib(),board.getCut(), true));
+
         updateAllTextDisplay();
         ref.isWinner(dealer);
         board.removeCutCard();
+        playerList.get(0).emptyCrib();
+        playerList.get(1).emptyCrib();
+        System.out.println(playerList.get(0).getCrib().size() +playerList.get(1).getCrib().size());
     }
 
 
@@ -239,6 +242,7 @@ public class GameSquence{
 
     //changeDealer only works for 2 players
     private void changeDealer(){
+
         GameFrame.outPutToGameLog("Change dealer." );
         if (isDealer0){
             dealer = playerList.get(1);
@@ -273,6 +277,10 @@ public class GameSquence{
         if (board.getCardPlayed().size()>0){
             GameFrame.updatePeggingCards(board);
         }
+        if ((playerList.get(0).getCrib().size() + playerList.get(1).getCrib().size())>0){
+            GameFrame.updateCribDisplay(playerList.get(0), playerList.get(1));
+        }
+
     }
 
 }

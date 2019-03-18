@@ -56,7 +56,7 @@ public class GameFrame extends JFrame {
         PlayedCards = new JLabel("No cards has been played.");
         peggingScore = new JLabel("Pegging score: 0");
         cutCard = new JLabel("Cut Card:");
-        crib = new JLabel("🂠 🂠 🂠 🂠");
+        crib = new JLabel("No Card In Crib");
         player1HandDisplay = new JLabel("🂠 🂠 🂠 🂠 🂠 🂠");
 
         createButtons();
@@ -113,7 +113,7 @@ public class GameFrame extends JFrame {
 //            panelSouth.add(buttonsList.get(i));
 //
 //        }
-        player1HandDisplay.setFont(new Font("Arial", Font.PLAIN, 60));
+        player1HandDisplay.setFont(new Font("Arial", Font.PLAIN, 65));
         panelSouth.add(player1HandDisplay);
 
         quit.setLocation(1030, 610);
@@ -171,8 +171,8 @@ public class GameFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(gameLog);
         panelCenter.add(scrollPane);
         panelCenter.add(cutCard);
-        panelCenter.add(PlayedCards);
         panelCenter.add(peggingScore);
+        panelCenter.add(PlayedCards);
         panelCenter.add(crib);
 
     }
@@ -287,7 +287,7 @@ public class GameFrame extends JFrame {
         return cardsSpade[card.valueFinder() - 1];
     }
 
-    public static void setPlayer1Hand(CardCollection cards, Players player) {
+//    public static void setPlayer1Hand(CardCollection cards, Players player) {
         //System.out.println(cards.size());
 //        player1 = player;
 //        for (int i = 0; i < cards.size(); i++) {
@@ -295,7 +295,7 @@ public class GameFrame extends JFrame {
 //            player1Hand.set(i, handToCardDisplay(cards.getCard(i)));
 //        }
 //        updateCardsButtons();
-    }
+//    }
 
     public static void setPlayer2Hand(CardCollection cards, Players player) {
         //System.out.println(cards.size());
@@ -306,12 +306,12 @@ public class GameFrame extends JFrame {
         }
     }
 
-    private static void updateCardsButtons() {
-        for (int i = 0; i < player1Hand.size(); i++) {
-            String tempText = player1Hand.get(i);
-            buttonsList.get(i).setText(tempText);
-        }
-    }
+//    private static void updateCardsButtons() {
+//        for (int i = 0; i < player1Hand.size(); i++) {
+//            String tempText = player1Hand.get(i);
+//            buttonsList.get(i).setText(tempText);
+//        }
+//    }
 
     public static void updateCutDisplay(Cards card){
         cutCard.setText("Cut Card: \n" + card.toString()+ handToCardDisplay(card));
@@ -319,10 +319,10 @@ public class GameFrame extends JFrame {
     }
 
     public static void updatePeggingScore(int i){
-        peggingScore.setText("Pegging Score Is: " + i);
+        peggingScore.setText("Pegging Score Is: " + i +"                          Pegging Cards:");
     }
     public static void updatePeggingCards(Board board){
-        board.getCardPlayed();
+
         String tempString = "";
 
 
@@ -336,7 +336,7 @@ public class GameFrame extends JFrame {
     }
 
     public static void updatePlayer1HandDisplay(Players player){
-        player.getHand();
+
         String tempString = "";
 
         for (int i = 0; i < player.getHand().size(); i++) {
@@ -345,6 +345,34 @@ public class GameFrame extends JFrame {
 
 
         player1HandDisplay.setText(tempString);
+
+    }
+
+    public static void updateCribDisplay(Players player0, Players player1){
+        String tempString;
+        String tempString1 = "";
+        String tempString2 ="";
+
+        if (player0.getCrib().size()>2){
+            for (int i = 0; i < player0.getCrib().size(); i++) {
+                tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+            }
+        } else {
+            for (int i = 0; i < player0.getCrib().size(); i++) {
+                tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+            }
+
+            for (int i = 0; i < player1.getCrib().size(); i++) {
+                tempString2 = tempString2 + handToCardDisplay(player1.getCrib().getCard(i)) + " ";
+            }
+        }
+
+        System.out.println(tempString1);
+        System.out.println(tempString2);
+        tempString = tempString1 + tempString2;
+
+        crib.setFont(new Font("Arial", Font.PLAIN, 40));
+        crib.setText(tempString);
 
     }
 

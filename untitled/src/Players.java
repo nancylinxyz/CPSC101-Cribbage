@@ -107,4 +107,8 @@ abstract class Players {
 	public boolean getGo(){
 		return go;
 	}
+
+	public void emptyCrib(){
+		crib.clearCollection();
+	}
 }
