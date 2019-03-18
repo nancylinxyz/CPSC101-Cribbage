@@ -313,5 +313,15 @@ public class GameFrame extends JFrame {
     public static void updatePeggingScore(int i){
         peggingScore.setText("Pegging Score Is: " + i);
     }
+    public static void updatePeggingCards(Board board){
+        board.getCardPlayed();
+        String tempString = "";
+        for (int i =0; i< board.getCardPlayed().size(); i++){
+            tempString = tempString +" "+ handToCardDisplay(board.getCardPlayed().getCard(i));
+        }
+
+        PlayedCards.setText(tempString);
+        PlayedCards.setFont(new Font("Arial", Font.PLAIN, 60));
+    }
 
 }

@@ -13,14 +13,16 @@ public class Scorer
 //    private int cardNum = 0;
 //    private int minVal = 14;
 //    private int maxVal = 0;
-    private int runCount = 0;
-    private int pegCardNum = 0;
+    private int runCount;
+    private int pegCardNum;
     private CardCollection peggingArray = new CardCollection();
     private CardCollection playedHand;
     private Board board;
 
     public Scorer(Board board){
         this.board = board;
+        pegCardNum = 0;
+        runCount = 0;
     }
 
     //should isRuPeg be added in here?
@@ -28,50 +30,53 @@ public class Scorer
     {
         //peggingArray[pegCardNum] = c;//adding c to pegCardNum-index
         peggingArray.addCard(c);
-        currentPeggingScore += c.valueFinder();
+        currentPeggingScore += c.cardValue();
         pegCardNum++;
         int handScore = 0;
-        if(currentPeggingScore == 15)
-        {
+        if(currentPeggingScore == 15) {
             handScore += 2;
         }
-        if (currentPeggingScore == 31)
-        {
+        if (currentPeggingScore == 31) {
             currentPeggingScore = 0;
             handScore +=  2;
             //end subround
         }
+        System.out.println("scorer point 1");
         if(pegCardNum > 1){
-            if(isPair(peggingArray.getCard(pegCardNum), peggingArray.getCard(pegCardNum-1)))
+            if(isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
             {
                 handScore +=  2;
             }
         }
+        System.out.println("scorer point 2");
         //checking for flush
         if(pegCardNum > 4){
-            if (peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -1).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum-2).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum - 3).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
+            if (peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum -2).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum-3).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum - 4).getSuit() && peggingArray.getCard(pegCardNum-2).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
             //if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 3].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 4].getSuit())
             {
                 handScore +=  5;
             }
-        }
+
 
         //checking for 4 of a kind
-        if(isFourKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2), peggingArray.getCard(pegCardNum-3)))
-        {
+            if(isFourKind(peggingArray.getCard(pegCardNum-1) , peggingArray.getCard(pegCardNum-2), peggingArray.getCard(pegCardNum-3), peggingArray.getCard(pegCardNum-4))) {
             handScore +=  12;
+            }
         }
-
+        System.out.println("scorer point 3");
         //checking for 3 of a kind
-        if (isThreeKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
-        {
-            handScore +=  6;
+        if (pegCardNum >3 ) {
+            if (isThreeKind(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2), peggingArray.getCard(pegCardNum - 3))) {
+                handScore += 6;
+            }
         }
-
-        if(isPair(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1)))
-        {
-            handScore += 2;
+        System.out.println("scorer point 4");
+        if (pegCardNum > 2) {
+            if (isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2))) {
+                handScore += 2;
+            }
         }
+        System.out.println("scorer point 5");
 
 //        if(pegCardNum > 2)
 //        {

@@ -140,15 +140,16 @@ public class GameSquence{
                     if (ref.canPlayCard(tempCard1)) {
                         prone.playHand(tempCard1, board);
                         GameFrame.outPutToGameLog("Prone has played a card." );
-                        System.out.println("stuck here 1");
                         updateAllTextDisplay();
                         //pegging score
+                        System.out.println("stuck here 2");
                         prone.setScore(scorer.peggingScore(tempCard1));
+                        System.out.println("stuck here 3");
                         updateAllTextDisplay();
                         ref.isWinner(prone);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
                 } else GameFrame.outPutToGameLog("Prone has said 'Go'" );
-                System.out.println("stuck here 2");
+
                 //whether dealer can play
                 if (ref.canPeg(dealer)) {
                     GameFrame.outPutToGameLog("Dealer's turn to play 1 card." );
@@ -223,6 +224,9 @@ public class GameSquence{
         }
 
         GameFrame.updatePeggingScore(board.getScore());
+        if (board.getCardPlayed().size()>0){
+            GameFrame.updatePeggingCards(board);
+        }
     }
 
 }
