@@ -22,9 +22,23 @@ public class HumanPlayer extends Players {
     public Cards decideCard(){
 
         //System.out.println(cardIndex);
-        return super.getHand().getCard(0);
+        //return super.getHand().getCard(0);
 
+        //set to the same as Ai
+        return onePlayableCard();
+
+    }
+
+    private Cards onePlayableCard(){
+        //compare against all of the cards in hand and pick 1 that is playable
+
+        for (int i = 0; i <super.getHand().size(); i++){
+            if (super.getHand().getCard(i).valueFinder() +super.getBoard().getScore() <= 31){
+                return super.getHand().getCard(i);
+            }
         }
+        return null;
+    }
 //        System.out.println("Input card Card index (example: first card from left is 0):");
 //        Scanner in = new Scanner(System.in);
 //        String parameters = in.nextLine();

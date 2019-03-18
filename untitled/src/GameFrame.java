@@ -236,11 +236,15 @@ public class GameFrame extends JFrame {
 
     //setting display variables
     public static void setPlayer1ScoreDisplay(int i) {
-        player1Score.setText("Your Score: " + i);
+        if (i <121) {
+            player1Score.setText("Your Score: " + i);
+        } else player1Score.setText("WINNER!");
     }
 
     public static void setPlayer2ScoreDisplay(int i) {
+        if (i <121) {
         player2Score.setText("Player 2 Score: " + i);
+        } else player2Score.setText("WINNER!");
     }
 
     public static void setPlayer2HandSize(int i) {

@@ -34,7 +34,7 @@ public class Board {
     }
 
     public void removeCards(){
-        cutCard.clearCollection();
+        currentCards.clearCollection();
     }
 
     
@@ -60,6 +60,10 @@ public class Board {
 
      public CardCollection getCutCard(){
         return cutCard;
+     }
+
+     public void removeCutCard(){
+        cutCard.clearCollection();
      }
 
      public CardCollection getCardPlayed(){

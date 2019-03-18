@@ -87,6 +87,7 @@ public class GameSquence{
     //deal 6 cards to each players
     private void dealHands() {
         GameFrame.outPutToGameLog("Dealing" );
+        deck.resetDeck();
         for (int i = 0; i < 6; i++) {
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Prone" );
             deck.deal(prone);
@@ -197,20 +198,25 @@ public class GameSquence{
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
         GameFrame.outPutToGameLog("Count Prone's hand." );
-        prone.setScore(scorer.countHand(prone.getHand(), board.getCut(), false));
+       // System.out.println(prone.getPlayedHand().getCard(3));
+        //System.out.println(board.getCut());
+        prone.setScore(scorer.countHand(prone.getPlayedHand(), board.getCut(), false));
         updateAllTextDisplay();
         ref.isWinner(prone);
         GameFrame.outPutToGameLog("Count Dealer's hand." );
-        dealer.setScore(scorer.countHand(dealer.getHand(), board.getCut(), false));
+        dealer.setScore(scorer.countHand(dealer.getPlayedHand(), board.getCut(), false));
         updateAllTextDisplay();
         ref.isWinner(dealer);
 
         //count crib
         GameFrame.outPutToGameLog("Count Crib." );
+        System.out.println(dealer.getCrib().getCard(1));
         dealer.getCrib().mergeCollection(prone.getCrib());
+        System.out.println(dealer.getCrib().getCard(3));
         dealer.setScore(scorer.countHand(dealer.getCrib(),board.getCut(), true));
         updateAllTextDisplay();
         ref.isWinner(dealer);
+        board.removeCutCard();
     }
 
 

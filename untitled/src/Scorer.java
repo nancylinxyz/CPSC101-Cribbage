@@ -235,27 +235,27 @@ public class Scorer
 //
 //        if(isThreeKind(playedHand.getCard(2),playedHand.getCard(3), cutCard)){handScore += 6;}
 
-
+        System.out.println("point 1");
         if(isPair(playedHand.getCard(0), playedHand.getCard(1))){handScore += 2;}
-
+        System.out.println("point 2");
         if(isPair(playedHand.getCard(0), playedHand.getCard(2))){handScore += 2;}
-
+        System.out.println("point 3");
         if(isPair(playedHand.getCard(0), playedHand.getCard(3))){handScore += 2;}
-
+        System.out.println("point 4");
         if(isPair(playedHand.getCard(0), cutCard)){handScore += 2;}
-
+        System.out.println("point 5");
         if(isPair(playedHand.getCard(1), playedHand.getCard(2))){handScore += 2;}
-
+        System.out.println("point 6");
         if(isPair(playedHand.getCard(1), playedHand.getCard(3))){handScore += 2;}
-
+        System.out.println("point 7");
         if(isPair(playedHand.getCard(1), cutCard)){handScore += 2;}
-
+        System.out.println("point 8");
         if(isPair(playedHand.getCard(2), playedHand.getCard(3))){handScore += 2;}
-
+        System.out.println("point 9");
         if(isPair(playedHand.getCard(2), cutCard)){handScore += 2;}
-
+        System.out.println("point 10");
         if(isPair(playedHand.getCard(3), cutCard)){handScore += 2;}
-
+        System.out.println("point 11");
 
 
         if(isCribFlush(playedHand, cutCard)){handScore += 5;}
@@ -371,18 +371,26 @@ public class Scorer
             {
                 break;
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0)
-            {
-                runScore = 3 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1];
+            if (i > 1){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0)
+                {
+                    runScore = 3 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1];
+                }
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0)
-            {
-                runScore = 4 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1] * runArray[i-3][1];
+            if (i>2){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0)
+                {
+                    runScore = 4 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1] * runArray[i-3][1];
+                }
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0 && runArray[i-4][1] != 0)
-            {
-                return 5;
+
+            if (i >3 ){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0 && runArray[i-4][1] != 0)
+                {
+                    return 5;
+                }
             }
+
         }
         return runScore;
     }
