@@ -131,8 +131,10 @@ public class GameSquence{
     private void pegging(){
         GameFrame.outPutToGameLog("Start pegging: play 1 card at a time." );
         while (dealer.getCardNumber()>0 || prone.getCardNumber()>0){
-            //whether prone can play
+            dealer.setGo(false);
+            prone.setGo(false);
 
+            //whether prone can play
             while (board.getScore()<31) {
                 if (ref.canPeg(prone)) {
                     GameFrame.outPutToGameLog("Prone's turn to play 1 card." );
@@ -142,7 +144,6 @@ public class GameSquence{
                         GameFrame.outPutToGameLog("Prone has played a card." );
                         updateAllTextDisplay();
                         //pegging score
-                        System.out.println("stuck here 2");
                         prone.setScore(scorer.peggingScore(tempCard1));
                         if (board.getScore()== 15 || board.getScore() ==31){
                             prone.setScore(2);
@@ -150,7 +151,10 @@ public class GameSquence{
                         updateAllTextDisplay();
                         ref.isWinner(prone);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
-                } else GameFrame.outPutToGameLog("Prone has said 'Go'" );
+                } else {
+                    prone.setGo(true);
+                    GameFrame.outPutToGameLog("Prone has said 'Go'" );
+                }
 
                 //whether dealer can play
                 if (ref.canPeg(dealer)) {
@@ -168,7 +172,19 @@ public class GameSquence{
                         updateAllTextDisplay();
                         ref.isWinner(dealer);
                     } else GameFrame.outPutToGameLog("You can't play that card." );
-                } else GameFrame.outPutToGameLog("Dealer has said 'Go'" );
+                } else {
+                    dealer.setGo(true);
+                    GameFrame.outPutToGameLog("Dealer has said 'Go'" );
+                }
+
+                if (dealer.getGo() && prone.getGo()){
+                    scorer.resetPeggingScore();
+                    board.resetScore();
+                    board.removeCards();
+                    updateAllTextDisplay();
+                    System.out.println("stuck here 6");
+                    break;
+                }
             }
             System.out.println("stuck here 2");
             scorer.resetPeggingScore();
