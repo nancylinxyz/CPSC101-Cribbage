@@ -11,16 +11,18 @@ public class Referee {
     GameSquence game;
     Board board;
 //    TrackComponent track;
+    GameFrame gameframe;
 
 
-    public Referee(/*TrackComponent track*/){
+    public Referee(GameFrame gameframe){
         board = new Board();
         playerHuman = new HumanPlayer(board);
         playerAi = new  AiPlayer(board);
+        this.gameframe = gameframe;
 
         //this.track = track;
 
-        game = new GameSquence(playerHuman, playerAi, board);
+        this.game = new GameSquence(playerHuman, playerAi, board);
     }
 
     public void start(){
@@ -63,6 +65,10 @@ public class Referee {
 //    public TrackComponent getTrack(){
 //        return track;
 //    }
+
+    public GameFrame getGameFrame(){
+        return gameframe;
+    }
 
    
     

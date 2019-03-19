@@ -20,7 +20,9 @@ public class GameFrame extends JFrame {
 
     private static JLabel status1, status2, player1Score, player2Score, peggingScore, cutCard, crib;
 
-    static JLabel PlayedCards, player2NumCards, player1HandDisplay;
+    static JLabel PlayedCards, player2NumCards, player1HandDisplay, cards, cardText;
+    static JTextField enterCard;
+    static JButton play;
 
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
@@ -42,6 +44,8 @@ public class GameFrame extends JFrame {
     private static Players player1;
     private static Players player2;
 
+    static int cardIndex;
+
 
     public GameFrame(/*passing an arraylist cardsCollection from hand*/) {
 
@@ -59,6 +63,10 @@ public class GameFrame extends JFrame {
         cutCard = new JLabel("Cut Card:");
         crib = new JLabel("No Card In Crib");
         player1HandDisplay = new JLabel("🂠 🂠 🂠 🂠 🂠 🂠");
+        cardText = new JLabel("Enter Card:");
+
+        enterCard = new JTextField(5);
+        play = new JButton("Play");
 
         createButtons();
         createNorthPanel();
@@ -103,19 +111,30 @@ public class GameFrame extends JFrame {
     //this panel contains player2 information: cards and button to action
     public void createSouthPanel() {
         panelSouth = new JPanel();
+
         panelSouth.setPreferredSize(new Dimension(1100, 100));
         panelSouth.setLocation(0, 600);
-        //createButtons();
 
-//        //panelSouth.setLayout(new GridLayout(1,9,3,3));
-//        for (int i = 0; i < buttonsList.size(); i++) {
-//            buttonsList.get(i).setLocation(10 * (i + 1) + 5, 605);
-//            buttonsList.get(i).setPreferredSize(new Dimension(80, 90));
-//            panelSouth.add(buttonsList.get(i));
+//
+//        for(int i=0; i< player1Hand.size(); i++){
+//
+//            String temp= player1Hand.get(i);
+//
+//            cards.setText(cards.getText() +  temp);
+//
 //
 //        }
+//        cards.setFont(new Font("Arial",Font.PLAIN,60));
+//
+//
+//
+//        panelSouth.add(cards);
+
         player1HandDisplay.setFont(new Font("Arial", Font.PLAIN, 65));
         panelSouth.add(player1HandDisplay);
+//        panelSouth.add(cardText);
+//        panelSouth.add(enterCard);
+//        panelSouth.add(play);
 
         quit.setLocation(1030, 610);
         quit.setPreferredSize(new Dimension(50, 40));
@@ -183,27 +202,57 @@ public class GameFrame extends JFrame {
         public void actionPerformed(ActionEvent event) {
 
 
-            for (int i = 0; i < buttonsList.size(); i++) {
-                if (event.getSource() == buttonsList.get(i))// in this if we check the event of the card first and then OK button
-                {
-                    index = player1Hand.indexOf(buttonsList.get(i).getText());
-                    buttonsList.get(i).setVisible(false);
-                    // String tempCard ="" + buttonsList.get(i).getText();/// check this for the string of cards
-                    PlayedCards.setText(PlayedCards.getText() + buttonsList.get(i).getText());
-                    PlayedCards.setText(PlayedCards.getText() + player2Hand.get(i));//this one just check
-                    player2Hand.remove(i);
-
-                    player2NumCards.setText("cards left: " + (player2Hand.size()) );//checking fro the cards left
-
-                    PlayedCards.setFont(new Font("Arial", Font.PLAIN, 60));
-                    PlayedCards.setLocation(300, 150);
-                }
-            }
+//            for (int i = 0; i < buttonsList.size(); i++) {
+//                if (event.getSource() == buttonsList.get(i))// in this if we check the event of the card first and then OK button
+//                {
+//                    index = player1Hand.indexOf(buttonsList.get(i).getText());
+//                    buttonsList.get(i).setVisible(false);
+//                    // String tempCard ="" + buttonsList.get(i).getText();/// check this for the string of cards
+//                    PlayedCards.setText(PlayedCards.getText() + buttonsList.get(i).getText());
+//                    PlayedCards.setText(PlayedCards.getText() + player2Hand.get(i));//this one just check
+//                    player2Hand.remove(i);
+//
+//                    player2NumCards.setText("cards left: " + (player2Hand.size()) );//checking fro the cards left
+//
+//                    PlayedCards.setFont(new Font("Arial", Font.PLAIN, 60));
+//                    PlayedCards.setLocation(300, 150);
+//                }
+//            }
             //panelSouth.remove(buttonsList.get(i));
+
+            if(event.getSource() == play)  {
+//                cardIndex = Integer.parseInt(enterCard.getText());
+//                player1.setCardIndex(cardIndex);
+
+
+//                PlayedCards.setText(PlayedCards.getText()+ player1Hand.get(cardIndex));
+//                player1Hand.remove(cardIndex);
+//
+//                for(int i=0; i<player1Hand.size();i++){
+//                    cards.setText(""+ player1Hand.get(i));
+//                }
+
+
+            }
+
+
 
 
             if (event.getSource() == quit) {
                 System.exit(1);
+            }
+
+            if(event.getSource()== Reset){
+
+
+                Referee ref1 = new Referee(Main.frame);
+
+                Main.ref = ref1;
+                Main.ref.start();
+                PlayedCards.setText("");
+                //createButtons();
+
+
             }
 
         }
@@ -233,7 +282,7 @@ public class GameFrame extends JFrame {
 
         quit.addActionListener(listener);
         Reset.addActionListener(listener);
-        //OK.addActionListener(listener);
+        play.addActionListener(listener);
 
     }
 
@@ -337,6 +386,7 @@ public class GameFrame extends JFrame {
     }
 
     public static void updatePlayer1HandDisplay(Players player){
+        //player1 = player;
 
         String tempString = "";
 
@@ -376,6 +426,10 @@ public class GameFrame extends JFrame {
         crib.setFont(new Font("Arial", Font.PLAIN, 40));
         crib.setText(tempString);
 
+    }
+
+    public TrackComponent getTracks(){
+        return tracks;
     }
 
 

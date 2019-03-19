@@ -16,6 +16,7 @@ public class GameSquence{
     private Referee ref;
     private Scorer scorer;
 //    private TrackComponent track;
+    private GameFrame gameFrame;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
@@ -25,10 +26,12 @@ public class GameSquence{
         this.board = board;
         scorer = new Scorer(board);
 //        this.track = ref.getTrack();
+
         GameFrame.outPutToGameLog("Welcome to a new game!");
     }
 
     public void round(){
+        this.gameFrame = ref.getGameFrame();
         drawing();
 
         while (dealer.getScore() < 121 && prone.getScore() <121){
@@ -280,12 +283,12 @@ public class GameSquence{
         if ((playerList.get(0).getCrib().size() + playerList.get(1).getCrib().size())>0){
             GameFrame.updateCribDisplay(playerList.get(0), playerList.get(1));
         }
-//        if (playerList.get(0).getScore()> 0) {
-//            track.track1Update(playerList.get(0).getScore());
-//        }
-//        if(playerList.get(1).getScore()>0){
-//            track.track2Update(playerList.get(1).getScore());
-//        }
+        if (playerList.get(0).getScore()> 0) {
+            gameFrame.getTracks().track1Update(playerList.get(0).getScore());
+        }
+        if(playerList.get(1).getScore()>0){
+            gameFrame.getTracks().track2Update(playerList.get(1).getScore());
+        }
     }
 
 }

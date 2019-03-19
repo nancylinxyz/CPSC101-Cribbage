@@ -8,7 +8,7 @@ public class HumanPlayer extends Players {
 
     //private  Suit suite;
     //private Value value;
-    private static int cardIndex;
+    private static int cardIndex = -1;
 
 
     //constructor
@@ -21,42 +21,23 @@ public class HumanPlayer extends Players {
     @Override
     public Cards decideCard(){
 
-        //System.out.println(cardIndex);
-        //return super.getHand().getCard(0);
+        System.out.println("Input card Card index (example: first card from left is 0):");
+        Scanner in = new Scanner(System.in);
+        String parameters = in.nextLine();
+        int j = splitSuiteValues(parameters);
 
-        //set to the same as Ai
-        return onePlayableCard();
-
+        return super.getHand().getCard(j);
     }
 
-    private Cards onePlayableCard(){
-        //compare against all of the cards in hand and pick 1 that is playable
+    private int splitSuiteValues(String parameters){
+        int paramHolder = Integer.parseInt(parameters);
 
-        for (int i = 0; i <super.getHand().size(); i++){
-            if (super.getHand().getCard(i).valueFinder() +super.getBoard().getScore() <= 31){
-                return super.getHand().getCard(i);
-            }
-        }
-        return null;
+        if (paramHolder >= 0 && paramHolder < super.getHand().size()) {
+            return paramHolder;
+        } else System.out.println("Invalid number, enter a different number.");
+        return -1;
     }
-//        System.out.println("Input card Card index (example: first card from left is 0):");
-//        Scanner in = new Scanner(System.in);
-//        String parameters = in.nextLine();
-//        int j = splitSuiteValues(parameters);
-//
-//        return super.getHand().getCard(j);
-//    }
-//
-//    private int splitSuiteValues(String parameters){
-//        int paramHolder = Integer.parseInt(parameters);
-//        //String[] paramHolder = parameters.split(",");
-//
-//        //Enum suite = Enum.valueOf(Suit.class ,paramHolder[0]);
-//        //Enum value = Enum.valueOf(Value.class, paramHolder[1]);
-//        return paramHolder;
 
-   public static void setDecision(int i) {
-    cardIndex = i;
-   }
+
 
 }

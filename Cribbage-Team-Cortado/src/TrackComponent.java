@@ -54,35 +54,32 @@ public class TrackComponent extends JComponent {
         }
     }
 
-    public static void track1Update(int i){
+    public void track1Update(int i){
         for (int j = 2; j < 123; j++){
             trackList1.get(j).updateColor(Color.BLACK);
         }
         if (i+2 < 123) {
-            trackList1.get(i + 2).updateColor(Color.GREEN);
+            trackList1.get(i + 1).updateColor(Color.RED);
         }
         if (i + 2 >= 123){
-            trackList1.get(123).updateColor(Color.GREEN);
+            trackList1.get(122).updateColor(Color.RED);
         }
-
+        repaint();
     }
 
 
-    public static void track2Update(int i){
+    public void track2Update(int i){
         for (int j = 2; j < 123; j++){
             trackList2.get(j).updateColor(Color.BLACK);
         }
 
         if (i+2 < 123) {
-            trackList2.get(i + 2).updateColor(Color.GREEN);
+            trackList2.get(i + 1).updateColor(Color.RED);
         }
         if (i + 2 >= 123){
-            trackList2.get(123).updateColor(Color.GREEN);
+            trackList2.get(122).updateColor(Color.RED);
         }
-
-    }
-
-    public void updatePaint(){
         repaint();
     }
+
 }
