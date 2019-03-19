@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/CPSC101-Cribbage.iml" filepath="$PROJECT_DIR$/.idea/CPSC101-Cribbage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cribbage-Team-Cortado/Cribbage-Team-Cortado.iml" filepath="$PROJECT_DIR$/Cribbage-Team-Cortado/Cribbage-Team-Cortado.iml" />
       <module fileurl="file://$PROJECT_DIR$/IDE-run-file/test.iml" filepath="$PROJECT_DIR$/IDE-run-file/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/untitled/untitled.iml" filepath="$PROJECT_DIR$/untitled/untitled.iml" />
     </modules>
   </component>
 </project>

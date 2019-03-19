@@ -15,7 +15,7 @@ public class GameSquence{
     private boolean isDealer0; //isHamanPlayer dealer?
     private Referee ref;
     private Scorer scorer;
-    private TrackComponent track;
+//    private TrackComponent track;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
@@ -24,7 +24,7 @@ public class GameSquence{
         deck = new Deck();
         this.board = board;
         scorer = new Scorer(board);
-        //this.track = ref.getTrack();
+//        this.track = ref.getTrack();
         GameFrame.outPutToGameLog("Welcome to a new game!");
     }
 
@@ -234,7 +234,7 @@ public class GameSquence{
         board.removeCutCard();
         playerList.get(0).emptyCrib();
         playerList.get(1).emptyCrib();
-        System.out.println(playerList.get(0).getCrib().size() +playerList.get(1).getCrib().size());
+        //System.out.println(playerList.get(0).getCrib().size() +playerList.get(1).getCrib().size());
     }
 
 
@@ -280,9 +280,11 @@ public class GameSquence{
         if ((playerList.get(0).getCrib().size() + playerList.get(1).getCrib().size())>0){
             GameFrame.updateCribDisplay(playerList.get(0), playerList.get(1));
         }
-//        if (playerList.get(0).getScore()> 0 && playerList.get(1).getScore()>0) {
+//        if (playerList.get(0).getScore()> 0) {
 //            track.track1Update(playerList.get(0).getScore());
-//            //track.track2Update(playerList.get(1).getScore());
+//        }
+//        if(playerList.get(1).getScore()>0){
+//            track.track2Update(playerList.get(1).getScore());
 //        }
     }
 

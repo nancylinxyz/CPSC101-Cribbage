@@ -24,6 +24,7 @@ public class GameFrame extends JFrame {
 
     private static String player1isDealer, player2IsDealer;
     private static JTextArea gameLog;
+    private TrackComponent tracks;
 
 
     private static int logLength = 1;
@@ -94,7 +95,7 @@ public class GameFrame extends JFrame {
         panelNorth.setLocation(0, 0);
         panelNorth.setLayout(new GridLayout(1, 1, 3, 3));
         panelNorth.setBorder(BorderFactory.createTitledBorder("Pegging Track"));
-        TrackComponent tracks = new TrackComponent();
+        tracks = new TrackComponent();
         panelNorth.add(tracks);
 
     }
@@ -314,7 +315,7 @@ public class GameFrame extends JFrame {
 //    }
 
     public static void updateCutDisplay(Cards card){
-        cutCard.setText("Cut Card: \n" + card.toString()+ handToCardDisplay(card));
+        cutCard.setText("Cut Card: \n" + card.toString());
         //cutCard.setFont(new Font("Arial", Font.PLAIN, 30));
     }
 
@@ -345,6 +346,7 @@ public class GameFrame extends JFrame {
 
 
         player1HandDisplay.setText(tempString);
+        //tracks.updatePaint();
 
     }
 
@@ -367,13 +369,18 @@ public class GameFrame extends JFrame {
             }
         }
 
-        System.out.println(tempString1);
-        System.out.println(tempString2);
+        //System.out.println(tempString1);
+        //System.out.println(tempString2);
         tempString = tempString1 + tempString2;
 
         crib.setFont(new Font("Arial", Font.PLAIN, 40));
         crib.setText(tempString);
 
     }
+
+
+
+
+
 
 }

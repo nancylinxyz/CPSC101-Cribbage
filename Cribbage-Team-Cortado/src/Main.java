@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 class Main{
     public static void main(String[] agrs){
@@ -16,7 +17,9 @@ class Main{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Cribbage");
-        Referee ref = new Referee();
+//        TrackComponent track = new TrackComponent();
+//        frame.add(track, BorderLayout.NORTH);
+        Referee ref = new Referee(/*track*/);
 
         ref.start();
 

@@ -6,8 +6,8 @@ public class TrackComponent extends JComponent {
 
     private static int xTrack[] = new int[123];
     private static int xPoint1;
-    private ArrayList<TrackElements> trackList1 = new ArrayList<>();
-    private ArrayList<TrackElements> trackList2 = new ArrayList<>();
+    private static ArrayList<TrackElements> trackList1 = new ArrayList<>();
+    private static ArrayList<TrackElements> trackList2 = new ArrayList<>();
 
     public static void addXPoints(){
         xPoint1 = 10;
@@ -54,24 +54,35 @@ public class TrackComponent extends JComponent {
         }
     }
 
-    public void track1Update(int i){
+    public static void track1Update(int i){
         for (int j = 2; j < 123; j++){
-            //trackList1.get(j).updateColor(Color.BLACK);
+            trackList1.get(j).updateColor(Color.BLACK);
         }
-        TrackElements tempPeg = new TrackElements(xTrack[i+2], 20);
-        tempPeg.updateColor(Color.GREEN);
-        trackList1.set(i+2,tempPeg);
+        if (i+2 < 123) {
+            trackList1.get(i + 2).updateColor(Color.GREEN);
+        }
+        if (i + 2 >= 123){
+            trackList1.get(123).updateColor(Color.GREEN);
+        }
 
-        repaint();
     }
 
 
-    public void track2Update(int i){
+    public static void track2Update(int i){
         for (int j = 2; j < 123; j++){
             trackList2.get(j).updateColor(Color.BLACK);
         }
-        trackList2.get(i+2).updateColor(Color.GREEN);
 
+        if (i+2 < 123) {
+            trackList2.get(i + 2).updateColor(Color.GREEN);
+        }
+        if (i + 2 >= 123){
+            trackList2.get(123).updateColor(Color.GREEN);
+        }
+
+    }
+
+    public void updatePaint(){
         repaint();
     }
 }
