@@ -141,11 +141,11 @@ public class GameSquence{
             //whether prone can play
             while (board.getScore()<31) {
                 if (ref.canPeg(prone)) {
-                    GameFrame.outPutToGameLog("Prone's turn to play 1 card." );
+                    GameFrame.outPutToGameLog("Pone's turn to play 1 card." );
                     Cards tempCard1 = prone.decideCard();
                     if (ref.canPlayCard(tempCard1)) {
                         prone.playHand(tempCard1, board);
-                        GameFrame.outPutToGameLog("Prone has played a card." );
+                        GameFrame.outPutToGameLog("Pone has played a card." );
                         updateAllTextDisplay();
                         //pegging score
                         prone.setScore(scorer.peggingScore(tempCard1));
@@ -159,11 +159,11 @@ public class GameSquence{
                     if (dealer.getGo()){
                         isDealerPegScore = true;
                         prone.setGo(true);
-                        GameFrame.outPutToGameLog("Prone has said 'Go'" );
+                        GameFrame.outPutToGameLog("Pone has said 'Go'" );
                     }
                     isDealerPegScore = false;
                     prone.setGo(true);
-                    GameFrame.outPutToGameLog("Prone has said 'Go'" );
+                    GameFrame.outPutToGameLog("Pone has said 'Go'" );
                 }
 
                 //whether dealer can play
@@ -214,7 +214,7 @@ public class GameSquence{
 
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
-        GameFrame.outPutToGameLog("Count Prone's hand." );
+        GameFrame.outPutToGameLog("Count Pone's hand." );
        // System.out.println(prone.getPlayedHand().getCard(3));
         //System.out.println(board.getCut());
         prone.setScore(scorer.countHand(prone.getPlayedHand(), board.getCut(), false));

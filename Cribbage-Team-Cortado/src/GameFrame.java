@@ -308,12 +308,12 @@ public class GameFrame extends JFrame {
     public static void setPlayer1isDealer(boolean t) {
         if (t) {
             status1.setText("Status: Dealer");
-        } else status1.setText("Status: Prone");
+        } else status1.setText("Status: Pone");
     }
 
     public static void setPlayer2isDealer(boolean t) {
         if (t) {
-            status2.setText("Status: Prone");
+            status2.setText("Status: Pone");
         } else status2.setText("Status: Dealer");
     }
 
