@@ -1,4 +1,5 @@
 //might still be easier to go with int input
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,15 @@ public class HumanPlayer extends Players {
     @Override
     public Cards decideCard(){
 
+//        String x = JOptionPane.showInputDialog("Input card Card index (first card from left is 0):");
+//        int j = Integer.parseInt(x);
+//        if (j >= 0 && (j < super.getHand().size())) {
+//            return super.getHand().getCard(j);
+//        } else {
+//            String y = JOptionPane.showInputDialog("Invalid input, enter a number between 0 and " + (super.getHand().size()-1);
+//            int k = Integer.parseInt(y);
+//            return super.getHand().getCard(k);
+//        }
         System.out.println("Input card Card index (example: first card from left is 0):");
         Scanner in = new Scanner(System.in);
 

@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Cribbage-Team-Cortado:jar" />
+      <artifact name="Cribbage-Team-Cortado2:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9dbb1a-a599-427d-b1c7-a45bd34aa5d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Cribbage_Team_Cortado_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Cribbage_Team_Cortado2_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/HumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/HumanPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/artifacts/Cribbage_Team_Cortado_jar/Cribbage-Team-Cortado.jar" beforeDir="false" afterPath="$PROJECT_DIR$/artifacts/Cribbage_Team_Cortado_jar/Cribbage-Team-Cortado.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/Referee.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/Referee.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +25,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="225">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="45" />
               <folding>
                 <element signature="e#1541#1542#0" expanded="true" />
                 <element signature="e#1568#1569#0" expanded="true" />
@@ -44,8 +47,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            <state relative-caret-position="435">
+              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="429" column="37" selection-start-line="429" selection-start-column="37" selection-end-line="429" selection-end-column="37" />
+            <state relative-caret-position="256">
+              <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9786#9787#0" expanded="true" />
@@ -83,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2348">
-              <caret line="121" column="54" selection-start-line="121" selection-start-column="54" selection-end-line="121" selection-end-column="54" />
+            <state relative-caret-position="128">
+              <caret line="114" column="54" selection-start-line="114" selection-start-column="54" selection-end-line="114" selection-end-column="54" />
               <folding>
                 <element signature="method#eachDraw#0;class#GameSquence#0" />
                 <element signature="method#dealHands#0;class#GameSquence#0" />
@@ -174,18 +177,18 @@
         <option value="$PROJECT_DIR$/untitled/src/GameSquence.java" />
         <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
         <option value="$PROJECT_DIR$/untitled/src/Scorer.java" />
-        <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/TrackComponent.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameFrame.java" />
+        <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="22" />
-    <option name="y" value="25" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="39" />
+    <option name="y" value="30" />
     <option name="width" value="1309" />
     <option name="height" value="877" />
   </component>
@@ -241,7 +244,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cpsc101-cribbage" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553060640401" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553107433459" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -281,9 +284,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Cribbage-Team-Cortado.jar" type="JarApplication" factoryName="JAR Application" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/artifacts/Cribbage_Team_Cortado_jar/Cribbage-Team-Cortado.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.Cribbage-Team-Cortado.jar" />
         <item itemvalue="Application.GameFrame" />
       </list>
     </recent_temporary>
@@ -311,10 +319,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="235" y="23" width="1309" height="877" extended-state="0" />
-    <editor active="true" />
+    <frame x="39" y="30" width="1309" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25098658" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25098658" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -323,7 +330,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960536" visible="true" weight="0.3477707" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960536" visible="true" weight="0.3477707" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -536,31 +543,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#1541#1542#0" expanded="true" />
-            <element signature="e#1568#1569#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/TrackComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
           <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -574,21 +560,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java">
+    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2348">
-          <caret line="121" column="54" selection-start-line="121" selection-start-column="54" selection-end-line="121" selection-end-column="54" />
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
-            <element signature="method#eachDraw#0;class#GameSquence#0" />
-            <element signature="method#dealHands#0;class#GameSquence#0" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="45" />
+          <folding>
+            <element signature="e#1541#1542#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="429" column="37" selection-start-line="429" selection-start-column="37" selection-end-line="429" selection-end-column="37" />
+        <state relative-caret-position="256">
+          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9786#9787#0" expanded="true" />
@@ -598,10 +594,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="114" column="54" selection-start-line="114" selection-start-column="54" selection-end-line="114" selection-end-column="54" />
+          <folding>
+            <element signature="method#eachDraw#0;class#GameSquence#0" />
+            <element signature="method#dealHands#0;class#GameSquence#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        <state relative-caret-position="435">
+          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -614,7 +621,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>Cribbage-Team-Cortado:jar</last-edited>
+          <last-edited>Cribbage-Team-Cortado2:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
