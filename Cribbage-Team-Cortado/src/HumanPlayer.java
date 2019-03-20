@@ -23,20 +23,30 @@ public class HumanPlayer extends Players {
 
         System.out.println("Input card Card index (example: first card from left is 0):");
         Scanner in = new Scanner(System.in);
-        String parameters = in.nextLine();
-        int j = splitSuiteValues(parameters);
 
-        return super.getHand().getCard(j);
+
+        while (in.hasNextLine()){
+            String input = in.nextLine();
+            int i = Integer.parseInt(input);
+
+            if (i >= 0 && i < super.getHand().size()){
+                return super.getHand().getCard(i);
+            }
+            System.out.println("Invalid input, enter a number between 0 and " + (super.getHand().size()-1));
+        }
+
+        return null;
     }
 
-    private int splitSuiteValues(String parameters){
-        int paramHolder = Integer.parseInt(parameters);
-
-        if (paramHolder >= 0 && paramHolder < super.getHand().size()) {
-            return paramHolder;
-        } else System.out.println("Invalid number, enter a different number.");
-        return -1;
-    }
+//    private int splitSuiteValues(String parameters){
+//        int paramHolder = Integer.parseInt(parameters);
+//
+//        while (paramHolder < 0 && paramHolder >= super.getHand().size()) {
+//
+//        }
+//        return paramHolder;
+//
+//    }
 
 
 
