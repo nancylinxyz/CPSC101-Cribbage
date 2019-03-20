@@ -374,15 +374,21 @@ public class GameFrame extends JFrame {
     public static void updatePeggingCards(Board board){
 
         String tempString = "";
+        if (board.getCardPlayed().size() == 0){
+            PlayedCards.setText("");
+            PlayedCards.setFont(new Font("Arial", Font.PLAIN, 12));
+            PlayedCards.setText("No Cards Has Been Played.");
+
+        } else {
+            for (int i = 0; i < board.getCardPlayed().size(); i++) {
+                tempString = tempString + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
+            }
 
 
-        for (int i = 0; i < board.getCardPlayed().size(); i++) {
-            tempString = tempString + " " + handToCardDisplay(board.getCardPlayed().getCard(i));
+            PlayedCards.setText(tempString);
+            PlayedCards.setFont(new Font("Arial", Font.PLAIN, 55));
         }
 
-
-        PlayedCards.setText(tempString);
-        PlayedCards.setFont(new Font("Arial", Font.PLAIN, 55));
     }
 
     public static void updatePlayer1HandDisplay(Players player){
@@ -400,31 +406,43 @@ public class GameFrame extends JFrame {
 
     }
 
-    public static void updateCribDisplay(Players player0, Players player1){
+    public static void updateCribDisplay(Players player0, Players player1, boolean isCountHand){
         String tempString;
         String tempString1 = "";
         String tempString2 ="";
+        if (isCountHand) {
+            if (player0.getCrib().size() > 2) {
+                for (int i = 0; i < player0.getCrib().size(); i++) {
+                    tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+                }
+            } else {
+                for (int i = 0; i < player0.getCrib().size(); i++) {
+                    tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+                }
 
-        if (player0.getCrib().size()>2){
-            for (int i = 0; i < player0.getCrib().size(); i++) {
-                tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+                for (int i = 0; i < player1.getCrib().size(); i++) {
+                    tempString2 = tempString2 + handToCardDisplay(player1.getCrib().getCard(i)) + " ";
+                }
             }
+            tempString = tempString1 + tempString2;
+
+            crib.setFont(new Font("Arial", Font.PLAIN, 40));
+            crib.setText(tempString);
         } else {
-            for (int i = 0; i < player0.getCrib().size(); i++) {
-                tempString1 = tempString1 + handToCardDisplay(player0.getCrib().getCard(i)) + " ";
+            if (player0.getCrib().size()+player1.getCrib().size() == 0){
+                crib.setFont(new Font("Arial", Font.PLAIN, 12));
+                crib.setText("No Card In Crib");
             }
-
-            for (int i = 0; i < player1.getCrib().size(); i++) {
-                tempString2 = tempString2 + handToCardDisplay(player1.getCrib().getCard(i)) + " ";
+            if (player0.getCrib().size()+player1.getCrib().size() > 0){
+                for (int j = 0; j < player0.getCrib().size()+ player2.getCrib().size(); j++){
+                    tempString1 = tempString1 + backCard;
+                    crib.setFont(new Font("Arial", Font.PLAIN, 40));
+                    crib.setText(tempString1);
+                }
             }
         }
 
-        //System.out.println(tempString1);
-        //System.out.println(tempString2);
-        tempString = tempString1 + tempString2;
 
-        crib.setFont(new Font("Arial", Font.PLAIN, 40));
-        crib.setText(tempString);
 
     }
 

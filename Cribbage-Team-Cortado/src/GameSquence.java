@@ -17,6 +17,7 @@ public class GameSquence{
     private Scorer scorer;
 //    private TrackComponent track;
     private GameFrame gameFrame;
+    private boolean isCountHand = false;
 
     //constructor with 2 players as input
     public GameSquence(Players player1, Players player2, Board board){
@@ -71,12 +72,12 @@ public class GameSquence{
             prone = playerList.get(1);
             //pass on player status
             isDealer0 = true;
-            GameFrame.outPutToGameLog("You are the dealer" );
+            GameFrame.outPutToGameLog("You are the Dealer" );
         } else if(playerList.get(0).getHand().getCard(0).valueFinder() > playerList.get(1).getHand().getCard(0).valueFinder() ) {
             dealer = playerList.get(1);
             prone = playerList.get(0);
             isDealer0 = false;
-            GameFrame.outPutToGameLog("Player 2 is the dealer" );
+            GameFrame.outPutToGameLog("Player 2 is the Dealer" );
         } else {
 
             GameFrame.outPutToGameLog("There is a tie, we will draw again.");
@@ -109,11 +110,17 @@ public class GameSquence{
             GameFrame.outPutToGameLog("Pone's turn to discard 1 card to Crib." );
             prone.discardToCrib(prone.decideCard());
             GameFrame.outPutToGameLog("Pone's has discard 1 card to Crib." );
+            updateAllTextDisplay();
             GameFrame.outPutToGameLog("Dealer's turn to discard 1 card to Crib." );
             dealer.discardToCrib(dealer.decideCard());
             GameFrame.outPutToGameLog("Dealer's has discard 1 card to Crib." );
+
             updateAllTextDisplay();
         }
+        //merge crib into player1's hand for count and display
+        playerList.get(0).getCrib().mergeCollection(playerList.get(1).getCrib());
+        playerList.get(1).getCrib().clearCollection();
+        updateAllTextDisplay();
     }
 
     //draw and set Cut Card
@@ -215,6 +222,7 @@ public class GameSquence{
 
     private void countHand(){
         //count hand for prone.hand, dealer.hand (need a return CardCollection)
+        isCountHand = true;
         GameFrame.outPutToGameLog("Count Pone's hand." );
        // System.out.println(prone.getPlayedHand().getCard(3));
         //System.out.println(board.getCut());
@@ -229,10 +237,10 @@ public class GameSquence{
         //count crib
         GameFrame.outPutToGameLog("Count Crib." );
         //System.out.println(dealer.getCrib().getCard(1));
+        updateAllTextDisplay();
 
-        playerList.get(0).getCrib().mergeCollection(playerList.get(1).getCrib());
         dealer.setScore(scorer.countHand(playerList.get(0).getCrib(),board.getCut(), true));
-
+        isCountHand = false;
         updateAllTextDisplay();
         ref.isWinner(dealer);
         board.removeCutCard();
@@ -270,21 +278,28 @@ public class GameSquence{
         GameFrame.setPlayer1ScoreDisplay(playerList.get(0).getScore());
         GameFrame.setPlayer2ScoreDisplay(playerList.get(1).getScore());
         GameFrame.setPlayer2HandSize(playerList.get(1).getCardNumber());
+
+        //update cut card display
         if (board.getCutCard().size()>0){
             GameFrame.updateCutDisplay(board.getCut());
         }
 
+        //update player1's hand
         if (playerList.get(0).getHand().size()>0){
             GameFrame.updatePlayer1HandDisplay(playerList.get(0));
         }
 
+        //pegging related updates
         GameFrame.updatePeggingScore(board.getScore());
-        if (board.getCardPlayed().size()>0){
-            GameFrame.updatePeggingCards(board);
-        }
+        GameFrame.updatePeggingCards(board);
+
+
+        //update Crib Display
         if ((playerList.get(0).getCrib().size() + playerList.get(1).getCrib().size())>0){
-            GameFrame.updateCribDisplay(playerList.get(0), playerList.get(1));
+            GameFrame.updateCribDisplay(playerList.get(0), playerList.get(1), isCountHand);
         }
+
+        //update 2 tracks
         if (playerList.get(0).getScore()> 0) {
             gameFrame.getTracks().track1Update(playerList.get(0).getScore());
         }
