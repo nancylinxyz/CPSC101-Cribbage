@@ -92,7 +92,7 @@ public class GameSquence{
         GameFrame.outPutToGameLog("Dealing" );
         deck.resetDeck();
         for (int i = 0; i < 6; i++) {
-            GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Prone" );
+            GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Pone" );
             deck.deal(prone);
             GameFrame.outPutToGameLog("Deal card "+ (i+1) + " to Dealer" );
             deck.deal(dealer);
@@ -106,9 +106,9 @@ public class GameSquence{
     private void toCrib(){
         GameFrame.outPutToGameLog("Instruction: Each player discard 2 cards to Crib." );
         for (int i = 0; i < 2; i++){
-            GameFrame.outPutToGameLog("Prone's turn to discard 1 card to Crib." );
+            GameFrame.outPutToGameLog("Pone's turn to discard 1 card to Crib." );
             prone.discardToCrib(prone.decideCard());
-            GameFrame.outPutToGameLog("Prone's has discard 1 card to Crib." );
+            GameFrame.outPutToGameLog("Pone's has discard 1 card to Crib." );
             GameFrame.outPutToGameLog("Dealer's turn to discard 1 card to Crib." );
             dealer.discardToCrib(dealer.decideCard());
             GameFrame.outPutToGameLog("Dealer's has discard 1 card to Crib." );
@@ -123,7 +123,7 @@ public class GameSquence{
         GameFrame.outPutToGameLog("Cut Card is: " + board.getCut());
         if (board.getCut().valueFinder() == 11){
             prone.setScore(2);
-            GameFrame.outPutToGameLog("Prone scores 2 points." );
+            GameFrame.outPutToGameLog("Pone scores 2 points." );
             updateAllTextDisplay();
             ref.isWinner(prone);
         }
@@ -208,6 +208,7 @@ public class GameSquence{
             scorer.resetPeggingScore();
             board.resetScore();
             board.removeCards();
+            updateAllTextDisplay();
         }
 
     }
@@ -237,6 +238,7 @@ public class GameSquence{
         board.removeCutCard();
         playerList.get(0).emptyCrib();
         playerList.get(1).emptyCrib();
+        updateAllTextDisplay();
         //System.out.println(playerList.get(0).getCrib().size() +playerList.get(1).getCrib().size());
     }
 
@@ -251,7 +253,7 @@ public class GameSquence{
             dealer = playerList.get(1);
             prone = playerList.get(0);
             isDealer0 = false;
-            GameFrame.outPutToGameLog("You are now the prone." );
+            GameFrame.outPutToGameLog("You are now the pone." );
         } else {
             dealer = playerList.get(0);
             prone = playerList.get(1);
