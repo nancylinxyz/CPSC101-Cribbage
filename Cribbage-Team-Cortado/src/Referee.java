@@ -18,11 +18,13 @@ public class Referee {
         board = new Board();
         playerHuman = new HumanPlayer(board);
         playerAi = new  AiPlayer(board);
+//        Players playerAi2 = new AiPlayer(board);
         this.gameframe = gameframe;
 
         //this.track = track;
 
         this.game = new GameSquence(playerHuman, playerAi, board);
+//        this.game = new GameSquence(playerAi2, playerAi, board);
     }
 
     public void start(){
