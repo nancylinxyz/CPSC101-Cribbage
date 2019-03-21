@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9dbb1a-a599-427d-b1c7-a45bd34aa5d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/GameSquence.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Cribbage-Team-Cortado/GameSquence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,11 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -104,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="182" column="80" lean-forward="true" selection-start-line="182" selection-start-column="80" selection-end-line="182" selection-end-column="80" />
+              <caret line="182" column="80" selection-start-line="182" selection-start-column="80" selection-end-line="182" selection-end-column="80" />
               <folding>
                 <element signature="method#eachDraw#0;class#GameSquence#0" />
                 <element signature="method#dealHands#0;class#GameSquence#0" />
@@ -197,20 +193,20 @@
         <option value="$PROJECT_DIR$/untitled/src/GameSquence.java" />
         <option value="$PROJECT_DIR$/untitled/src/GameFrame.java" />
         <option value="$PROJECT_DIR$/untitled/src/Scorer.java" />
-        <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/TrackComponent.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameFrame.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Referee.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/HumanPlayer.java" />
         <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java" />
+        <option value="$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="153" />
-    <option name="y" value="228" />
+    <option name="y" value="23" />
     <option name="width" value="1309" />
-    <option name="height" value="577" />
+    <option name="height" value="782" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -264,7 +260,7 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cpsc101-cribbage" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553206718989" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553206725291" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -339,10 +335,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="153" y="23" width="1309" height="782" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2274678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25098658" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -351,7 +347,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960536" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960536" visible="true" weight="0.39565217" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -587,7 +583,7 @@
     <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/GameSquence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="182" column="80" lean-forward="true" selection-start-line="182" selection-start-column="80" selection-end-line="182" selection-end-column="80" />
+          <caret line="182" column="80" selection-start-line="182" selection-start-column="80" selection-end-line="182" selection-end-column="80" />
           <folding>
             <element signature="method#eachDraw#0;class#GameSquence#0" />
             <element signature="method#dealHands#0;class#GameSquence#0" />
@@ -628,11 +624,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Cribbage-Team-Cortado/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
