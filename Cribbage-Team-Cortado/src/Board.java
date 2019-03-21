@@ -34,7 +34,7 @@ public class Board {
     }
 
     public void removeCards(){
-        cutCard.clearCollection();
+        currentCards.clearCollection();
     }
 
     
@@ -55,10 +55,15 @@ public class Board {
 
      public void setCurrentCards(Cards c){
          currentCards.addCard(c);
+         currentPeggingScore.addScore(c.cardValue());
      }
 
      public CardCollection getCutCard(){
         return cutCard;
+     }
+
+     public void removeCutCard(){
+        cutCard.clearCollection();
      }
 
      public CardCollection getCardPlayed(){

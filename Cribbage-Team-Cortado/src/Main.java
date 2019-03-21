@@ -1,6 +1,10 @@
 import javax.swing.*;
+import java.awt.*;
 
 class Main{
+
+    static GameFrame frame;
+    static Referee ref;
     public static void main(String[] agrs){
 //        Test code to print out Suit
 //        Deck deck = new Deck();
@@ -9,14 +13,14 @@ class Main{
 //        deck.deal(player1);
 //        System.out.println(player1.getHand().getCard(0).getSuit());
 
-
-        JFrame frame = new GameFrame();
+        frame = new GameFrame();
 
         frame.setSize(1100,700);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Cribbage");
-        Referee ref = new Referee();
+
+        Referee ref = new Referee(frame);
 
         ref.start();
 

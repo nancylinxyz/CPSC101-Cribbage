@@ -10,17 +10,21 @@ public class Referee {
     Players playerAi;
     GameSquence game;
     Board board;
-    //TrackComponent track;
+//    TrackComponent track;
+    GameFrame gameframe;
 
 
-    public Referee(){
+    public Referee(GameFrame gameframe){
         board = new Board();
         playerHuman = new HumanPlayer(board);
         playerAi = new  AiPlayer(board);
+//        Players playerAi2 = new AiPlayer(board);
+        this.gameframe = gameframe;
 
         //this.track = track;
 
-        game = new GameSquence(playerHuman, playerAi, board);
+        this.game = new GameSquence(playerHuman, playerAi, board);
+//        this.game = new GameSquence(playerAi2, playerAi, board);
     }
 
     public void start(){
@@ -55,10 +59,17 @@ public class Referee {
         if (p.getScore()<121){
             return false;
         } else{
-            //display winner
             return true;
         }
 
+    }
+
+//    public TrackComponent getTrack(){
+//        return track;
+//    }
+
+    public GameFrame getGameFrame(){
+        return gameframe;
     }
 
    

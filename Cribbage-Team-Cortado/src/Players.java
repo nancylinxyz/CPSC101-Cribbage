@@ -21,6 +21,7 @@ abstract class Players {
 	private Score myScore;
 	private Board board;
 	private int[] yPosition = new int[2];
+	private boolean go;
 
 	public Players(Board board){
 		hand = new CardCollection();
@@ -29,6 +30,7 @@ abstract class Players {
 		myScore = new Score();
 		myScore.resetScore();
 		this.board = board;
+		go = false;
 	}
 	
 	public void setHand(Cards c){
@@ -95,5 +97,18 @@ abstract class Players {
 	//for graphics
 	public int getPosition(int i){
 		return yPosition[i];
+	}
+
+	//pegging
+	public void setGo(boolean b){
+		go = b;
+	}
+
+	public boolean getGo(){
+		return go;
+	}
+
+	public void emptyCrib(){
+		crib.clearCollection();
 	}
 }

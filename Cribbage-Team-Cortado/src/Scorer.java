@@ -13,14 +13,16 @@ public class Scorer
 //    private int cardNum = 0;
 //    private int minVal = 14;
 //    private int maxVal = 0;
-    private int runCount = 0;
-    private int pegCardNum = 0;
+    private int runCount;
+    private int pegCardNum;
     private CardCollection peggingArray = new CardCollection();
     private CardCollection playedHand;
     private Board board;
 
     public Scorer(Board board){
         this.board = board;
+        pegCardNum = 0;
+        runCount = 0;
     }
 
     //should isRuPeg be added in here?
@@ -28,56 +30,59 @@ public class Scorer
     {
         //peggingArray[pegCardNum] = c;//adding c to pegCardNum-index
         peggingArray.addCard(c);
-        currentPeggingScore += c.valueFinder();
+        currentPeggingScore += c.cardValue();
         pegCardNum++;
         int handScore = 0;
-        if(currentPeggingScore == 15)
-        {
+        if(currentPeggingScore == 15) {
             handScore += 2;
         }
-        if (currentPeggingScore == 31)
-        {
+        if (currentPeggingScore == 31) {
             currentPeggingScore = 0;
             handScore +=  2;
             //end subround
         }
+        //System.out.println("scorer point 1");
         if(pegCardNum > 1){
-            if(isPair(peggingArray.getCard(pegCardNum), peggingArray.getCard(pegCardNum-1)))
+            if(isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
             {
                 handScore +=  2;
             }
         }
+       // System.out.println("scorer point 2");
         //checking for flush
         if(pegCardNum > 4){
-            if (peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -1).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum-2).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum - 3).getSuit() && peggingArray.getCard(pegCardNum).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
+            if (peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum -2).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum-3).getSuit() && peggingArray.getCard(pegCardNum-1).getSuit() == peggingArray.getCard(pegCardNum - 4).getSuit() && peggingArray.getCard(pegCardNum-2).getSuit() == peggingArray.getCard(pegCardNum -4).getSuit())
             //if(peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 1].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 2].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 3].getSuit() && peggingArray[pegCardNum].getSuit() == peggingArray[pegCardNum - 4].getSuit())
             {
                 handScore +=  5;
             }
-        }
+
 
         //checking for 4 of a kind
-        if(isFourKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2), peggingArray.getCard(pegCardNum-3)))
-        {
+            if(isFourKind(peggingArray.getCard(pegCardNum-1) , peggingArray.getCard(pegCardNum-2), peggingArray.getCard(pegCardNum-3), peggingArray.getCard(pegCardNum-4))) {
             handScore +=  12;
+            }
         }
-
+        //System.out.println("scorer point 3");
         //checking for 3 of a kind
-        if (isThreeKind(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum-2)))
-        {
-            handScore +=  6;
+        if (pegCardNum >3 ) {
+            if (isThreeKind(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2), peggingArray.getCard(pegCardNum - 3))) {
+                handScore += 6;
+            }
         }
-
-        if(isPair(peggingArray.getCard(pegCardNum) , peggingArray.getCard(pegCardNum-1)))
-        {
-            handScore += 2;
+        //System.out.println("scorer point 4");
+        if (pegCardNum > 2) {
+            if (isPair(peggingArray.getCard(pegCardNum-1), peggingArray.getCard(pegCardNum - 2))) {
+                handScore += 2;
+            }
         }
+        //System.out.println("scorer point 5");
 
 //        if(pegCardNum > 2)
 //        {
 //
 //        }
-
+        //is15(peggingArray)
         handScore += isRunPeg(peggingArray);
         return handScore;
     }
@@ -89,7 +94,7 @@ public class Scorer
         peggingArray.clearCollection();
     }
 
-    private int is15(CardCollection playedHand, Cards cutCard)//could take all in at once, could have 4 methods for pair, triple etc.
+    private int is15(CardCollection playedHand/*, Cards cutCard*/)//could take all in at once, could have 4 methods for pair, triple etc.
     {
         this.playedHand = playedHand;
         int num15 = 0;//number of instances of 15's
@@ -187,7 +192,7 @@ public class Scorer
     }
     private boolean isFlush(CardCollection playedHand)// change cards 1-4 into Hand arraylist
     {
-        if(playedHand.getCard(0).getSuit() == playedHand.getCard(1).getSuit() && playedHand.getCard(2).getSuit() == playedHand.getCard(3).getSuit() && playedHand.getCard(1).getSuit() == playedHand.getCard(4).getSuit() )
+        if(playedHand.getCard(0).getSuit() == playedHand.getCard(1).getSuit() && playedHand.getCard(1).getSuit() == playedHand.getCard(2).getSuit() && playedHand.getCard(2).getSuit() == playedHand.getCard(3).getSuit() )
         //if(playedHand[0].getSuit() == playedHand[1].getSuit() && playedHand[2].getSuit() == playedHand[3].getSuit() && card1.s == card4.s )
         {
             return true;
@@ -198,59 +203,28 @@ public class Scorer
     {
         this.playedHand = playedHand;
         int handScore = 0;
-        //is15
-        //isrun
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 16;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isFourKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3), cutCard)){handScore += 12;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(2))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(1), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(2), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(0), playedHand.getCard(3), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), playedHand.getCard(3))){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(2), cutCard)){handScore +=6;}
-//
-//        if(isThreeKind(playedHand.getCard(1), playedHand.getCard(3), cutCard)){handScore += 6;}
-//
-//        if(isThreeKind(playedHand.getCard(2),playedHand.getCard(3), cutCard)){handScore += 6;}
 
-
+//        System.out.println("point 1");
         if(isPair(playedHand.getCard(0), playedHand.getCard(1))){handScore += 2;}
-
+//        System.out.println("point 2");
         if(isPair(playedHand.getCard(0), playedHand.getCard(2))){handScore += 2;}
-
+//        System.out.println("point 3");
         if(isPair(playedHand.getCard(0), playedHand.getCard(3))){handScore += 2;}
-
+//        System.out.println("point 4");
         if(isPair(playedHand.getCard(0), cutCard)){handScore += 2;}
-
+//        System.out.println("point 5");
         if(isPair(playedHand.getCard(1), playedHand.getCard(2))){handScore += 2;}
-
+//        System.out.println("point 6");
         if(isPair(playedHand.getCard(1), playedHand.getCard(3))){handScore += 2;}
-
+//        System.out.println("point 7");
         if(isPair(playedHand.getCard(1), cutCard)){handScore += 2;}
-
+//        System.out.println("point 8");
         if(isPair(playedHand.getCard(2), playedHand.getCard(3))){handScore += 2;}
-
+//        System.out.println("point 9");
         if(isPair(playedHand.getCard(2), cutCard)){handScore += 2;}
-
+//        System.out.println("point 10");
         if(isPair(playedHand.getCard(3), cutCard)){handScore += 2;}
-
+//        System.out.println("point 11");
 
 
         if(isCribFlush(playedHand, cutCard)){handScore += 5;}
@@ -258,7 +232,7 @@ public class Scorer
         if(isCrib != false){    if(isFlush(playedHand)){handScore +=  4;}//this for non-crib
         }
 
-        handScore += is15(playedHand, cutCard);
+        //handScore += is15(playedHand, cutCard);
         handScore += isRun();
 
         return handScore;
@@ -302,14 +276,14 @@ public class Scorer
             if(runCount > 6)
             {
                 //only instance of run of 7 that has a pegging score of under 31 is 1, 2, 3, 4, 5, 6, 7
-                if(sortedRunArray.getCard(runCount).valueFinder() == 7 && sortedRunArray.getCard(runCount-1 ).valueFinder() == 6 && sortedRunArray.getCard(runCount -2).valueFinder() == 5 && sortedRunArray.getCard(runCount -3).valueFinder() == 4 & sortedRunArray.getCard(runCount -4).valueFinder() == 3 && sortedRunArray.getCard(runCount-5).valueFinder() == 2 && sortedRunArray.getCard(runCount-6).valueFinder() == 1)
+                if(sortedRunArray.getCard(runCount-1).valueFinder() == 7 && sortedRunArray.getCard(runCount-2 ).valueFinder() == 6 && sortedRunArray.getCard(runCount -3).valueFinder() == 5 && sortedRunArray.getCard(runCount -4).valueFinder() == 4 & sortedRunArray.getCard(runCount -5).valueFinder() == 3 && sortedRunArray.getCard(runCount-6).valueFinder() == 2 && sortedRunArray.getCard(runCount-7).valueFinder() == 1)
                 {
                     return 7;
                 }
             }
 
             if(runCount > 5){
-                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder())== (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()) && (sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()) == (sortedRunArray.getCard(runCount-2 ).valueFinder() - sortedRunArray.getCard(runCount-5).valueFinder()))
+                if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder())== (sortedRunArray.getCard(runCount-2).valueFinder() - sortedRunArray.getCard(runCount-5).valueFinder()) && (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()) == (sortedRunArray.getCard(runCount-3 ).valueFinder() - sortedRunArray.getCard(runCount-6).valueFinder()))
                 {
                     return 6;
                 }}
@@ -320,11 +294,11 @@ public class Scorer
                     return 5;
                 }}
             if(runCount > 3){
-                if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount -2 ).valueFinder())== (sortedRunArray.getCard(runCount- 1).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder()))
+                if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount -3 ).valueFinder())== (sortedRunArray.getCard(runCount- 2).valueFinder() - sortedRunArray.getCard(runCount-4).valueFinder()))
                 {
                     return 4;
                 }}
-            if((sortedRunArray.getCard(runCount).valueFinder() - sortedRunArray.getCard(runCount-1).valueFinder()== 1 && (sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-2).valueFinder())== 1))
+            if((sortedRunArray.getCard(runCount-1).valueFinder() - sortedRunArray.getCard(runCount-2).valueFinder()== 1 && (sortedRunArray.getCard(runCount-2).valueFinder() - sortedRunArray.getCard(runCount-3).valueFinder())== 1))
             {
                 return 3;
             }
@@ -366,18 +340,26 @@ public class Scorer
             {
                 break;
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0)
-            {
-                runScore = 3 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1];
+            if (i > 1){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0)
+                {
+                    runScore = 3 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1];
+                }
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0)
-            {
-                runScore = 4 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1] * runArray[i-3][1];
+            if (i>2){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0)
+                {
+                    runScore = 4 * runArray[i][1] * runArray[i-1][1] * runArray[i-2][1] * runArray[i-3][1];
+                }
             }
-            if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0 && runArray[i-4][1] != 0)
-            {
-                return 5;
+
+            if (i >3 ){
+                if(runArray[i][1] != 0 && runArray[i-1][1] != 0 && runArray[i-2][1] != 0 && runArray[i-3][1] != 0 && runArray[i-4][1] != 0)
+                {
+                    return 5;
+                }
             }
+
         }
         return runScore;
     }

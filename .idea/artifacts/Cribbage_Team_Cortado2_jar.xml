@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Cribbage-Team-Cortado2:jar">
+    <output-path>$PROJECT_DIR$/artifacts/Cribbage_Team_Cortado_jar</output-path>
+    <root id="archive" name="Cribbage-Team-Cortado.jar">
+      <element id="module-output" name="Cribbage-Team-Cortado" />
+    </root>
+  </artifact>
+</component>
