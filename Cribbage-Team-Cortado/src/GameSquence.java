@@ -182,7 +182,7 @@ public class GameSquence{
                         dealer.playHand(tempCard2, board);
                         GameFrame.outPutToGameLog("Dealer has played a card." );
                         //TO-Do: pegging score
-                        prone.setScore(scorer.peggingScore(tempCard2));
+                        dealer.setScore(scorer.peggingScore(tempCard2));
                         if (board.getScore()== 15 || board.getScore() ==31){
                             dealer.setScore(2);
                         }
